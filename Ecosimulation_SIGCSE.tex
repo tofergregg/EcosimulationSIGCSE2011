@@ -58,6 +58,8 @@
 \newcommand{\EcoSim}{\texttt{EcoSim~}}
 \urldef\ecosimPath\path{http://ecosimulation.com}
 
+\newenvironment{snippet}{\begin{algorithmic}[1]}{\end{algorithmic}}
+
 \begin{document}
 %
 % --- Author Metadata here ---
@@ -348,27 +350,183 @@ instead we say things like ``the square of \emph{a number} is \emph{the number} 
 making use of common reference techniques in English.
 
 \subsection{EcoSim Syntax \& Semantics}
-EcoSim was implemented as a statically-typed interpreted language
+EcoSim was implemented as a statically-typed interpreted language with type inference
 using a modified recursive descent parser that type-checked and parsed in the same pass,
 allowing some degree of context sensitivity in the language definition.
 For example, consider the line \texttt{how to cow a person}
 is a syntax error if ``cow'' is a type,
-declares a single-parameter subrountine ``cow'' is ``person'' is a type,
+declares a single-parameter subroutine ``cow'' is ``person'' is a type,
 and declares a parameterless subroutine ``cow a person'' if neither are types.
 While this parser design allowed us to easily implement multi-word statements,
 it also proved somewhat difficult to implement correctly.
 We expect there are still several corner cases we failed to handle correctly.
 
+We chose to implement blocks with Python-like indentation.
+This turned out to be a bad idea, and caused the students considerable difficulty.
+Upon reflection, spoken English does not really have a notion of blocks;
+the closest thing to blocks we know of in natural language is bulleted lists,
+which are not straightforward to represent and nest in plain text.
+
+We had found in our contact with other CS1 courses that statements like ``$x = x + 1$'' confuse students.
+To prevent this confusion, we require that if a name appears as an l-value and an r-value,
+then in the r-value it must be preceded by the word ``old,'' as in
+\begin{snippet}
+\STATE{replace x with old x + 2}
+\end{snippet}
 
 
-\begin{enumerate}
-\item Overview
-\item Language semantics
-\item Language syntax (natural language)
-\item The graphical interface (including collision detection, wall detection, etc.)
-\item Things that set it apart from other parallel programming languages
-\item Examples
-\end{enumerate}
+\subsubsection{(Nearly) Standard OO Constructs}
+Many elements of EcoSim correspond closely to common procedural/OO elements:
+\\\begin{tabular}{|l|l|}\hline
+EcoSim & C-like\\\hline\hline
+start x as 3 & var x = 3\\\hline
+refer to x as y & alias y = x\\\hline
+replace x with 3 & x = 3\\\hline
+x's number & x.anonymousNumber\\\hline
+x's 2nd big thing & x.bigThing[1]\\\hline
+as long as 2 $<$ 3: & while (2 $<$ 3)\\\hline
+\begin{tabular}{@{}l@{}}if 2 $<$ 3\\~ \dots\\otherwise\\~ \dots\end{tabular} & \begin{tabular}{@{}l@{}}if (2 $<$ 3) \\~ \dots\\ else\\~ \dots\end{tabular}\\\hline
+repeat 3 times: & for (int i=0; i$<$3; ++i)\\\hline
+\begin{tabular}{@{}l@{}}a plant has\\~ size, a number\\~ 2 position\end{tabular} & \begin{tabular}{@{}l@{}}struct plant \{\\~ number size;\\~ position[2] anonymousPosition;\\\}\end{tabular}\\\hline
+a plant's r is 3 & plant \{ function r() \{ return 3; \} \}\\\hline
+how to eat a bug & function eat(bug theBug)\\\hline
+do in [any] order & \{\\\hline
+\end{tabular}\\
+A few of these constructs deserve slightly more discussion.
+
+The \texttt{refer to} construct is used to give a name to something that is about to be shadowed,
+and differs from \texttt{start} in that assigning to it modifies the original.
+Thus 
+\begin{snippet}
+\STATE{start x as the position's x}
+\STATE{replace x with 2}
+\end{snippet}
+does not change the position, whereas
+\begin{snippet}
+\STATE{refer to the position's x as x}
+\STATE{replace x with 2}
+\end{snippet}
+does.
+
+Object methods must be a single expression, and may refer to the owning object.
+Once created, there is no syntactic difference between methods and member variables;
+both are accessed with the \texttt{'s} operator.
+
+The \texttt{repeat} construct is unordered and may run in parallel.
+In hindsight the word ``repeat'' implies sequentiality and should probably have been ``do'' instead.
+
+Blocks may be introduced by one of four different \texttt{do} constructs.
+The principal two, \texttt{do in any order} and \texttt{do in order},
+specify whether the statements within the block may be executed in parallel or not.
+The other two add the word ``atomically'' (e.g., \texttt{do atomically in any order})
+and causes all of the statements of the block to be executed ``at the same time''.
+All blocks must be introduced with an explicit \texttt{do} statement.
+
+\subsubsection{Unique Constructs}\label{sec:ecosim-unique}
+Some parts of EcoSim have no direct parallel to any language of which we know.
+One is the inability to create named objects.
+Inside the EcoSim runtime is stored, for each type, a single collection of ``live'' objects of that type.
+The statement
+\begin{snippet}
+\STATE{create 15 number}
+\end{snippet}
+adds 15 new elements to the runtime's collection of existing number-type objects.
+The \texttt{create} statement may also initialize each newly created object:
+\begin{snippet}
+\STATE{create 15 number and for each}
+\INDSTATE{replace the number with 7}
+\end{snippet}
+
+Since objects are not named, they can only be accessed anonymously
+either via iteration or random selection.
+Thus, after running the following code
+\begin{snippet}
+\STATE{for each number}
+\INDSTATE{replace the number with the old number + 3}
+\STATE{for some number}
+\INDSTATE{replace the number with the old number -- 1}
+\end{snippet}
+every number will be incremented by 3 (in parallel)
+and one number (selected at random) will be decremented by 1.
+
+This model of creation as placing an object in a global collection
+greatly simplifies the removal of objects without impacting other processors that may be using it.
+The statement
+\begin{snippet}
+\STATE{destroy the number}
+\end{snippet}
+simply removes that object from the collection;
+other processors that my be operating on the object are free to do so,
+but no new statements can refer to it again.
+Once no references remain, the object is garbage collected.
+
+The last unique element of EcoSim we'll discuss is the ability to talk to the processors directly.
+For example, we can write
+\begin{snippet}
+\STATE{when bored}
+\INDSTATE{create a number}
+\end{snippet}
+to tell every processor to spend their idle time adding more numbers to the runtime's collection.
+This is also how we handle events:
+\begin{snippet}
+\STATE{when a sheep hits a shrub}
+\INDSTATE{destroy the shrub}
+\end{snippet}
+
+\subsection{EcoSim Runtime Model}
+The goal of the EcoSim runtime is to provide simple visual interaction
+and to emulate a multi-processor environment
+using only javascript in an ordinary web browser.
+This is realized by storing global lists of types (see~\S\ref{sec:ecosim-unique}),
+a lost of emulated processors, and a shared work queue.
+Additionally, the runtime contains a collision detection algorithm.
+
+EcoSim has four builtin types:
+``number'', a 64-bit IEEE floating-point number;
+``color'', an HTML-compliant color string;
+``comparison'', or boolean, which never brought up explicitly to the students;
+and ``position'', which is defined as
+\begin{snippet}
+\STATE{a position has}
+\INDSTATE{x, a number}
+\INDSTATE{y, a number}
+\end{snippet}
+If a type has both a ``position'' and a ``size'' (either as a field or a method)
+then it is drawn every update cycle as a circle (either black or its ``color'')
+and is included in the collision tracking routine.
+
+The basic process the runtime follows each cycle is as follows:
+\begin{algorithmic}[1]
+\STATE{If there is work in the queue, assign it to processors}
+\STATE{If there are leftover processors, check for collisions and assign the handlers to processors}
+\STATE{If there are leftover processors, assign each a ``when bored'' handler}
+\STATE{Update the display of what each processor is doing}
+\STATE{Have each processor execute one step and put their remaining computation in the queue}
+\STATE{Update the display of where the objects are}
+\end{algorithmic}
+
+\subsection{EcoSim: The Big Picture}
+The EcoSim language and EcoSim runtime together provide an environment 
+for introducing programming with a parallel model from the beginning.
+
+The language is designed to be easy to read by non-programmers, 
+realizing the mantra ``replace the syntax with its explanation'' 
+with constructs like ``as long as x $>$ 10: replace x with old x -- 10''.
+It is also designed to be fundamentally parallel and processor-aware
+with all statements worded to address a processor
+and any non-parallel behavior expressed explicitly using ``do in order'' and ``do atomically'' constructs.
+It is also designed so that most values need not be named,
+reducing the confusion of shadowed names
+and allowing for a more English-like expression of ideas.
+
+The runtime is designed to allow an easy introduction to parallel execution.
+It runs on any browser with support for the HTML5 canvas element utilizing only standard javascript 1.3 constructs.
+The runtime emulates an array of processors working off of a shared work queue 
+and displays what work each processor is doing at each step.
+The language and runtime together support event-based programming of circular objects
+with collision detection and idle-time behaviors.
+
+\FIXME{\thesubsection\ is meaningless. Destroy it? change it? Move it earlier?}
 
 \section{Course Overview and Lesson Plans}
 The pilot course we created was for fourth and fifth grade students in an enrichment program
