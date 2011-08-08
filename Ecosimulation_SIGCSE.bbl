@@ -1,0 +1,86 @@
+\begin{thebibliography}{10}
+
+\bibitem{GoLanguage}
+The go programming language.
+\newblock \url{http://golang.org/}, accessed on August 6, 2011.
+
+\bibitem{gpgpuLanguages}
+Archives for programming languages.
+\newblock \url{http://gpgpu.org/tag/programming-languages}, accessed on July
+  31, 2011.
+
+\bibitem{amdahl1967validity}
+G.~Amdahl.
+\newblock Validity of the single processor approach to achieving large scale
+  computing capabilities.
+\newblock In {\em Proceedings of the April 18-20, 1967, spring joint computer
+  conference}, pages 483--485. ACM, 1967.
+
+\bibitem{multicoreTrends}
+K.~Asanovic, R.~Bodik, J.~Demmel, T.~Keaveny, K.~Keutzer, J.~Kubiatowicz,
+  N.~Morgan, D.~Patterson, K.~Sen, J.~Wawrzynek, D.~Wessel, and K.~Yelick.
+\newblock A view of the parallel computing landscape.
+\newblock {\em Communcations of the ACM}, 52:56--67, October 2009.
+
+\bibitem{nesl-impl-94}
+G.~E. Blelloch, S.~Chatterjee, J.~C. Hardwick, J.~Sipelstein, and M.~Zagha.
+\newblock Implementation of a portable nested data-parallel language.
+\newblock {\em Journal of Parallel and Distributed Computing}, 21(1):4--14,
+  Apr. 1994.
+
+\bibitem{X10}
+P.~Charles, C.~Grothoff, V.~Saraswat, C.~Donawa, A.~Kielstra, K.~Ebcioglu,
+  C.~von Praun, and V.~Sarkar.
+\newblock X10: an object-oriented approach to non-uniform cluster computing.
+\newblock {\em SIGPLAN Not.}, 40:519--538, October 2005.
+
+\bibitem{parallelExpectations}
+C.~R. Cook, C.~M. Pancake, and R.~Walpole.
+\newblock Are expectations for parallelism too high?: a survey of potential
+  parallel users.
+\newblock In {\em Proceedings of the 1994 ACM/IEEE conference on
+  Supercomputing}, pages 126--133. ACM, 1994.
+
+\bibitem{hockney1988parallel}
+R.~Hockney and C.~Jesshope.
+\newblock {\em Parallel computers 2: Architecture, programming, and
+  algorithms}, volume~2.
+\newblock Taylor \& Francis, 1988.
+
+\bibitem{freshmanParallel}
+D.~Johnson, D.~Kotz, and F.~Makedon.
+\newblock Teaching parallel computing to freshman.
+\newblock In {\em Conference on Parallel Computing for Undergraduates}, pages
+  1--7, 1994.
+
+\bibitem{klein1968introduction}
+D.~Klein.
+\newblock The introduction, increase, and crash of reindeer on st. matthew
+  island.
+\newblock {\em The Journal of Wildlife Management}, pages 350--367, 1968.
+
+\bibitem{stMatthewIsland}
+S.~McMillen.
+\newblock St. matthew island.
+\newblock
+  \url{http://www.recombinantrecords.net/2011/02/09/st-matthew-island/},
+  accessed on August 6, 2011.
+
+\bibitem{undergraduateParallel}
+C.~Nevison.
+\newblock Parallel computing in the undergraduate curriculum.
+\newblock {\em Computer}, 28(12):51--56, December 1995.
+
+\bibitem{highSchoolParallel}
+S.~Torbert, U.~Vishkin, R.~Tzur, and D.~J. Ellison.
+\newblock Is teaching parallel algorithmic thinking to high school students
+  possible?: one teacher's experience.
+\newblock In {\em Proceedings of the 41st ACM technical symposium on Computer
+  science education}, SIGCSE '10, pages 290--294. ACM, 2010.
+
+\bibitem{gridPortal}
+J.~Tourino, M.~Martin, J.~Tarrio, and M.~Arenaz.
+\newblock A grid portal for an undergraduate parallel programming course.
+\newblock {\em Education, IEEE Transactions on}, 48(3):391--399, aug. 2005.
+
+\end{thebibliography}

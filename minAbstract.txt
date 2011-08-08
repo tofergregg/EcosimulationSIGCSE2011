@@ -1,0 +1,11 @@
+Traditional introductory programming classes focus on teaching sequential programming
+skills using conventional programming languages and single-threaded applications.
+Students rarely learn about parallel programming until much later in their careers.
+Today, there is a greater need for programmers who are not only proficient in parallel programming,
+but who are not burdened by previously learned sequential programming habits, with
+parallelism tacked on as an afterthought.
+
+We present an introductory parallel programming course we 
+taught to a group of primary school students using a novel parallel programming language.
+We provide examples of student-written code and we describe the overall course goal
+and specific lesson plans geared towards teaching students how to ``think parallel.''
