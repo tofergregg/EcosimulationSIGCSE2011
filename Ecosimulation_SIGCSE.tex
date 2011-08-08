@@ -313,6 +313,54 @@ languages to an absolute beginner programmer.
 
 
 \section{EcoSim: An Introductory Parallel Programming Language}
+To teach programming, it is necessary to select a language or environment.
+We had a number of constraints on the language we taught:
+\begin{itemize}
+	\item It should be fundamentally parallel.
+	\item The meaning of programs should require little explanation.
+	\item It should run without installation.
+\end{itemize}
+Since we were aware of no language having all of these characteristics, we designed one.
+To make it run without installation, we implemented it entirely in javascript
+and wrapped it in website having a simple editor and interaction environment.
+Notably absent from our goals was being a ``complete'' language;
+for example, since we did expect to teach pointers, we did not include pointer mechanisms in the language.
+
+\subsection{Themes and Mantras of EcoSim}
+We wanted out language to get out of the way of teaching parallel computing principals and practice.
+To facilitate this goal, we developed a set of guiding themes or mantras by which we designed the language.
+
+First and most important, we wanted each core statement to be it's own explanation.
+When considering a possible language syntax, we would ask 
+``How would we explain this construct to a complete beginner? Can we replace it with that description?''
+For example, we would describe the behavior of the assignment statement \texttt{x = 3}
+as ``replacing the value stored in \texttt{x} with \texttt{3}'',
+so we decided to write is as \texttt{replace x with 3}.
+
+Second, we wanted to make sure students didn't loose sight of the fact that some processor must execute each statement.
+We decided to realize this goal by having statement in EcoSim be written to \emph{address} a processor.
+Thus, instead of the OO-style \texttt{gen.nextInt()} we preferred 
+\texttt{get the next number from gen} or \texttt{gen's next number}.
+
+Finally, we wanted to make naming values the exception instead of the rule.
+In common speech we rarely name values;
+instead we say things like ``the square of \emph{a number} is \emph{the number} times \emph{itself}'',
+making use of common reference techniques in English.
+
+\subsection{EcoSim Syntax \& Semantics}
+EcoSim was implemented as a statically-typed interpreted language
+using a modified recursive descent parser that type-checked and parsed in the same pass,
+allowing some degree of context sensitivity in the language definition.
+For example, consider the line \texttt{how to cow a person}
+is a syntax error if ``cow'' is a type,
+declares a single-parameter subrountine ``cow'' is ``person'' is a type,
+and declares a parameterless subroutine ``cow a person'' if neither are types.
+While this parser design allowed us to easily implement multi-word statements,
+it also proved somewhat difficult to implement correctly.
+We expect there are still several corner cases we failed to handle correctly.
+
+
+
 \begin{enumerate}
 \item Overview
 \item Language semantics
