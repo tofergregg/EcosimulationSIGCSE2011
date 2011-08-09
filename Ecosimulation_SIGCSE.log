@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.30.4-2.2 (Web2C 7.5.5) (format=pdflatex 2006.11.9)  9 AUG 2011 09:02
+This is pdfeTeX, Version 3.141592-1.30.4-2.2 (Web2C 7.5.5) (format=pdflatex 2006.11.9)  9 AUG 2011 09:04
 entering extended mode
 **Ecosimulation_SIGCSE.tex
 (./Ecosimulation_SIGCSE.tex
@@ -450,7 +450,7 @@ Overfull \hbox (19.54341pt too wide) in paragraph at lines 531--531
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [4]
-Overfull \hbox (3.74013pt too wide) in paragraph at lines 532--536
+Overfull \hbox (3.74013pt too wide) in paragraph at lines 532--545
 \T1/aer/m/n/9 rently, and both were tar-geted for our au-di-ence of self-select
 ed
  []
@@ -460,9 +460,7 @@ Overfull \hbox (4.82117pt too wide) in paragraph at lines 653--665
 []\T1/aer/m/n/9 As with any pro-gram-ming course, ex-am-ple pro-grams played
  []
 
-[5] (./Ecosimulation_SIGCSE.bbl [6]) [7
-
-] (./Ecosimulation_SIGCSE.aux)
+[5] (./Ecosimulation_SIGCSE.bbl) [6] (./Ecosimulation_SIGCSE.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -476,7 +474,7 @@ Here is how much of TeX's memory you used:
  582 hyphenation exceptions out of 5000
  39i,13n,42p,479b,335s stack positions out of 5000i,500n,6000p,200000b,40000s
 PDF statistics:
- 63 PDF objects out of 300000
+ 59 PDF objects out of 300000
  0 named destinations out of 131072
  6 words of extra memory for PDF output out of 10000
 </usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmmi9.pfb></usr/lo
@@ -492,4 +490,4 @@ hare/texmf.tetex/fonts/type1/bluesky/cm/cmr9.pfb></usr/local/teTeX/share/texmf.
 tetex/fonts/type1/urw/times/utmb8a.pfb></usr/local/teTeX/share/texmf.tetex/font
 s/type1/urw/helvetic/uhvr8a.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1
 /urw/helvetic/uhvb8a.pfb>
-Output written on Ecosimulation_SIGCSE.pdf (7 pages, 199264 bytes).
+Output written on Ecosimulation_SIGCSE.pdf (6 pages, 197742 bytes).
