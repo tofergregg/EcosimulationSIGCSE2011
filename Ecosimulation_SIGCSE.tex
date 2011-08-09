@@ -167,15 +167,13 @@ parallel programming concepts, and we describe the overall course goal and speci
 geared towards teaching students how to ``think parallel.''
 \end{abstract}
 
-% A category with the (minimum) three required fields
-\category{H.4}{Information Systems Applications}{Miscellaneous}
-%A category including the fourth, optional field follows...
-\category{D.2.8}{Software Engineering}{Metrics}[complexity measures, performance measures]
+\category{D.3.2}{Concurrent Programming}{Language Classiciations}[concurrent, distributed, and parallel languages]
+\category{K.3.2}{Computers and Education}{Computer and Information Science Education}[computer science education, curriculum]
 
-\terms{Languages, Design}
+\terms{Languages, Design, Human Factors}
 
-\keywords{Concurrent, distributed, and parallel languages, Instructional Design,
-Introductory Programming, Pedagogy, Education}
+\keywords{Concurrent languages, parallel languages, Instructional Design,
+Introductory Programming, Pedagogy, Education, readability, elementary school, K-12}
 
 \section{Introduction}
 Introductory programming classes are almost universally taught 
@@ -313,6 +311,19 @@ students already proficient at programming in general (e.g., X10\cite{X10},
 NESL~\cite{nesl-impl-94}, and Go~\cite{GoLanguage})\FIXME{Should we site ParaSail, CUDA, Cilk, \dots?}.  It would be hard to suggest any of these
 languages to an absolute beginner programmer.
 
+Several successful languages have been designed to have English-like syntax,
+including COBOL~\cite{COBOL59}, AppleScript~\cite{AppleScript}, and Wolfram Alpha~\cite{WolframAlpha}.
+Like \EcoSim{}, each was designed to accessible to non-programmers
+and each targets a relatively narrow set of possible use cases.
+None, however, seem suited to teaching parallel programming concepts.
+
+Another approach to making ``readable'' languages 
+is to use a graphical rather than textual representation of the program.
+Recent successful examples aimed at children include Scratch~\cite{Scratch} and Kodu~\cite{Kodu}.
+We do not pretend to be aware of all graphical programming environments
+but were unaware of any that could be run without installation
+and used to teaching parallel programming concepts.
+
 
 \section{\EcoSim{}: An Introductory Parallel Programming Language}
 To teach programming, it is necessary to select a language or environment.
@@ -336,7 +347,7 @@ We had four characteristics we wanted in the language we taught:
 \end{description}
 Notably absent from these goals is being a ``complete'' language.
 Our objective was to teach parallel programming concepts,
-not necessarily to provide a gateway into for serious software development.
+not necessarily to provide a gateway into serious software development.
 
 Since we were aware of no language having all four desired characteristics, 
 we created our own.
