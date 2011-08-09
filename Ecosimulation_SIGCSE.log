@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.30.4-2.2 (Web2C 7.5.5) (format=pdflatex 2006.11.9)  6 AUG 2011 19:12
+This is pdfeTeX, Version 3.141592-1.30.4-2.2 (Web2C 7.5.5) (format=pdflatex 2006.11.9)  8 AUG 2011 17:31
 entering extended mode
 **Ecosimulation_SIGCSE.tex
 (./Ecosimulation_SIGCSE.tex
@@ -428,23 +428,16 @@ Overfull \hbox (3.74013pt too wide) in paragraph at lines 326--330
 ed
  []
 
-
-LaTeX Warning: Reference `fig:atomic-example' on page \thepage  undefined on in
-put line 381.
-
 [3] (./Ecosimulation_SIGCSE.bbl) [4] (./Ecosimulation_SIGCSE.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 3938 strings out of 94412
- 50615 string characters out of 1172319
+ 3937 strings out of 94412
+ 50596 string characters out of 1172319
  2099435 words of memory out of 4550999
- 7067 multiletter control sequences out of 10000+50000
+ 7066 multiletter control sequences out of 10000+50000
  54692 words of font info for 74 fonts, out of 2000000 for 2000
  582 hyphenation exceptions out of 5000
  39i,11n,42p,479b,335s stack positions out of 5000i,500n,6000p,200000b,40000s
@@ -464,4 +457,4 @@ al/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmr9.pfb></usr/local/teTeX/sh
 are/texmf.tetex/fonts/type1/urw/times/utmb8a.pfb></usr/local/teTeX/share/texmf.
 tetex/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/teTeX/share/texmf.tetex/f
 onts/type1/urw/helvetic/uhvb8a.pfb>
-Output written on Ecosimulation_SIGCSE.pdf (4 pages, 170180 bytes).
+Output written on Ecosimulation_SIGCSE.pdf (4 pages, 170058 bytes).

@@ -584,7 +584,7 @@ parallel processing concept or concepts.  During and after each activity, we dis
 associated concept and in most cases we then wrote a simple program in \emph{EcoSim} that
 demonstrated the idea.
 For example, after the race condition activity, we wrote the programs in Figure 
-\ref{fig:atomic-example}, which demonstrate a race condition stemming from allowing multiple
+\ref{fig:race-conditions}, which demonstrate a race condition stemming from allowing multiple
 processors to complete the \texttt{color} statements in any order.
 
 \begin{table*}
@@ -616,7 +616,9 @@ This continues until one student has the total sum. & Reduction and Divide/Conqu
   \INDSTATE{do in order}
   \INDSTATE[2]{replace the moth's color with gray}
   \INDSTATE[2]{replace the moth's color with black}
+\end{algorithmic}
 
+\begin{algorithmic}[1]
 \item[{\bf In any order:}]
 \STATE{a moth has}
   \INDSTATE{a position}
@@ -630,13 +632,18 @@ This continues until one student has the total sum. & Reduction and Divide/Conqu
 \caption{Example \emph{EcoSim} programs that demonstrate race conditions.  In the
 in order program, all moths end up black, while in the out of order program
 the final color is dependent on a race condition.}
-\label{fig:raceConditions} 
+\label{fig:race-conditions} 
 \end{figure}
+
+\emph{EcoSim} allows a programmer to set the number of processors that will be used to run the
+program. We used this to demonstrate a number of concepts to the students, including demonstrating
+parallel speed-up as well as race conditions.  
 
 \section{Student Work and Outcomes}
 
 \section{Conclusions}
 Conclusions
+
 
 %ACKNOWLEDGMENTS are optional
 %\section{Acknowledgments}
