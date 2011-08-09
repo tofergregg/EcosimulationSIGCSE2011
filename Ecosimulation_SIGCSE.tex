@@ -582,9 +582,11 @@ led to a fruitful discussion on why parallel processing can be faster.
 Table \ref{tab:group-activities} shows the group activities we conducted an their associated
 parallel processing concept or concepts.  During and after each activity, we discussed the
 associated concept and in most cases we then wrote a simple program in \emph{EcoSim} that
-demonstrated the idea.
-For example, after the race condition activity, we wrote the programs in Figure 
-\ref{fig:race-conditions}, which demonstrate a race condition stemming from allowing multiple
+demonstrated the idea.  Each student sat at a computer with \emph{EcoSim} loaded into their
+web browser, and they were able to type out the examples as we wrote them on the overhead 
+projector.
+For example, after the race condition activity, we wrote the programs in 
+Figure~\ref{fig:race-conditions}, which demonstrate a race condition stemming from allowing multiple
 processors to complete the \texttt{color} statements in any order.
 
 \begin{table*}
@@ -612,6 +614,7 @@ This continues until one student has the total sum. & Reduction and Divide/Conqu
   \INDSTATE{a position}
   \INDSTATE{a color}
 \STATE{}
+\STATE{a moth's size is 50}
 \STATE{create 10 moth and for each}
   \INDSTATE{do in order}
   \INDSTATE[2]{replace the moth's color with gray}
@@ -624,6 +627,7 @@ This continues until one student has the total sum. & Reduction and Divide/Conqu
   \INDSTATE{a position}
   \INDSTATE{a color}
 \STATE{}
+\STATE{a moth's size is 50}
 \STATE{create 10 moth and for each}
   \INDSTATE{do in any order}
   \INDSTATE[2]{replace the moth's color with gray}
@@ -637,7 +641,49 @@ the final color is dependent on a race condition.}
 
 \emph{EcoSim} allows a programmer to set the number of processors that will be used to run the
 program. We used this to demonstrate a number of concepts to the students, including demonstrating
-parallel speed-up as well as race conditions.  
+parallel speed-up as well as race conditions.  For example, if \emph{EcoSim} is set to use a single
+processor, and the ``In order'' program from Figure~\ref{fig:race-conditions} is amended to remove
+line 8, the students can see the individual ``moths'' changing color one at a time.  If we change
+the simulator to run with two processors, the students can easily see that two moths change color
+at a time, and with 16 processors they can see that all of the moths change all at once and the
+program completes almost instantly.  With \emph{EcoSim}'s ability to step through a program, 
+individual processor activity can be made even more apparent.
+
+\subsection{The Use of Example Programs}
+As with any programming course, example programs played an important role in teaching our course.
+This was the first time most of the students had seen any programming language at all, and
+therefore we decided to provide a scaffolding in the form of example programs that they could
+look at and modify.  \emph{EcoSim} has a ``Load Example'' button that brings up a listing of
+example programs that the instructors can update at any time.  Many times during class we would
+have students pay attention to the projector as we typed in the code for a program, and then we
+would have them load the example instead of typing it out.  This saved time (not all pre-teens
+are fast typists), and it also allowed us to start the whole class at the same point in a program's
+development.  In some cases we gave them example programs that were missing a line or two and
+asked them to fill in the details themselves.  We encouraged the students to modify the programs
+as well, and students that completed assignments before others in the class were able to modify
+the example programs or load other programs they had been working on previously.
+
+Another reason we relied on example programs was to build a compendium of programs that the students
+could go back and look at if they did not remember the details of a particular topic.  Frequently,
+we would direct the students to previously covered examples, and we would also keep versions of 
+certain programs so they could see the steps used to create more robust programs.
+
+\subsection{Student Assessment}
+Because this was an ungraded enrichment class, we did not perform formal assessments (e.g., tests
+or deadline based homework), however we reviewed the students' work regularly and gave feedback
+often.  At the beginning of each hour of class, we asked whether anyone had something they wanted
+to show the class, and we displayed their work on the projector and let them describe and run the
+programs.  This motivated the students to create interesting programs, and the students enjoyed
+showing off their work to the rest of the class.  Some students showed off work that they completed
+on their own at home during the week between classes, which we highly encouraged.
+
+All student work is captured in a MySQL database that we were able to review regularly.  Each time
+a student clicks on the "Setup Code" (which parses the code and reports errors), the current
+program is saved, and all versions are retained.  Therefore, we were able to look at a students 
+progress, including how many attempts they made at fixing syntax errors, and how they went about
+building their programs.  We used this analysis to determine where we needed to review; e.g.,
+once we realized how much trouble the students had with understanding indentation and blocks, we
+modified our lesson plan to include a review and further examples.
 
 \section{Student Work and Outcomes}
 
