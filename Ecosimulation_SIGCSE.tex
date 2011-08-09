@@ -146,21 +146,21 @@ Luther Tychonievich\\
 \begin{abstract}
 Traditional introductory programming classes focus on teaching sequential programming
 skills using conventional programming languages and single-threaded applications.
-It isn't generally until much later in a student's programming education that he or she learns
-about parallel programming and associated topics such as race conditions, locks, or data
-consistency.  With the increased popularity of 
-multicore CPUs and GPUs capable of GPGPU computing, there is a greater 
-need for programmers who are not only proficient in parallel programming, but who are
-not burdened by an inclination towards trying to solve a problem in a sequential fashion, with
-parallelism tacked on as an afterthought.
+It is typical to wait until a student has developed proficiency in sequential programming
+before teaching parallel programming and associated topics such as race conditions, locks, and data consistency.  
+As computer hardware becomes increasingly parallel, 
+there is a greater need for programmers who are proficient in creating parallel programs, 
+and not just by ``parallelizing'' their initial sequential designs.
 
 Pedagogically, there is a case to be made that teaching parallelism first is an important 
-step towards educating tomorrow's programmers for the challenges of programming multicore and GPGPU
-systems.  We present an overview of a five-day introductory parallel programming course we 
-taught to a group of nine and ten year-olds, using a near-natural language syntax
-parallel programming language we created, targeted towards students with no previous programming
-experience.  Our language is simple but powerful and consists 
-of a simulated parallel programming environment and the ability to run or step through programs.
+step towards educating tomorrow's programmers.
+We present an overview of a five-day introductory parallel programming course 
+we taught to a group of nine and ten year-olds with no prior programming experience. 
+We designed our own fundamentally parallel language for the course,
+one with a near-natural language syntax that emphasized the roll of individual processors
+in executing each statement.
+Coupled with an interactive online programming environment, this language allowed us
+to teach a wide range of parallel programming concepts in a very limited amount of time.
 
 We provide examples of student-written code that demonstrates their understanding of some basic
 parallel programming concepts, and we describe the overall course goal and specific lesson plans
@@ -181,10 +181,10 @@ using languages designed primarily for single-threaded applications.  Multi-thre
 parallel programming concepts are considered advanced, and it is rare that students learn about
 parallel programming before a second or third programming course.  Indeed, most colleges and
 universities in the United States provide a single parallel programming course available 
-to upper level undergraduates or graduate students\FIXME{citestats}, and such courses are
-almost always optional in the computer science curriculum.  In many cases, only students who
-are interested in high performance computing are ever exposed to parallel programming, and the
-average programmer never receives any traditional instruction in parallel programming at all.
+to upper level undergraduates or graduate students\FIXME{citestats}; an informal survey
+of \FIXME{some number of} schools showed \FIXME{some percentage} had only programming only 
+as a senior-level elective, implying the
+average programmer would never receive any traditional instruction in parallel programming at all.
 Additionally, when students do learn parallel programming, many have difficulties transitioning
 from a sequential-programming mentality to a parallel programming mentality, especially as parallel
 programming is considered ``hard'' by many students and instructors 
@@ -199,22 +199,38 @@ therefore parallel programming skills are going to become increasingly important
 must not only thoroughly understand parallel programming concepts such as race conditions,
 atomicity, synchronization, and deadlock, but they must be able to look at a computing problem
 and think of solutions that utilize parallel processes.
+They must also adopt new models of what activities are ``easy'' and ``hard''
+in order to develop algorithms and designs that can be efficiently executing by highly-parallel hardware.
 
-With the disconnect between sequential-only introductory programming classes and the necessity for
-programming students to learn parallel programming concepts and methods in mind, we developed
-an introductory parallel programming course that specifically targeted novice programmers.  We
-designed a language, called \emph{EcoSim}\footnote{\emph{EcoSim} is so-named because the original 
-class we taught with it focused on an \emph{eco}logical \emph{sim}ulation.}\FIXME{Are we going to 
-name the language officially?}, that simulates a parallel programming environment and has a highly
-accessible natural language syntax.  Programs written in \emph{EcoSim} have the ability to exhibit race 
-conditions, allow both atomic and non-atomic variable assignment, and show increased performance
-when the number of cores is increased.  It is a turing-complete language, and
-contains a number of basic functions geared towards making the programs interesting for novice
-programmers.  Figure \ref{fig:exampleProgram} shows an example \emph{EcoSim} program that defines and
+We developed an introductory parallel programming course specifically targeting novice programmers.  
+Titled ``Programming the Computers of the Future,'' we taught two classes of eighteen 4th and 5th grade 
+(9 and 10 year old) students as during a five-day weekend enrichment program.
+Each class period was two hours long, and the students had a week between classes, although they
+could access the programming development environment online to continue learning independently.
+None of the students had significant prior programming experience.
+
+We had three overarching goals in mind for the course:
+\begin{enumerate}
+\item Introduce the students to basic parallel programming ideas using multiple processors.
+\item Help the students develop a mental model of what programming is and what computers do.
+\item Teach the students to ``think parallel'' about computing problems.
+\end{enumerate}
+As a weekend enrichment course, we did not provide structured assessment;
+however, we were able to gauge our success through exit surveys, 
+informal interactions with individual students, and by looking at the code produced by each student
+which was automatically logged by our online programming environment.
+
+The course used a programming language of our own design, called \EcoSim{}\footnote{
+\EcoSim{} is so-named because many of the examples we used to guide its design 
+focused on an \emph{eco}logical \emph{sim}ulation.} 
+which we designed using an English-like syntax that requires limited explanation 
+and makes parallelism both pervasive and visible to the user.
+We also developed an online environment in which students could write and run code from any computer,
+and which gave them step-by-step feedback on the behavior of each emulated processor.
+Figure \ref{fig:exampleProgram} shows an example \emph{EcoSim} program that defines and
 draws ten green ``plants'' on the screen, where the plants are represented by circles of radius 10.
 Figure \ref{fig:ecosimScreencap} shows the \emph{EcoSim} development environment, which includes
-a code window, settings, a console window with output messages, and a window for graphical
-objects.
+a code window, settings, a console window with output messages, and a window for graphical objects.
 \begin{figure}
 \begin{algorithmic}[1]
 %\INDSTATE[x]{code} indents x number of tabs, \INDSTATE{code} indents a single tab
@@ -241,76 +257,41 @@ main window shows the graphical output of the program.}
 \label{fig:ecosimScreencap}
 \end{figure}
 
-We had three overarching goals in mind for the course we designed around \emph{EcoSim}:
-\begin{enumerate}
-\item Introduce the students to simple parallel programming ideas using multiple processors.
-\item Provide interesting parallel programming examples the students could easily modify and
-learn from.
-\item Teach the students to ``think parallel'' about computing problems we gave them, or that
-they thought up on their own.
-\FIXME{should we include the define the task/describe a solution/tell the computer here?}
-\end{enumerate}
-
-We presented the course, titled, ``Programming the Computers of the Future'' to two classes of 
-eighteen 4th and 5th grade (9 and 10 year old) students during a five-day enrichment program.
-Each class period was two hours long, and the students had a week between classes, although they
-could access the programming development environment online to continue learning independently.
-None of the students had significant prior programming experience.
-We based the course curriculum on creating a simulated ecosystem, starting with simple objects
-such as stationary plants that could grow in place, and eventually creating herbivores and
-carnivores that could move about the screen.
-Our lessons included group exercises that introduced parallel programming concepts and general
-programming-style problem solving, and each lesson included example \emph{EcoSim} programs with
-time for the students to modify or attempt to create new programs on their own.
-
-We had many successes in our pilot course:
-
-\begin{enumerate}
-\item Exit surveys collected from the students in both classes showed enthusiastic responses to the
-class, and students reported that they learned a number of programming concepts.
-\item Student code examples show that by the end of the class students were familiar with the
-language and were able to write programs that took advantage of parallel concepts.
-\item After one or two classes the students
-felt comfortable with basic concepts of \emph{EcoSim} and were able to write rudimentary
-parallel programs without trouble.  By the end of the course, a number of students designed
-and implemented creative programs that highlighted the parallel nature of the language.
-\end{enumerate}
 
 \section{Background and Related Work}
-
-Parallel computing has a long history, dating back to 1955 and the IBM 704
-and its ability to compute parallel arithmetic~\cite{hockney1988parallel}.  Amdahl's law,
-defining the maximum possible speedup due to parallelization, was coined in 
-1967~\cite{amdahl1967validity}, and multiprocessor mainframes and multinode distributed
-computing platforms provided most of the world's parallel processing until the early 2000s.
-However, even with multiprocessor systems, programmers were first taught how to write
-sequential applications, generally learning parallel programming concepts for specific
-computers or platforms.  The microcomputer explosion of the late 70s and early 80s
-ensured that most programmers were exposed to uniprocessor machines as their first computers,
-and thus their first programming experiences were with sequential programming languages as well.
+% Parallelism
+Parallel computing is not new, dating back to 1955 and the IBM 704~\cite{hockney1988parallel}.
+However, until recently advances in individual processor speed meant single-processor machines
+were sufficient for most tasks~\cite{amdahl1967validity}, 
+and the bulk of programming practices and pedagogy were developed for a single-processor programming model.
 Today, multicore desktop and laptop computers are ubiquitous, and in order to make the most
-efficient use of these computers, parallel programming is necessary.  Furthermore, when novice
-programmers sit down to write their first code, it is using a a parallel computer.
+efficient use of these computers, parallel programming is necessary.  
+When novice programmers write their first code today, it is often running on a parallel computer.
 
 There are numerous programming languages available for desktop parallel programming.  Many of
 these languages are extensions, libraries, or APIs built on top of sequential languages such 
-as C or Fortran (e.g., OpenMP, CUDA, 
-OpenCL, Intel Thread Building Blocks, pthreads, Cilk,
-Co-array Fortran, and Unified Parallel C),
-requiring a novice programmer to first become proficient in a sequential language before
-tackling the parallel programming concepts.  While this does not necessarily hinder a student's
-overall programming ability, parallel programming tends to receive less importance than simply
-learning the sequential aspects of the language.  There have been a number of studies on teaching 
-parallel programming concepts using traditional languages at the 
-undergraduate level~\cite{freshmanParallel,undergraduateParallel,gridPortal} 
-and at least one at the secondary school level~\cite{highSchoolParallel}.
+as C or Fortran 
+(e.g., OpenMP, CUDA, OpenCL, Intel Thread Building Blocks, pthreads, Cilk, Co-array Fortran, and Unified Parallel C),
+requiring a novice programmer to first become proficient in a sequential language 
+before tackling the parallel programming concepts.  
+While this does not necessarily hinder a student's overall programming ability, 
+parallel programming tends to receive less importance 
+than simply learning the sequential aspects of the language.  
 
 There are also languages designed for parallel programming, but they tend have advanced
 syntax and be targeted towards
 students already proficient at programming in general (e.g., X10\cite{X10}, 
-NESL~\cite{nesl-impl-94}, and Go~\cite{GoLanguage})\FIXME{Should we site ParaSail, CUDA, Cilk, \dots?}.  It would be hard to suggest any of these
+NESL~\cite{nesl-impl-94}, Go~\cite{GoLanguage}, and ParaSail~\cite{ParaSail}).  It would be hard to suggest any of these
 languages to an absolute beginner programmer.
 
+% Pedagogy
+There have been a number of studies on teaching 
+parallel programming concepts using traditional languages at the 
+undergraduate level~\cite{freshmanParallel,undergraduateParallel,gridPortal} 
+and at least one at the secondary school level~\cite{highSchoolParallel}.
+\FIXME{Say something about those four studies, even a sentence}
+
+% Readability
 Several successful languages have been designed to have English-like syntax,
 including COBOL~\cite{COBOL59}, AppleScript~\cite{AppleScript}, and Wolfram Alpha~\cite{WolframAlpha}.
 Like \EcoSim{}, each was designed to accessible to non-programmers
@@ -318,61 +299,61 @@ and each targets a relatively narrow set of possible use cases.
 None, however, seem suited to teaching parallel programming concepts.
 
 Another approach to making ``readable'' languages 
-is to use a graphical rather than textual representation of the program.
-Recent successful examples aimed at children include Scratch~\cite{Scratch} and Kodu~\cite{Kodu}.
-We do not pretend to be aware of all graphical programming environments
-but were unaware of any that could be run without installation
-and used to teaching parallel programming concepts.
+is to use a graphical rather than textual representation of the program;
+two recent example aimed at children are Scratch~\cite{Scratch} and Kodu~\cite{Kodu}.
+While there are far more graphical programming languages than we can enumerate
+we are unaware of any that can be run without installation, 
+read with limited explanation, and are suited to teaching parallel programming concepts.
+
 
 
 \section{\EcoSim{}: An Introductory Parallel Programming Language}
-To teach programming, it is necessary to select a language or environment.
-We had four characteristics we wanted in the language we taught:
+In selecting a language for our course we were looking for four characteristics\footnote{
+We considered, but rejected, a fifth characteristic: a ``complete'' language.
+As an enrichment course, we did not anticipate being a gateway into serious software development.
+In hindsight, this may have been a bad choice.
+}:
 \begin{description}
-	\item[Fundamentally Parallel:]
+	\item[Visibly Parallel:]
 		We wanted a language that was parallel unless requested otherwise.
-		We also wanted the idea of a processor executing the instructions
-		to be visible throughout the language.
+		We also wanted the idea of processors processor executing the instructions
+		to be emphasized throughout the language and visible in the runtime environment.
 	\item[Self-Explanatory:]
 		We didn't want to have to translate what code meant.
-		No rebinding ``='' to be assignment instead of equality
+		No rebinding ``='' to be assignment instead of equality,
+		no dependence on concepts past 4th-grade standards,
 		and preferably no new symbols or re-defined words at all.
 	\item[Web-Based:]
 		We wanted the students to be able to work at home without any trouble.
-		This meant using either Javascript or Flash, 
-		the only zero-installation tools we could count on \emph{all} the students having.
-	\item[Engaging and Transparent:]
-		We wanted every program the students wrote to be interesting to them, which meant no text outputs.
-		We also wanted a ``glass hood'' so they could watch the parallel engine running.
+		This meant building on top of either Javascript or Flash, 
+		the only tools we could count on all the students having already installed at home.
+	\item[Engaging:]
+		We wanted every program the students wrote to be interest them.
 \end{description}
-Notably absent from these goals is being a ``complete'' language.
-Our objective was to teach parallel programming concepts,
-not necessarily to provide a gateway into serious software development.
 
 Since we were aware of no language having all four desired characteristics, 
 we created our own.
 We designed the syntax and semantics, 
-wrote a type-checking parser, interpreter, and runtime environment in pure Javascript
+wrote a type-checking parser, interpreter, and runtime environment in Javascript
 and created an interaction environment using basic HTML+CSS features 
-and the new HTML5 Canvas element for the graphics.
+as well as the HTML5 Canvas element for the graphics.
 
 \subsection{The \EcoSim{} Runtime}\label{sec:runtime}
 We determined to structure the \EcoSim{} environment with three basic interfaces:
-the code entry pane and two visualizations of the program being executed:
-a status window to listed the behavior of each processor
-and a graphical display of each object.
-In the graphical display we decided to automatically draw a circle for each object
-for which the students' code had defined a position and a size
-rather than providing some more abstract representation of objects
+the code entry pane, 
+a status window listing the results of parsing and the behavior of each processor,
+and a graphical display of the state of each object.
+In the graphical display we decided to place a circle for each object
+that had a defined position and size in the student's code
+instead of providing some more abstract representation of objects
 or an explicit graphics API.
 
-In addition to the interfaces, the \EcoSim{} runtime provides the following:
+In addition to the user interface, the \EcoSim{} runtime provides the following:
 \begin{description}
 	\item[A fixed number of virtual processors.]
-		Each processing step the interpreter assigns each processor a task
-		and displays the work performed by the processor 
-		in both the code pane and in the status window.
-	\item[A shared work queue for ongoing operations.]
+		At each processing step the interpreter assigns to each processor a task;
+		this task is displayed both in the code pane and in the status window.
+	\item[A shared work queue for ongoing tasks.]
 		Processors pull jobs off this queue in a random order
 		and insert any unfinished work back on the queue at the end of each step.
 	\item[A global list of objects of each type.]
@@ -385,8 +366,8 @@ In addition to the interfaces, the \EcoSim{} runtime provides the following:
 		If the work queue is empty and there are not collisions to handle
 		then remaining processors are given jobs from a set of low-priority tasks.
 \end{description}
-To facilitate these operations
-we provided a built-in notion of only four types:
+
+The runtime has awareness of four types:
 number (IEEE floating points), color (HTML-compliant color names), 
 comparison (boolean values; used only behind the scenes to type-check guard expressions),
 and position (a pair of numbers, $x$ and $y$).
@@ -402,51 +383,51 @@ The last, defaulting to anonymity,
 was inspired by the hope that anonymity would keep things parallel 
 (if you don't have a name then you are less likely to care which one is present)
 but proved far more valuable in that it removed the need 
-to spend time trying to think of variable names.
+for students to think up and remember variable names.
 
-Rather than provide a full description of the language that grew out of these mantras
+Rather than provide a full description of the language that grew out of these mantras,
 we provide here a few typical examples
 and rely on the language's self-describing character 
 to render later code examples understandable.
 
 The first operator we considered was the assignment operator.
-We had found through interactions in CS1 courses
-that the syntax used in \texttt{x = x + 1} caused confusion in many students.
+We had discovered in earlier interactions with CS1 students
+that the syntax used in \texttt{x = x + 1} was often confusing.
 We brainstormed ways we might explain that operation,
-things like ``$x$ is redefined; it's new value is 1 + the old value of $x$''
-but that is too verbose and fails the ``audience: processor'' mantra.
-We finally settled on ``replace x with old x + 1'':
-assignments as ``replace \emph{lvalue} with \emph{rvalue}''
-and the word ``old'' required for variables in the rvalue that also show up in the lvalue.
+things like ``$x$ is redefined; it's new value is 1 + the old value of $x$,''
+but most were too verbose or failed the ``audience: processor'' mantra.
+We finally settled on ``replace x with old x + 1'',
+which we implemented as two rules:
+an assignment syntax of ``replace \emph{lvalue} with \emph{rvalue}''
+and a requirement that the word ``old'' precede rvalue variables that also appear in the lvalue.
 
-A few more examples of this sort:
-\texttt{while(1<2)} becomes ``as long as 1 $<$ 2'',
-\texttt{else} becomes ``otherwise'',
-\texttt{double x = 3} becomes ``start x as 3''.
-We replaced the membership operator (commonly \texttt{.} or \texttt{->})
-with the more English-like ``'s'' as in ``baz's position's x''
-and use type inference to have a statically-typed language 
+Similar processes resulted in 
+\texttt{while(1<2)} becoming ``as long as 1 $<$ 2'',
+\texttt{else} being replaced with ``otherwise'', 
+and \texttt{double x = 3} becoming ``start x as 3''.
+We replaced the membership operator (commonly \texttt{.} or \mbox{\texttt{->}})
+with the more English-like ``'s'' (as in ``baz's position's x'')
+and implemented type inference to create a statically-typed language 
 without needing to declare variable types.
 
-The runtime keeps a list of objects of each type (see \S\ref{sec:runtime}).
-We add to these by writing ``create 3 number'' or 
-\begin{snippet}
-\STATE create 4 number and for each 
-\INDSTATE replace the number with 7
-\end{snippet}
-We can access just one randomly selected object, or all of them in parallel:
+The runtime keeps a list of objects of each type (see \S\ref{sec:runtime});
+we add to these by writing ``create 3 number'' and and remove with a ``destroy'' command.
+We can access objects either by grabbing one randomly selected object:
 \begin{snippet}
 \STATE for some number
 \INDSTATE destroy the number
+\end{snippet}
+or by accessing all of them in parallel:
+\begin{snippet}
 \STATE for each number
 \INDSTATE replace the number with the old number + 1
 \end{snippet}
 
-Structures, properties, and subroutine definitions
-are describing ``what we mean by $X$''
-rather than ``you should do $X$'';
-utilizing the ``audience: processor'' mantra, these are worded 
-to inform, not direct, the processor.
+We observed that structures, properties, and subroutine definitions
+are describing ``what we mean by $X$'' rather than ``you should do $X$''.
+We thus decided that, per the ``audience: processor'' mantra, 
+we should word these to inform, not direct, the processor.
+
 \begin{snippet}
 \STATE a plant has
 \INDSTATE size, a number
@@ -461,7 +442,7 @@ We can define properties for plants:
 \STATE a plant's trunk is the plant's 2nd color
 \end{snippet}
 Properties are always single expressions and are accessed exactly like fields.
-Multiple fields (such as color above) can only be accessed by compile-time ordinals;
+Multiple fields (such as ``color'' above) can only be accessed by compile-time ordinals;
 you cannot write ``the plant's $n$th color'' for variable $n$.
 
 Subroutines are defined with a ``how to'':
@@ -475,11 +456,10 @@ Calling a subroutine is straighforward
 \INDSTATE add 3 years to the plant
 \end{snippet}
 It is worth observing that this way of defining and calling subroutines
-is context sensitive and hence not readily doable with most parser techniques.
-Our parser type-checks and builds the symbol table in the same pass as it parses,
+is context sensitive and not easy to achieve using most parser techniques.
+Our parser type-checks and builds the symbol table as it goes,
 so when we parse a line ``how to \emph{words}''
-we can identify which of the words are identifying types
-and which ones are naming the subroutine.
+we can know which of the words identify types and which are unbound words naming the subroutine.
 Similarly, we know from context that ``the plant'' is a value
 and thus that we are calling a method named ``add years to'' with two parameters
 and not ``add years to the plant'' with only one.
