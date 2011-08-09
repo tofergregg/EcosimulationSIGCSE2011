@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.30.4-2.2 (Web2C 7.5.5) (format=pdflatex 2006.11.9)  9 AUG 2011 09:04
+This is pdfeTeX, Version 3.141592-1.30.4-2.2 (Web2C 7.5.5) (format=pdflatex 2006.11.9)  9 AUG 2011 13:28
 entering extended mode
 **Ecosimulation_SIGCSE.tex
 (./Ecosimulation_SIGCSE.tex
@@ -413,66 +413,89 @@ n and
  []
 
 [2 <./figures/EcosimScreencap.png (PNG copy)>]
-Overfull \hbox (1.269pt too wide) in paragraph at lines 317--317
-[]\secfnt ECOSIM: AN IN-TRO-DUC-TORY PAR-AL-
+Overfull \hbox (2.01517pt too wide) in paragraph at lines 361--364
+[]\T1/aer/m/n/9 Each pro-cess-ing
  []
 
 
-Overfull \hbox (12.84174pt too wide) in paragraph at lines 397--400
-\T1/aer/m/n/9 that as-sign-ing to it mod-i-fies the orig-i-nal. Thus           
-                        
+Overfull \hbox (16.80222pt too wide) in paragraph at lines 365--367
+[]\T1/aer/m/n/9 Processors
+ []
+
+
+Overfull \hbox (2.70766pt too wide) in paragraph at lines 368--370
+[]\T1/aer/m/n/9 Every ob-ject that
+ []
+
+
+Overfull \hbox (1.62825pt too wide) in paragraph at lines 371--373
+[]\T1/aer/m/n/9 The
  []
 
 [3]
-Overfull \hbox (12.23366pt too wide) in paragraph at lines 433--435
-\T1/aer/m/n/9 tial-ize each newly cre-ated ob-ject:                            
-       
+Overfull \hbox (17.84619pt too wide) in paragraph at lines 420--422
+\T1/aer/m/n/9 We add to these by writ-ing ``cre-ate 3 num-ber'' or             
+                      
  []
 
 
-Overfull \hbox (4.27939pt too wide) in paragraph at lines 502--503
-[] []\T1/aer/m/n/9 If there are left-over pro-ces-sors, as-sign each a ``when b
-ored''
+Overfull \hbox (58.66891pt too wide) in paragraph at lines 434--439
+\T1/aer/m/n/9 worded to in-form, not di-rect, the pro-ces-sor.                 
+                  
  []
 
 
-Overfull \hbox (25.41408pt too wide) in paragraph at lines 512--521
-[]\T1/aer/m/n/9 The lan-guage is de-signed to be easy to read by non-programmer
-s,
+Overfull \hbox (50.59964pt too wide) in paragraph at lines 445--448
+\T1/aer/m/n/9 col-ors. We can de-fine prop-er-ties for plants:                 
+                  
  []
 
 
-Overfull \hbox (19.54341pt too wide) in paragraph at lines 531--531
-[]\secfnt COURSE OVERVIEW AND LES-SON PLANS 
+Overfull \hbox (48.80026pt too wide) in paragraph at lines 456--457
+[]\T1/aer/m/n/9 Subroutines are de-fined with a ``how to'':                    
+               
+ []
+
+
+Overfull \hbox (24.85088pt too wide) in paragraph at lines 476--478
+\T1/aer/m/n/9 li-sion han-dlers and idle op-er-a-tions.                        
+           
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [4]
-Overfull \hbox (3.74013pt too wide) in paragraph at lines 532--545
+
+Overfull \hbox (19.54341pt too wide) in paragraph at lines 491--491
+[]\secfnt COURSE OVERVIEW AND LES-SON PLANS 
+ []
+
+
+Overfull \hbox (3.74013pt too wide) in paragraph at lines 492--505
 \T1/aer/m/n/9 rently, and both were tar-geted for our au-di-ence of self-select
 ed
  []
 
-
-Overfull \hbox (4.82117pt too wide) in paragraph at lines 653--665
+[4]
+Overfull \hbox (4.82117pt too wide) in paragraph at lines 613--625
 []\T1/aer/m/n/9 As with any pro-gram-ming course, ex-am-ple pro-grams played
  []
 
-[5] (./Ecosimulation_SIGCSE.bbl) [6] (./Ecosimulation_SIGCSE.aux)
+(./Ecosimulation_SIGCSE.bbl [5]) [6
+
+] (./Ecosimulation_SIGCSE.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 3942 strings out of 94412
- 50654 string characters out of 1172319
- 2099482 words of memory out of 4551046
+ 3941 strings out of 94412
+ 50641 string characters out of 1172319
+ 2099476 words of memory out of 4551040
  7070 multiletter control sequences out of 10000+50000
- 55828 words of font info for 75 fonts, out of 2000000 for 2000
+ 54692 words of font info for 74 fonts, out of 2000000 for 2000
  582 hyphenation exceptions out of 5000
- 39i,13n,42p,479b,335s stack positions out of 5000i,500n,6000p,200000b,40000s
+ 39i,11n,42p,479b,335s stack positions out of 5000i,500n,6000p,200000b,40000s
 PDF statistics:
  59 PDF objects out of 300000
  0 named destinations out of 131072
@@ -490,4 +513,4 @@ hare/texmf.tetex/fonts/type1/bluesky/cm/cmr9.pfb></usr/local/teTeX/share/texmf.
 tetex/fonts/type1/urw/times/utmb8a.pfb></usr/local/teTeX/share/texmf.tetex/font
 s/type1/urw/helvetic/uhvr8a.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1
 /urw/helvetic/uhvb8a.pfb>
-Output written on Ecosimulation_SIGCSE.pdf (6 pages, 197742 bytes).
+Output written on Ecosimulation_SIGCSE.pdf (6 pages, 189703 bytes).
