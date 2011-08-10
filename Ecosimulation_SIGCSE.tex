@@ -390,6 +390,7 @@ we provide here a few typical examples
 and rely on the language's self-describing character 
 to render later code examples understandable.
 
+\subsubsection{Statements}
 The first operator we considered was the assignment operator.
 We had discovered in earlier interactions with CS1 students
 that the syntax used in \texttt{x = x + 1} was often confusing.
@@ -423,6 +424,7 @@ or by accessing all of them in parallel:
 \INDSTATE replace the number with the old number + 1
 \end{snippet}
 
+\subsubsection{Definitions}
 We observed that structures, properties, and subroutine definitions
 are describing ``what we mean by $X$'' rather than ``you should do $X$''.
 We thus decided that, per the ``audience: processor'' mantra, 
@@ -450,7 +452,7 @@ Subroutines are defined with a ``how to'':
 \STATE how to add a number years to a plant
 \INDSTATE replace the plant's size with the plant's old size + the number
 \end{snippet}
-Calling a subroutine is straighforward
+Calling a subroutine is straightforward
 \begin{snippet}
 \STATE for some plant
 \INDSTATE add 3 years to the plant
@@ -464,6 +466,7 @@ Similarly, we know from context that ``the plant'' is a value
 and thus that we are calling a method named ``add years to'' with two parameters
 and not ``add years to the plant'' with only one.
 
+\subsubsection{Handlers}
 The last element of the language we want to identify
 is collision handlers and idle operations.
 \begin{snippet}
@@ -495,19 +498,17 @@ prior formal programming experience.
 %\end{enumerate}
 
 \subsection{Ecosystem in Parallel}
-The original conception of the pilot course was, simply, ``Let's teach fourth and fifth graders
-about parallel programming.''  We decided on an ``ecosystem'' theme for the course, based on a
-number of reasons.  First, students at this level are familiar with real-life ecosystems, and we
-felt that they would find the topic interesting.  Second, ecosystems have a number of 
-embarrassingly parallel characteristics; for example, in a forest there are multiple copies
-of trees which can each be handled independently and in parallel.  
-Finally, we knew we could model a simple ecosystem 
-and then build upon the original model to make it more complex.  Starting with a forest of
-stationary plants that have a single ``grow'' characteristic, we added motile herbivores that
-consumed the plants.  We then added the ability for the inhabitants to reproduce and gave them
-the ability to die from starvation, and then eventually we added carnivores as well.  
-By the end of the course students had expanded the ecosystem to include plants that only
-grew during the day, hunters, and even carnivorous and poisonous plants.  
+The original conception of the pilot course was, simply, 
+``Let's teach fourth and fifth graders about parallel programming.''
+Since we knew we had a limited time, we wanted to picked a single theme for all of our programming examples.
+The theme we selected was ``ecosystems'', a topic familiar to students at that level
+that is inherently parallel, and easy to visualize, 
+and allowing a range from very simple forests with stationary plants 
+up through complex combinations of different flora and fauna.
+By the end of the course students had expanded the ecosystem 
+to include plants that only grew during the day and only seeded in their immediate neighborhood,
+competing herbivores and hunters, carnivorous and poisonous plants,
+as well as more imaginative fantasy elements.
 
 Students quickly learned the importance of initial conditions and parameters, both from a 
 computational perspective and a scientific one.  For example, students found that starting 
@@ -520,17 +521,31 @@ and with the \emph{EcoSim} model the students could adjust the parameters to fin
 equilibrium that would have allowed the reindeer to survive.
 
 \subsection{Getting the students to ``think parallel''}
-At the beginning of each class period and before writing any code, we first introduced the 
-students to a parallel programming concept in a full-class discussion, usually with an activity.
-For instance, on the first day of class we introduced the students to the difference in
+We began each class period with a conversation and activity introducing a new parallel programming concept. 
+For example, on the first day of class we introduced the students to the difference in
 computational time between parallel and sequential processes by having them sort themselves
 by height.  First, we allowed the students to line themselves up by height, all at once (the
 parallel method), and we timed this; it took roughly forty-five seconds for a class of eighteen.
 Next, we re-randomized the class and assigned one student to be the ``processor,'' in charge
-of sorting the students two at a time.  Unsurprisingly, this took over three minutes, and this
-led to a fruitful discussion on why parallel processing can be faster.
+of sorting the students two at a time.  Unsurprisingly, this took roughly twice as long, 
+leading to a fruitful discussion on why parallel processing can be faster.
 
-Table \ref{tab:group-activities} shows the group activities we conducted an their associated
+\begin{table*}
+\centering \begin{tabular}{p{.7\linewidth} | p{.25\linewidth}} 
+\toprule
+Group Activity               &  Parallel Programming Concept \\ \midrule
+Students sort themselves, and then one student sorts everyone.     & Parallel speedup \\ \hline
+Everyone shares a pen to write on the whiteboard to increment a number. & Locks / Atomicity  \\ \hline
+Students roll dice until they get a six, read a number off the board, increment it, roll more dice, and call out the new number, which is written on the board.   & Race Conditions \\ \hline
+All students start with a number, and half hand to their neighbor to add together.
+This continues until one student has the total sum. & Reduction and Divide/Conquer  \\
+\bottomrule 
+\end{tabular}
+\caption{Group activities.}
+\label{tab:group-activities}
+\end{table*} 
+
+Table \ref{tab:group-activities} shows the group activities we conducted and their associated
 parallel processing concept or concepts.  During and after each activity, we discussed the
 associated concept and in most cases we then wrote a simple program in \emph{EcoSim} that
 demonstrated the idea.  Each student sat at a computer with \emph{EcoSim} loaded into their
@@ -540,22 +555,6 @@ For example, after the race condition activity, we wrote the programs in
 Figure~\ref{fig:race-conditions}, which demonstrate a race condition stemming from allowing multiple
 processors to complete the \texttt{color} statements in any order.
 
-\begin{table*}
-\centering \begin{tabular}{p{11cm} | p{5cm}} 
-\toprule
-Group Activity               &  Parallel Programming Concept \\ \midrule
-Students sort themselves, and then one student sorts everyone.     & Parallel speedup \\ \hline
-Everyone shares a pen to write on the whiteboard to increment a number. & Locks / Atomicity  \\ \hline
-Students roll a set of dice until they roll a specific combination.  Then they
-look at the board for a number, increment, and call out the new number, which is
-written on the board.  & Race Conditions \\ \hline
-All students start with a number, and half hand to their neighbor to add together.
-This continues until one student has the total sum. & Reduction and Divide/Conquer  \\
-\bottomrule 
-\end{tabular}
-\caption{Group activities.}
-\label{tab:group-activities}
-\end{table*} 
      
 \begin{figure}
 \begin{algorithmic}[1]
@@ -621,7 +620,7 @@ certain programs so they could see the steps used to create more robust programs
 
 \subsection{Student Assessment}
 Because this was an ungraded enrichment class, we did not perform formal assessments (e.g., tests
-or deadline based homework), however we reviewed the students' work regularly and gave feedback
+or deadline based homework); however, we reviewed the students' work regularly and gave feedback
 often.  At the beginning of each hour of class, we asked whether anyone had something they wanted
 to show the class, and we displayed their work on the projector and let them describe and run the
 programs.  This motivated the students to create interesting programs, and the students enjoyed
