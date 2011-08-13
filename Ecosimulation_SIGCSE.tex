@@ -515,8 +515,8 @@ computational perspective and a scientific one.  For example, students found tha
 ten thousand herbivores in a field with only ten plants
 not only slows the computer to a crawl, but the herbivores quickly decimate the plant population
 and start to die from starvation.  We spent a number of classes discussing and
-modeling the intriguing real-life case of a herd of reindeer who overpopulated a remote
-island in Alaska and subsequently died out~\cite{klein1968introduction,stMatthewIsland}, 
+modeling the intriguing real-life case of a herd of reindeer who overpopulated the remote
+St. Matthew Island in Alaska and subsequently died out~\cite{klein1968introduction,stMatthewIsland}, 
 and with the \emph{EcoSim} model the students could adjust the parameters to find an
 equilibrium that would have allowed the reindeer to survive.
 
@@ -636,7 +636,39 @@ once we realized how much trouble the students had with understanding indentatio
 modified our lesson plan to include a review and further examples.
 
 \section{Student Work and Outcomes}
+During the course, the students had an opportunity to modify example programs that the whole
+class had access to, and they also were able to write their own applications.  Because we 
+had access to all modifications of each student's code, we were able to perform some
+statistical analysis on their code, including determining how many different applications 
+students worked on, and how long it took them to fix certain coding errors.  On average, 
+each student worked on twenty different programs, with a minimum of twelve and a maximum
+of thirty-two.  Students that worked on more programs tended to be the ones who picked up
+the material the fastest, and also worked on their own at home.  The students' programs ranged 
+from five-line examples to a 150-line program that 
+was the culmination of the St. Matthew Island deer/plant ecosystem simulation, and some students
+created novel programs that demonstrated proficient understanding of the language.  
+Figure~\ref{pacmanProgram} shows part of one student's ``Pacman'' program, demonstrating that
+he understands the parallel nature of the language and has applied it correctly.
 
+\begin{figure}
+\begin{algorithmic}[1]
+%\INDSTATE[x]{code} indents x number of tabs, \INDSTATE{code} indents a single tab
+\STATE{when bored}
+  \INDSTATE{for each pacman}
+    \INDSTATE[2]{do in any order}
+      \INDSTATE[3]{move the pacman's position a random number between 10 and 50 right}
+      \INDSTATE[3]{move the pacman's position a random number between 10 and 50 left}
+      \INDSTATE[3]{move the pacman's position a random number between 10 and 50 up}
+      \INDSTATE[3]{move the pacman's position a random number between 10 and 50 down}
+
+\STATE{when a pacman hits a ghost}
+  \INDSTATE{destroy the pacman}
+
+\end{algorithmic} 
+\caption{Part of one student's ``Pacman'' program, that demonstrates a competent understanding
+of the programming language and its parallel programming structure.}
+\label{fig:pacmanProgram} 
+\end{figure}
 
 \section{Conclusions}
 Conclusions
