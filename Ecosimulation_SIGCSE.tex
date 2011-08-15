@@ -55,7 +55,7 @@
 \usepackage{booktabs}
 \newcommand{\FIXME}[1]{{\color{red}\{FIXME #1\}}}
 \newcommand{\INDSTATE}[1][1]{\STATE\hspace{#1\algorithmicindent}}
-\newcommand{\EcoSim}{EcoSim}
+\newcommand{\EcoSim}{\emph{EcoSim}}
 \urldef\ecosimPath\path{http://ecosimulation.com}
 
 \newenvironment{snippet}{\begin{algorithmic}[1]}{\end{algorithmic}}
@@ -113,24 +113,24 @@
 \alignauthor
 Chris Gregg\\
        \affaddr{University of Virginia}\\
-       \affaddr{Department of Computer Science}\\
+       \affaddr{Computer Science}\\
        \affaddr{Charlottesville, VA}\\
 % 2nd. author
 \alignauthor
 Luther Tychonievich\\
        \affaddr{University of Virginia}\\
-       \affaddr{Department of Computer Science}\\
+       \affaddr{Computer Science}\\
        \affaddr{Charlottesville, VA}\\
 % 3rd. author
 \alignauthor Kim Hazelwood\\
        \affaddr{University of Virginia}\\
-       \affaddr{Department of Computer Science}\\
+       \affaddr{Computer Science}\\
        \affaddr{Charlottesville, VA}\\
 \and  % use '\and' if you need 'another row' of author names
 % 4th. author
 \alignauthor James Cohoon\\
        \affaddr{University of Virginia}\\
-       \affaddr{Department of Computer Science}\\
+       \affaddr{Computer Science}\\
        \affaddr{Charlottesville, VA}\\
 }
 % There's nothing stopping you putting the seventh, eighth, etc.
@@ -307,7 +307,7 @@ read with limited explanation, and are suited to teaching parallel programming c
 
 
 
-\section{\EcoSim{}: An Introductory Parallel Programming Language}
+\section{EcoSim: An Introductory Parallel Programming Language}
 In selecting a language for our course we were looking for four characteristics\footnote{
 We considered, but rejected, a fifth characteristic: a ``complete'' language.
 As an enrichment course, we did not anticipate being a gateway into serious software development.
@@ -338,7 +338,7 @@ wrote a type-checking parser, interpreter, and runtime environment in Javascript
 and created an interaction environment using basic HTML+CSS features 
 as well as the HTML5 Canvas element for the graphics.
 
-\subsection{The \EcoSim{} Runtime}\label{sec:runtime}
+\subsection{The EcoSim Runtime}\label{sec:runtime}
 We determined to structure the \EcoSim{} environment with three basic interfaces:
 the code entry pane, 
 a status window listing the results of parsing and the behavior of each processor,
@@ -374,7 +374,7 @@ and position (a pair of numbers, $x$ and $y$).
 User-defined types are built out of these parts.
 
 
-\subsection{The \EcoSim{} Language}
+\subsection{The EcoSim Language}
 Three mantras guided our design of \EcoSim{}'s language constructs:
 ``self-describing syntax'', ``audience: processor'', and ``anonymous by default.''
 The first two are direct consequences of our desire to be self-explanatory 
@@ -647,7 +647,7 @@ the material the fastest, and also worked on their own at home.  The students' p
 from five-line examples to a 150-line program that 
 was the culmination of the St. Matthew Island deer/plant ecosystem simulation, and some students
 created novel programs that demonstrated proficient understanding of the language.  
-Figure~\ref{pacmanProgram} shows part of one student's ``Pacman'' program, demonstrating that
+Figure~\ref{fig:pacmanProgram} shows part of one student's ``Pacman'' program, demonstrating that
 he understands the parallel nature of the language and has applied it correctly.
 
 \begin{figure}
@@ -663,15 +663,31 @@ he understands the parallel nature of the language and has applied it correctly.
 
 \STATE{when a pacman hits a ghost}
   \INDSTATE{destroy the pacman}
-
 \end{algorithmic} 
 \caption{Part of one student's ``Pacman'' program, that demonstrates a competent understanding
 of the programming language and its parallel programming structure.}
 \label{fig:pacmanProgram} 
 \end{figure}
 
+\FIXME{Add statistics on how many tries it took students to fix parse errors.}
+
+On the last day of class, the students had the opportunity to show off their work to their
+parents and siblings. Our instruction to them on the last day was to prepare a program that
+they either created on their own, or an example from class that they modified significantly.
+They enthusiastically demonstrated their programs, which ranged from modifications to the St.
+Matthew Island ecosystem that led to a deer equilibrium, to programs that had snow ``fall'' on
+the screen and accumulate at the bottom, to a simulation that included mice searching for cheese.
+
 \section{Conclusions}
-Conclusions
+We have demonstrated that it is possible to teach elementary school students parallel programming,
+even if they are completely novice programmers.  We designed a unique, natural language-based parallel 
+programming language that used a single-window, web-based interface to streamline teaching and
+student learning, and we provided a curriculum that taught the students basic parallel programming
+ideas, including race conditions, atomicity, and the speedups that can be obtained by using
+multiple processors.  The students eagerly learned the language, with few conceptual difficulties
+and demonstrable success.  Parallel programming does not have to be difficult to teach or learn,
+and it is a skill that will become even more important as computers continue to become more
+parallel in the future.
 
 
 %ACKNOWLEDGMENTS are optional
@@ -687,8 +703,10 @@ Conclusions
 % The following two commands are all you need in the
 % initial runs of your .tex file to
 % produce the bibliography for the citations in your paper.
+\small{
 \bibliographystyle{abbrv}
 \bibliography{ecosim}  % sigproc.bib is the name of the Bibliography in this case
+}
 % You must have a proper ".bib" file
 %  and remember to run:
 % latex bibtex latex latex
