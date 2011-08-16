@@ -109,7 +109,7 @@
 % affiliation/address with \affaddr, and tag the
 % e-mail address with \email.
 %
-% 1st. author
+% 1St. author
 \alignauthor
 Chris Gregg\\
        \affaddr{University of Virginia}\\
@@ -121,12 +121,13 @@ Luther Tychonievich\\
        \affaddr{University of Virginia}\\
        \affaddr{Computer Science}\\
        \affaddr{Charlottesville, VA}\\
+%       \email{lat7h@virginia.edu}\\
+\and  % use '\and' if you need 'another row' of author names
 % 3rd. author
 \alignauthor Kim Hazelwood\\
        \affaddr{University of Virginia}\\
        \affaddr{Computer Science}\\
        \affaddr{Charlottesville, VA}\\
-\and  % use '\and' if you need 'another row' of author names
 % 4th. author
 \alignauthor James Cohoon\\
        \affaddr{University of Virginia}\\
@@ -241,8 +242,8 @@ a code window, settings, a console window with output messages, and a window for
 \STATE{}
 \STATE{create 10 plant and for each}
   \INDSTATE{do in order}
-  \INDSTATE{replace the plant's color with green}
-  \INDSTATE{replace the plant's size with 10}
+  \INDSTATE[2]{replace the plant's color with green}
+  \INDSTATE[2]{replace the plant's size with 10}
 \end{algorithmic} 
 \caption{A simple \emph{EcoSim} program to define and create ten green ``plants'' on the screen.}
 \label{fig:exampleProgram} 
@@ -494,7 +495,7 @@ prior formal programming experience.
 %\item Constantly let kids show off what they have accomplished
 %\item the idea of "when bored", for some, for all
 %\item atomicity and race conditions (class example on board -- roll/read/roll/write)
-%\item St. Matthew Island
+%\item St.~Matthew Island
 %\end{enumerate}
 
 \subsection{Ecosystem in Parallel}
@@ -516,7 +517,7 @@ ten thousand herbivores in a field with only ten plants
 not only slows the computer to a crawl, but the herbivores quickly decimate the plant population
 and start to die from starvation.  We spent a number of classes discussing and
 modeling the intriguing real-life case of a herd of reindeer who overpopulated the remote
-St. Matthew Island in Alaska and subsequently died out~\cite{klein1968introduction,stMatthewIsland}, 
+St.~Matthew Island in Alaska and subsequently died out~\cite{klein1968introduction,stMatthewIsland}, 
 and with the \emph{EcoSim} model the students could adjust the parameters to find an
 equilibrium that would have allowed the reindeer to survive.
 
@@ -563,8 +564,8 @@ processors to complete the \texttt{color} statements in any order.
 \STATE{a moth has}
   \INDSTATE{a position}
   \INDSTATE{a color}
-\STATE{}
 \STATE{a moth's size is 50}
+\STATE{}
 \STATE{create 10 moth and for each}
   \INDSTATE{do in order}
   \INDSTATE[2]{replace the moth's color with gray}
@@ -576,8 +577,8 @@ processors to complete the \texttt{color} statements in any order.
 \STATE{a moth has}
   \INDSTATE{a position}
   \INDSTATE{a color}
-\STATE{}
 \STATE{a moth's size is 50}
+\STATE{}
 \STATE{create 10 moth and for each}
   \INDSTATE{do in any order}
   \INDSTATE[2]{replace the moth's color with gray}
@@ -620,7 +621,7 @@ certain programs so they could see the steps used to create more robust programs
 
 \subsection{Student Assessment}
 Because this was an ungraded enrichment class, we did not perform formal assessments (e.g., tests
-or deadline based homework); however, we reviewed the students' work regularly and gave feedback
+or deadline-based homework); however, we reviewed the students' work regularly and gave feedback
 often.  At the beginning of each hour of class, we asked whether anyone had something they wanted
 to show the class, and we displayed their work on the projector and let them describe and run the
 programs.  This motivated the students to create interesting programs, and the students enjoyed
@@ -636,22 +637,21 @@ once we realized how much trouble the students had with understanding indentatio
 modified our lesson plan to include a review and further examples.
 
 \section{Student Work and Outcomes}
-During the course, the students had an opportunity to modify example programs that the whole
-class had access to, and they also were able to write their own applications.  Because we 
-had access to all modifications of each student's code, we were able to perform some
+During the course, the students had an opportunity to modify example programs, and they also were able to write their own applications.  
+Because we had access to all modifications of each student's code, we were able to perform some
 statistical analysis on their code, including determining how many different applications 
-students worked on, and how long it took them to fix certain coding errors.  On average, 
-each student worked on twenty different programs, with a minimum of twelve and a maximum
-of thirty-two.  Students that worked on more programs tended to be the ones who picked up
+students worked on and how long it took them to fix certain coding errors.  On average, 
+each student worked on twenty different programs, with some students working on as few as twelve or as many as thirty-two.  Students that worked on more programs tended to be the ones who picked up
 the material the fastest, and also worked on their own at home.  The students' programs ranged 
 from five-line examples to a 150-line program that 
-was the culmination of the St. Matthew Island deer/plant ecosystem simulation, and some students
+was the culmination of the St.~Matthew Island deer/plant ecosystem simulation, and some students
 created novel programs that demonstrated proficient understanding of the language.  
 Figure~\ref{fig:pacmanProgram} shows part of one student's ``Pacman'' program, demonstrating that
 he understands the parallel nature of the language and has applied it correctly.
 
 \begin{figure}
 \begin{algorithmic}[1]
+\setcounter{ALC@line}{22}
 %\INDSTATE[x]{code} indents x number of tabs, \INDSTATE{code} indents a single tab
 \STATE{when bored}
   \INDSTATE{for each pacman}
@@ -660,7 +660,7 @@ he understands the parallel nature of the language and has applied it correctly.
       \INDSTATE[3]{move the pacman's position a random number between 10 and 50 left}
       \INDSTATE[3]{move the pacman's position a random number between 10 and 50 up}
       \INDSTATE[3]{move the pacman's position a random number between 10 and 50 down}
-
+\STATE
 \STATE{when a pacman hits a ghost}
   \INDSTATE{destroy the pacman}
 \end{algorithmic} 
@@ -674,21 +674,29 @@ of the programming language and its parallel programming structure.}
 On the last day of class, the students had the opportunity to show off their work to their
 parents and siblings. Our instruction to them on the last day was to prepare a program that
 they either created on their own, or an example from class that they modified significantly.
-They enthusiastically demonstrated their programs, which ranged from modifications to the St.
-Matthew Island ecosystem that led to a deer equilibrium, to programs that had snow ``fall'' on
+They enthusiastically demonstrated their programs, which ranged from modifications to the St.~Matthew 
+Island ecosystem that led to a deer equilibrium, to programs that had snow ``fall'' on
 the screen and accumulate at the bottom, to a simulation that included mice searching for cheese.
 
 \section{Conclusions}
 We have demonstrated that it is possible to teach elementary school students parallel programming,
-even if they are completely novice programmers.  We designed a unique, natural language-based parallel 
-programming language that used a single-window, web-based interface to streamline teaching and
-student learning, and we provided a curriculum that taught the students basic parallel programming
-ideas, including race conditions, atomicity, and the speedups that can be obtained by using
-multiple processors.  The students eagerly learned the language, with few conceptual difficulties
-and demonstrable success.  Parallel programming does not have to be difficult to teach or learn,
+even if they are completely novice programmers. 
+We were able to teach basic programming skills as well as concepts such as race conditions, 
+atomicity, locks, and the speedups that can be obtained by using multiple processors
+Our experience was that none of the students had any difficulty with parallelism
+and most were able to explain core parallel concepts to their parents at the end of the course.
+
+To learning in our course, we
+\begin{itemize}\itemsep=0pt \topsep=0pt
+\item designed a unique, natural language-based parallel programming language and associated visual web interface;
+\item provided a curriculum that taught programming through a parallel lens; and
+\item utilized kinesthetic learning activities, think-pair-share discussions, and individual guided exploration to teach each concept.
+\end{itemize}
+We found the students eagerly learned the language, with few conceptual difficulties and demonstrable success.  
+Parallel programming does not have to be difficult to teach or learn,
 and it is a skill that will become even more important as computers continue to become more
 parallel in the future.
-
+\newpage
 
 %ACKNOWLEDGMENTS are optional
 %\section{Acknowledgments}
@@ -704,7 +712,7 @@ parallel in the future.
 % initial runs of your .tex file to
 % produce the bibliography for the citations in your paper.
 \small{
-\bibliographystyle{abbrv}
+\bibliographystyle{acm}
 \bibliography{ecosim}  % sigproc.bib is the name of the Bibliography in this case
 }
 % You must have a proper ".bib" file
