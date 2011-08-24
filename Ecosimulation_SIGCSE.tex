@@ -58,7 +58,8 @@
 \newcommand{\EcoSim}{\emph{EcoSim}}
 \urldef\ecosimPath\path{http://ecosimulation.com}
 
-\newenvironment{snippet}{\begin{algorithmic}[1]}{\end{algorithmic}}
+\newenvironment{snippet}{\begin{algorithmic}[1]\sf}{\end{algorithmic}}
+\newcommand{\code}[1]{``\textsf{#1}''}
 
 \begin{document}
 %
@@ -112,28 +113,28 @@
 % 1St. author
 \alignauthor
 Chris Gregg\\
-       \affaddr{University of Virginia}\\
        \affaddr{Computer Science}\\
-       \affaddr{Charlottesville, VA}\\
-%       \email{chg5w@virginia.edu}\\
+       \affaddr{University of Virginia}\\
+       \affaddr{Charlottesville, VA}
+%       \\\email{chg5w@virginia.edu}\\
 % 2nd. author
 \alignauthor
 Luther Tychonievich\\
-       \affaddr{University of Virginia}\\
        \affaddr{Computer Science}\\
-       \affaddr{Charlottesville, VA}\\
-%       \email{lat7h@virginia.edu}\\
+       \affaddr{University of Virginia}\\
+       \affaddr{Charlottesville, VA}
+%       \\\email{lat7h@virginia.edu}\\
 \and  % use '\and' if you need 'another row' of author names
 % 3rd. author
 \alignauthor Kim Hazelwood\\
-       \affaddr{University of Virginia}\\
        \affaddr{Computer Science}\\
-       \affaddr{Charlottesville, VA}\\
+       \affaddr{University of Virginia}\\
+       \affaddr{Charlottesville, VA}
 % 4th. author
 \alignauthor James Cohoon\\
-       \affaddr{University of Virginia}\\
        \affaddr{Computer Science}\\
-       \affaddr{Charlottesville, VA}\\
+       \affaddr{University of Virginia}\\
+       \affaddr{Charlottesville, VA}
 }
 % There's nothing stopping you putting the seventh, eighth, etc.
 % author on the opening page (as the 'third row') but we ask,
@@ -153,7 +154,7 @@ skills using conventional programming languages and single-threaded applications
 It is typical to wait until a student has developed proficiency in sequential programming
 before teaching parallel programming.
 As computer hardware becomes increasingly parallel, 
-there is a greater need for programmers who are proficient in designing parallel programs, 
+there is a greater need for software engineers who are proficient in designing parallel programs, 
 and not just by ``parallelizing'' sequential designs.
 Teaching parallelism first is an important step towards educating tomorrow's programmers.
 
@@ -180,22 +181,22 @@ introductory programming, pedagogy, education, readability, elementary school, K
 \section{Introduction}
 Introductory programming classes are often taught 
 using languages designed primarily for single-threaded applications.  Multi-threaded or
-parallel programming concepts are considered advanced, and it is rare that students learn about
-parallel programming before a second or third programming course.  Traditionally, many colleges and
-universities in the United States provided only a single parallel programming course,
-often as a senior-level undergraduate elective. 
-This means that programmers might not receive any traditional instruction in parallel programming at all.
+parallel programming concepts are considered advanced. It is rare that students learn about
+parallel programming before a second or third programming course.  
+Traditionally, many colleges and universities in the United States provided only a single parallel programming course, often as a senior-level undergraduate elective. 
+This means that programmers might not receive any traditional instruction in parallel programming.
 Additionally, when students do learn parallel programming, many have difficulties transitioning
-from a sequential-programming mentality to a parallel programming mentality, especially as parallel
-programming is considered ``hard'' by many students and instructors 
-alike.~\cite{parallelExpectations}
+from a sequential-programming mentality to a parallel programming mentality.
+One manifestation of this difficulty is that parallel programming is considered ``hard'' 
+by many students and instructors alike.~\cite{parallelExpectations}
 
 The increase in available parallelism is making parallel programming skills increasingly important.  
 Within the last five years, multicore computing has become the \emph{de facto} standard on
-desktops and laptops, and General Purpose GPU (GPGPU) computing has matured such that multi-core 
+desktops and laptops.
+General Purpose GPU (GPGPU) computing has matured such that multi-core 
 GPUs can be programmed with minimal extensions to traditional languages such as C++ and 
-Python~\cite{gpgpuLanguages}.  The trend towards increasing the number cores on each 
-machine does not show any signs of abating in the near future~\cite{multicoreTrends}.
+Python~\cite{gpgpuLanguages}.  
+These trends are expected to continue in coming years~\cite{multicoreTrends}.
 To take full advantage of this increasing parallelism,
 programmers must not only thoroughly understand parallel programming concepts 
 such as race conditions, atomicity, synchronization, and deadlock;
@@ -212,29 +213,28 @@ could access the programming development environment online to continue learning
 although no out-of-classroom assignments were given.
 None of the students had significant prior programming experience.
 
-We had three overarching goals in mind for the course:
-\begin{enumerate}
+Out course was designed around three objectives.
+\begin{itemize}
 \item Introduce the students to basic parallel programming ideas using multiple processors.
 \item Help the students develop a mental model of what programming is and what computers do.
 \item Teach the students to ``think parallel'' about computing problems.
-\end{enumerate}
-As a weekend enrichment course, we did not provide structured assessment;
-however, we were able to gauge our success through exit surveys, 
-informal interactions with individual students, and by looking at the code produced by each student.
+\end{itemize}
+We measured these objectives through exit surveys, 
+informal interactions with individual students, 
+and by inspecting the code produced by each student.
+Structured assessment was not possible within the enrichment program structure.
 
 The course used a programming language of our own design, called \EcoSim{}\footnote{
-\EcoSim{} is so-named because many of the examples we used to guide its design 
-focused on an \emph{eco}logical \emph{sim}ulation.}.
-\EcoSim{} uses an English-like syntax that requires little explanation 
-and makes parallelism both pervasive and visible to the user.
-We also developed an online environment in which students could write and run code from any computer,
-and which gave the students step-by-step feedback on the behavior of each emulated processor.
+\EcoSim{} is so-named because we envisioned students using it to program \emph{eco}logical \emph{sim}ulations.}.
+\EcoSim{} uses an English-like syntax and makes parallelism both pervasive and visible to the user.
+We also developed an online environment in which students could write and run code from any computer.
+This environment gives each students step-by-step feedback on the behavior of each emulated processor.
 Figure \ref{fig:exampleProgram} shows an example \emph{EcoSim} program that defines and
 draws ten green ``plants'' on the screen, where the plants are represented by circles of radius 10.
 Figure \ref{fig:ecosimScreencap} shows the \emph{EcoSim} development environment, which includes
 a code window, settings, a console window with output messages, and a window for graphical objects.
 \begin{figure}
-\begin{algorithmic}[1]
+\begin{algorithmic}[1]\sf
 %\INDSTATE[x]{code} indents x number of tabs, \INDSTATE{code} indents a single tab
 \STATE{a plant has}
   \INDSTATE{a position}
@@ -266,9 +266,10 @@ Parallel computing is not new, dating back to 1955 and the IBM 704~\cite{hockney
 However, until recently advances in individual processor speed meant single-processor machines
 were sufficient for most tasks~\cite{amdahl1967validity}, 
 and the bulk of programming practices and pedagogy were developed for a single-processor programming model.
-Today, multicore desktop and laptop computers are ubiquitous, and in order to make the most
-efficient use of these computers, parallel programming is necessary.  
-When novice programmers write their first code today, it is often running on a parallel computer.
+Today, multicore desktop and laptop computers are ubiquitous---%
+when novice programmers write their first code today, it is often running on a parallel computer.
+In order to make the most efficient use of these computers, parallel programming is necessary.  
+
 
 There are numerous programming languages available for desktop parallel programming.  Many of
 these languages are extensions, libraries, or APIs built on top of sequential languages such 
@@ -287,16 +288,15 @@ NESL~\cite{nesl-impl-94}, Go~\cite{GoLanguage}, and ParaSail~\cite{ParaSail}).  
 languages to an absolute beginner programmer.
 
 % Pedagogy
-There have been a number of studies on teaching 
-parallel programming concepts using traditional languages at the 
-undergraduate level~\cite{freshmanParallel,undergraduateParallel,gridPortal} 
+Several researchers have investigated teaching parallel programming concepts 
+at the undergraduate level~\cite{freshmanParallel,undergraduateParallel,gridPortal} 
 and at least one at the secondary school level~\cite{highSchoolParallel}.
-All of the studies used openly available parallel programming languages (e.g., OpenMP, 
-MPI, and CUDA).
-These studies demonstrated that concrete examples of parallel
-code and significant classroom programming time motivated students more than abstract concepts
-delivered in a lecture.
-\FIXME{Not clear if these studies were with previously-sequential programmers or with novices}
+These studies targeted both first and second year students
+using openly available parallel programming languages (e.g., OpenMP, MPI, and CUDA).
+A common result was that students were motivated more by 
+concrete examples of parallel code and significant classroom programming time 
+rather than by abstract concepts delivered in a lecture.
+We likewise utilized concrete examples and lost of in-class programming time.
 
 
 % Readability
@@ -304,19 +304,20 @@ Several successful languages have been designed to have English-like syntax,
 including COBOL~\cite{COBOL59}, AppleScript~\cite{AppleScript}, and Wolfram Alpha~\cite{WolframAlpha}.
 Like \EcoSim{}, each was designed to accessible to non-programmers
 and each targets a relatively narrow set of possible use cases.
-None, however, seem suited to teaching parallel programming concepts.
+None are targeted toward teaching parallel programming concepts.
 
-Another approach to making ``readable'' languages 
-is to use a graphical rather than textual representation of the program;
-two recent example aimed at children are Scratch~\cite{Scratch} and Kodu~\cite{Kodu}.
-While there are many more graphical programming languages than we can enumerate here,
-we are unaware of any that can be run without installation, 
-read with limited explanation, and are suited to teaching parallel programming concepts.
+An alternative to ``readable'' languages 
+is to use a graphical rather than textual representation of the program.
+Two recent examples of graphically-represented languages that are aimed at children 
+are Scratch~\cite{Scratch} and Kodu~\cite{Kodu}.
+While an exhaustive survey of graphical programming languages was impractical,
+we were unaware of any that required no installation
+and were suitable for teaching core parallel programming concepts.
 
 
 
 \section{EcoSim: An Introductory Parallel Programming Language}
-In selecting a language for our course we were looking for four characteristics\footnote{
+We looked for four characteristics in the language we used in our course\footnote{
 We considered, but rejected, a fifth characteristic: a ``complete'' language.
 As an enrichment course, we did not anticipate being a gateway into serious software development.
 In hindsight, this may have been a bad choice.
@@ -332,12 +333,12 @@ In hindsight, this may have been a bad choice.
 		no dependence on concepts past 4th-grade standards,
 		and preferably no new symbols or re-defined words at all.
 	\item[Web-Based:]
-		We wanted the students to be able to work at home without any trouble.
+		We wanted the students to be able to work at home without installation.
 		This meant building on top of either Javascript or Flash, 
-		the only tools we could count on all the students having already installed at home.
+		the only tools we could count on all the students having already installed.
 	\item[Engaging:]
 		We wanted every program the students wrote to interest them.
-		In particular, we wanted to be avoid ``Hello World'' and other text processing.
+		Every program should be graphical, with text reserved for diagnostic information.
 \end{description}
 
 Since we were aware of no language having all four desired characteristics, 
@@ -347,15 +348,15 @@ wrote a type-checking parser, interpreter, and runtime environment in Javascript
 We also created an interaction environment using HTML and CSS, with the HTML5 Canvas element providing graphical output.
 
 \subsection{The EcoSim Runtime}\label{sec:runtime}
-We decided to structure the \EcoSim{} environment with three basic interfaces:
+The \EcoSim{} environment has three basic interfaces:
 the code entry pane, 
 a status window listing the results of parsing and the behavior of each processor,
 and a graphical display of the state of each object.
-In the graphical display we decided to place a circle for each object
+The graphical display automatically draws a circle for each object
 that had a defined position and size in the student's code.
-This automated display was selected instead of providing some more abstract representation of objects
-or an explicit graphics API
-in order to minimize the time we spent discussing the display.
+By automating the display 
+we were able to focus on core programming concepts
+rather than teaching about a graphics API.
 
 In addition to the user interface, the \EcoSim{} runtime provides the following:
 \begin{description}
@@ -384,18 +385,18 @@ User-defined types are built out of these parts.
 
 
 \subsection{The EcoSim Language}
-Three mantras guided our design of \EcoSim{}'s language constructs:
+Three principles guided our design of \EcoSim{}'s language constructs:
 ``audience: processor'', ``self-describing syntax'', and ``anonymous by default.''
 The first two are directly parallel our first two objectives:
 we wanted the processors to be visible throughout the language
 and the language to be self-explanatory.
-The last, defaulting to anonymity,
-was inspired by the hope that anonymity would keep things parallel 
-(if you don't have a name then you are less likely to care which one is present).
-In practice we found anonymity was also valuable because it removing the need 
-for students to think up and remember variable names.
+We added the third principal, defaulting to anonymity,
+reduced the need to come up with names for variables,
+simplifying the programming process.
+We hoped it would also reduce the likelihood of conflict over limited, named computing resources,
+but this kind of conflict did not arise in any class example.
 
-Rather than provide a full description of the language that grew out of these mantras,
+Rather than provide a full description of the language that grew out of these principles,
 we provide here a few elements that typify language design
 and rely on the language's self-describing character 
 to render later code examples understandable.
@@ -406,23 +407,23 @@ We had discovered in previous interactions with CS1 students
 that the syntax used in \texttt{x = x + 1} was often confusing.
 We brainstormed ways we might explain that operation,
 things like ``$x$ is redefined; it's new value is 1 + the old value of $x$,''
-but most were too verbose or failed the ``audience: processor'' mantra.
-We finally settled on ``replace x with old x + 1'',
+but most were too verbose or failed the ``audience: processor'' principle.
+We finally settled on \code{replace x with old x + 1},
 which we implemented as two rules:
-an assignment syntax of ``replace \emph{lvalue} with \emph{rvalue}''
-and a requirement that the word ``old'' precede rvalue variables that also appear in the lvalue.
+an assignment syntax of \code{replace {\it lvalue} with {\it rvalue}}
+and a requirement that the word \code{old} precede rvalue variables that also appear in the lvalue.
 
 Similar processes resulted in 
-\texttt{while(1<2)} becoming ``as long as 1 $<$ 2'',
-\texttt{else} being replaced with ``otherwise'', 
-and \texttt{double x = 3} becoming ``start x as 3''.
+\texttt{while(1<2)} becoming \code{as long as 1 $<$ 2},
+\texttt{else} being replaced with \code{otherwise}, 
+and \texttt{double x = 3} becoming \code{start x as 3}.
 We replaced the membership operator (commonly \texttt{.} or \mbox{\texttt{->}})
-with the more English-like ``'s'' (as in ``baz's position's x'')
-and implemented type inference to create a statically-typed language 
+with the more English-like \code{'s} (as in \code{baz's position's x}).
+We also implemented type inference to create a statically-typed language 
 without needing to declare variable types.
 
 The runtime keeps a list of objects of each type (see \S\ref{sec:runtime});
-we add to these by writing ``create 3 number'' and and remove with a ``destroy'' command.
+we add to these lists by writing \code{create 3 number} and and remove with a \code{destroy} command.
 We can access objects either by grabbing one randomly selected object:
 \begin{snippet}
 \STATE for some number
@@ -437,32 +438,33 @@ or by accessing all of them in parallel:
 \subsubsection{Definitions}
 We observed that structures, properties, and subroutine definitions
 are describing ``what we mean by $X$'' rather than ``you should do $X$''.
-We thus decided that, per the ``audience: processor'' mantra, 
+We thus decided that, per the ``audience: processor'' principle, 
 we should word these to inform, not direct, the processor.
 
+For example, to introduces a structure type named ``plant''
+with a named field ``size'', an anonymous position field, and two anonymous colors,
+we write
 \begin{snippet}
 \STATE a plant has
 \INDSTATE size, a number
 \INDSTATE a position
 \INDSTATE 2 color
 \end{snippet}
-This introduces a structure type named ``plant''
-with a named field ``size'', an anonymous position field, and two anonymous colors.
-We can define properties for plants:
+We can also define properties for plants:
 \begin{snippet}
 \STATE a plant's age is the plant's size $-$ 5
 \STATE a plant's trunk is the plant's 2nd color
 \end{snippet}
 Properties are always single expressions and are accessed exactly like fields.
-Multiple fields (such as ``color'' above) can only be accessed by compile-time ordinals like ``5th'';
-you cannot write ``the plant's $n$th color'' for variable $n$.
+Multiple fields (such as \code{color} above) can only be accessed by compile-time ordinals like \code{5th};
+you cannot write \code{the plant's $n$th color} for variable $n$.
 
 Subroutines are defined with a ``how to'':
 \begin{snippet}
 \STATE how to add a number years to a plant
 \INDSTATE replace the plant's size with the plant's old size + the number
 \end{snippet}
-Calling a subroutine is straightforward
+Calling a subroutine is straightforward:
 \begin{snippet}
 \STATE for some plant
 \INDSTATE add 3 years to the plant
@@ -470,9 +472,9 @@ Calling a subroutine is straightforward
 Because this syntax for defining and calling subroutines
 is context sensitive, it is not easy to achieve using most parser techniques.
 Our parser type-checks and builds the symbol table as it goes,
-so when we parse a line ``how to \emph{words}''
+so when we parse a line \code{how to {\it words}}
 we already know which of the words identify types and which are unbound words naming the subroutine.
-Similarly, we know from context that ``the plant'' is a value
+Similarly, we know from context that \code{the plant} is a value
 and thus that we are calling a method named ``add \_\_\_ years to \_\_\_'' and not ``add \_\_\_ years to the plant''.
 
 \subsubsection{Handlers}
@@ -485,9 +487,9 @@ is collision handlers and idle operations.
 \INDSTATE create a plant
 \end{snippet}
 Again, these are worded to address the processor in a self-explaining way.
-They prevent the need for a ``main'' method, since ``when bored'' will suffice,
-and make event-oriented programming quite direct.
-Multiple ``when bored'' declarations were permitted,
+They prevent the need for a \texttt{main} method, since \code{when bored} will suffice,
+and make event-oriented programming straightforward.
+Multiple \code{when bored} declarations were permitted,
 with the runtime selecting between them at random.
 
 
@@ -567,7 +569,7 @@ processors to complete the \texttt{color} statements in any order.
 
      
 \begin{figure}
-\begin{algorithmic}[1]
+\begin{algorithmic}[1]\sf
 %\INDSTATE[x]{code} indents x number of tabs, \INDSTATE{code} indents a single tab
 \item[{\bf In order:}]
 \STATE{a moth has}
@@ -581,7 +583,7 @@ processors to complete the \texttt{color} statements in any order.
   \INDSTATE[2]{replace the moth's color with black}
 \end{algorithmic}
 
-\begin{algorithmic}[1]
+\begin{algorithmic}[1]\sf
 \item[{\bf In any order:}]
 \STATE{a moth has}
   \INDSTATE{a position}
@@ -660,7 +662,7 @@ Figure~\ref{fig:pacmanProgram} shows part of one student's novel ``Pacman'' prog
 an understanding of the parallel nature of the language.
 
 \begin{figure}
-\begin{algorithmic}[1]
+\begin{algorithmic}[1]\sf
 \setcounter{ALC@line}{22}
 %\INDSTATE[x]{code} indents x number of tabs, \INDSTATE{code} indents a single tab
 \STATE{when bored}
