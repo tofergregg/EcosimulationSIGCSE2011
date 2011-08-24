@@ -115,6 +115,7 @@ Chris Gregg\\
        \affaddr{University of Virginia}\\
        \affaddr{Computer Science}\\
        \affaddr{Charlottesville, VA}\\
+%       \email{chg5w@virginia.edu}\\
 % 2nd. author
 \alignauthor
 Luther Tychonievich\\
@@ -143,24 +144,24 @@ Luther Tychonievich\\
 % is the number that will appear on the first page PLUS the
 % number that will appear in the \additionalauthors section.
 
+%\additionalauthors{Additional authors: Kim Hazelwood (University of Virginia Computer Science, email: {\url{hazelwood@virginia.edu}}) and James P.\ Cohoon (University of Virginia Computer Science, email: {\url{cohoon@virginia.edu}}).}
+
 \maketitle
 \begin{abstract}
 Traditional introductory programming classes focus on teaching sequential programming
 skills using conventional programming languages and single-threaded applications.
 It is typical to wait until a student has developed proficiency in sequential programming
-before teaching parallel programming and associated topics such as race conditions, locks, and data consistency.  
+before teaching parallel programming.
 As computer hardware becomes increasingly parallel, 
-there is a greater need for programmers who are proficient in creating parallel programs, 
-and not just by ``parallelizing'' their initial sequential designs.
+there is a greater need for programmers who are proficient in designing parallel programs, 
+and not just by ``parallelizing'' sequential designs.
+Teaching parallelism first is an important step towards educating tomorrow's programmers.
 
-Pedagogically, there is a case to be made that teaching parallelism first is an important 
-step towards educating tomorrow's programmers.
-We present an overview of a five-day introductory parallel programming course 
-we taught to a group of nine and ten year-olds with no prior programming experience. 
-We designed our own fundamentally parallel language for the course,
-one with a near-natural language syntax that emphasized the roll of individual processors
-in executing each statement.
-Coupled with an interactive online programming environment, this language allowed us
+We present an overview of a five-day introductory parallel programming course.
+We taught the course to nine and ten year-olds with no prior programming experience. 
+Our course utilized a fundamentally parallel language we designed for the course,
+one with a near-natural language syntax that exposed the parallel processors throughout the code.
+This language, coupled with an interactive online programming environment, allowed us
 to teach a wide range of parallel programming concepts in a very limited amount of time.
 
 We provide examples of student-written code that demonstrates their understanding of some basic
@@ -173,41 +174,42 @@ geared towards teaching students how to ``think parallel.''
 
 \terms{Languages, Design, Human Factors}
 
-\keywords{Concurrent languages, parallel languages, Instructional Design,
-Introductory Programming, Pedagogy, Education, readability, elementary school, K-12}
+\keywords{Concurrent languages, parallel languages, instructional design,
+introductory programming, pedagogy, education, readability, elementary school, K-12}
 
 \section{Introduction}
-Introductory programming classes are almost universally taught 
+Introductory programming classes are often taught 
 using languages designed primarily for single-threaded applications.  Multi-threaded or
 parallel programming concepts are considered advanced, and it is rare that students learn about
-parallel programming before a second or third programming course.  Indeed, most colleges and
-universities in the United States provide a single parallel programming course available 
-to upper level undergraduates or graduate students\FIXME{citestats}; an informal survey
-of \FIXME{some number of} schools showed \FIXME{some percentage} had only programming only 
-as a senior-level elective, implying the
-average programmer would never receive any traditional instruction in parallel programming at all.
+parallel programming before a second or third programming course.  Traditionally, many colleges and
+universities in the United States provided only a single parallel programming course,
+often as a senior-level undergraduate elective. 
+This means that programmers might not receive any traditional instruction in parallel programming at all.
 Additionally, when students do learn parallel programming, many have difficulties transitioning
 from a sequential-programming mentality to a parallel programming mentality, especially as parallel
 programming is considered ``hard'' by many students and instructors 
 alike.~\cite{parallelExpectations}
 
+The increase in available parallelism is making parallel programming skills increasingly important.  
 Within the last five years, multicore computing has become the \emph{de facto} standard on
 desktops and laptops, and General Purpose GPU (GPGPU) computing has matured such that multi-core 
 GPUs can be programmed with minimal extensions to traditional languages such as C++ and 
-Python~\cite{gpgpuLanguages}.  The trend towards increasing cores to program on a
-single machine does not show any signs of abating in the near future~\cite{multicoreTrends}, and
-therefore parallel programming skills are going to become increasingly important.  Programmers
-must not only thoroughly understand parallel programming concepts such as race conditions,
-atomicity, synchronization, and deadlock, but they must be able to look at a computing problem
-and think of solutions that utilize parallel processes.
-They must also adopt new models of what activities are ``easy'' and ``hard''
-in order to develop algorithms and designs that can be efficiently executing by highly-parallel hardware.
+Python~\cite{gpgpuLanguages}.  The trend towards increasing the number cores on each 
+machine does not show any signs of abating in the near future~\cite{multicoreTrends}.
+To take full advantage of this increasing parallelism,
+programmers must not only thoroughly understand parallel programming concepts 
+such as race conditions, atomicity, synchronization, and deadlock;
+they must also be able to look at computing problems and devise solutions that utilize parallel processes.
+This requires a change in mindset as well as practice,
+adopting new models of what activities are ``easy'' and ``hard''
+to guide the development of algorithms and designs that can be executed efficiently by highly-parallel hardware.
 
-We developed an introductory parallel programming course specifically targeting novice programmers.  
-Titled ``Programming the Computers of the Future,'' we taught two classes of eighteen 4th and 5th grade 
-(9 and 10 year old) students as during a five-day weekend enrichment program.
-Each class period was two hours long, and the students had a week between classes, although they
-could access the programming development environment online to continue learning independently.
+Rather than strive to correct existing sequential programming habits,
+we developed an introductory parallel programming course specifically targeting novice programmers.
+The class, titled ``Programming the Computers of the Future,'' was offered during a five-day weekend enrichment program to 4th and 5th grade (9 and 10 year old).
+Each class period was two hours long, with a week between each class during which the students
+could access the programming development environment online to continue learning independently,
+although no out-of-classroom assignments were given.
 None of the students had significant prior programming experience.
 
 We had three overarching goals in mind for the course:
@@ -218,16 +220,15 @@ We had three overarching goals in mind for the course:
 \end{enumerate}
 As a weekend enrichment course, we did not provide structured assessment;
 however, we were able to gauge our success through exit surveys, 
-informal interactions with individual students, and by looking at the code produced by each student
-which was automatically logged by our online programming environment.
+informal interactions with individual students, and by looking at the code produced by each student.
 
 The course used a programming language of our own design, called \EcoSim{}\footnote{
 \EcoSim{} is so-named because many of the examples we used to guide its design 
-focused on an \emph{eco}logical \emph{sim}ulation.} 
-which we designed using an English-like syntax that requires limited explanation 
+focused on an \emph{eco}logical \emph{sim}ulation.}.
+\EcoSim{} uses an English-like syntax that requires little explanation 
 and makes parallelism both pervasive and visible to the user.
 We also developed an online environment in which students could write and run code from any computer,
-and which gave them step-by-step feedback on the behavior of each emulated processor.
+and which gave the students step-by-step feedback on the behavior of each emulated processor.
 Figure \ref{fig:exampleProgram} shows an example \emph{EcoSim} program that defines and
 draws ten green ``plants'' on the screen, where the plants are represented by circles of radius 10.
 Figure \ref{fig:ecosimScreencap} shows the \emph{EcoSim} development environment, which includes
@@ -291,9 +292,11 @@ parallel programming concepts using traditional languages at the
 undergraduate level~\cite{freshmanParallel,undergraduateParallel,gridPortal} 
 and at least one at the secondary school level~\cite{highSchoolParallel}.
 All of the studies used openly available parallel programming languages (e.g., OpenMP, 
-MPI, and CUDA), and a recurring theme demonstrated that concrete examples of parallel
+MPI, and CUDA).
+These studies demonstrated that concrete examples of parallel
 code and significant classroom programming time motivated students more than abstract concepts
 delivered in a lecture.
+\FIXME{Not clear if these studies were with previously-sequential programmers or with novices}
 
 
 % Readability
@@ -306,7 +309,7 @@ None, however, seem suited to teaching parallel programming concepts.
 Another approach to making ``readable'' languages 
 is to use a graphical rather than textual representation of the program;
 two recent example aimed at children are Scratch~\cite{Scratch} and Kodu~\cite{Kodu}.
-While there are far more graphical programming languages than we can enumerate
+While there are many more graphical programming languages than we can enumerate here,
 we are unaware of any that can be run without installation, 
 read with limited explanation, and are suited to teaching parallel programming concepts.
 
@@ -321,7 +324,7 @@ In hindsight, this may have been a bad choice.
 \begin{description}
 	\item[Visibly Parallel:]
 		We wanted a language that was parallel unless requested otherwise.
-		We also wanted the idea of processors processor executing the instructions
+		We also wanted the idea of parallel processors executing the instructions
 		to be emphasized throughout the language and visible in the runtime environment.
 	\item[Self-Explanatory:]
 		We didn't want to have to translate what code meant.
@@ -333,25 +336,26 @@ In hindsight, this may have been a bad choice.
 		This meant building on top of either Javascript or Flash, 
 		the only tools we could count on all the students having already installed at home.
 	\item[Engaging:]
-		We wanted every program the students wrote to be interest them.
+		We wanted every program the students wrote to interest them.
+		In particular, we wanted to be avoid ``Hello World'' and other text processing.
 \end{description}
 
 Since we were aware of no language having all four desired characteristics, 
 we created our own.
 We designed the syntax and semantics, 
-wrote a type-checking parser, interpreter, and runtime environment in Javascript
-and created an interaction environment using basic HTML+CSS features 
-as well as the HTML5 Canvas element for the graphics.
+wrote a type-checking parser, interpreter, and runtime environment in Javascript.
+We also created an interaction environment using HTML and CSS, with the HTML5 Canvas element providing graphical output.
 
 \subsection{The EcoSim Runtime}\label{sec:runtime}
-We determined to structure the \EcoSim{} environment with three basic interfaces:
+We decided to structure the \EcoSim{} environment with three basic interfaces:
 the code entry pane, 
 a status window listing the results of parsing and the behavior of each processor,
 and a graphical display of the state of each object.
 In the graphical display we decided to place a circle for each object
-that had a defined position and size in the student's code
-instead of providing some more abstract representation of objects
-or an explicit graphics API.
+that had a defined position and size in the student's code.
+This automated display was selected instead of providing some more abstract representation of objects
+or an explicit graphics API
+in order to minimize the time we spent discussing the display.
 
 In addition to the user interface, the \EcoSim{} runtime provides the following:
 \begin{description}
@@ -368,11 +372,11 @@ In addition to the user interface, the \EcoSim{} runtime provides the following:
 		The code may provide handlers for collisions of objects with position and size.
 		These are given to the processors if the work queue is empty.
 	\item[A set of idle tasks.]
-		If the work queue is empty and there are not collisions to handle
-		then remaining processors are given jobs from a set of low-priority tasks.
+		If the work queue is empty and there are no collisions to handle,
+		the remaining processors are given jobs from a set of low-priority tasks.
 \end{description}
 
-The runtime has awareness of four types:
+The runtime is aware of four types:
 number (IEEE floating points), color (HTML-compliant color names), 
 comparison (boolean values; used only behind the scenes to type-check guard expressions),
 and position (a pair of numbers, $x$ and $y$).
@@ -381,23 +385,24 @@ User-defined types are built out of these parts.
 
 \subsection{The EcoSim Language}
 Three mantras guided our design of \EcoSim{}'s language constructs:
-``self-describing syntax'', ``audience: processor'', and ``anonymous by default.''
-The first two are direct consequences of our desire to be self-explanatory 
-and to have the idea of a processor visible throughout the language.
+``audience: processor'', ``self-describing syntax'', and ``anonymous by default.''
+The first two are directly parallel our first two objectives:
+we wanted the processors to be visible throughout the language
+and the language to be self-explanatory.
 The last, defaulting to anonymity,
 was inspired by the hope that anonymity would keep things parallel 
-(if you don't have a name then you are less likely to care which one is present)
-but proved far more valuable in that it removed the need 
+(if you don't have a name then you are less likely to care which one is present).
+In practice we found anonymity was also valuable because it removing the need 
 for students to think up and remember variable names.
 
 Rather than provide a full description of the language that grew out of these mantras,
-we provide here a few typical examples
+we provide here a few elements that typify language design
 and rely on the language's self-describing character 
 to render later code examples understandable.
 
 \subsubsection{Statements}
 The first operator we considered was the assignment operator.
-We had discovered in earlier interactions with CS1 students
+We had discovered in previous interactions with CS1 students
 that the syntax used in \texttt{x = x + 1} was often confusing.
 We brainstormed ways we might explain that operation,
 things like ``$x$ is redefined; it's new value is 1 + the old value of $x$,''
@@ -445,11 +450,11 @@ This introduces a structure type named ``plant''
 with a named field ``size'', an anonymous position field, and two anonymous colors.
 We can define properties for plants:
 \begin{snippet}
-\STATE a plant's age is the plant's size - 5
+\STATE a plant's age is the plant's size $-$ 5
 \STATE a plant's trunk is the plant's 2nd color
 \end{snippet}
 Properties are always single expressions and are accessed exactly like fields.
-Multiple fields (such as ``color'' above) can only be accessed by compile-time ordinals;
+Multiple fields (such as ``color'' above) can only be accessed by compile-time ordinals like ``5th'';
 you cannot write ``the plant's $n$th color'' for variable $n$.
 
 Subroutines are defined with a ``how to'':
@@ -462,14 +467,13 @@ Calling a subroutine is straightforward
 \STATE for some plant
 \INDSTATE add 3 years to the plant
 \end{snippet}
-It is worth observing that this way of defining and calling subroutines
-is context sensitive and not easy to achieve using most parser techniques.
+Because this syntax for defining and calling subroutines
+is context sensitive, it is not easy to achieve using most parser techniques.
 Our parser type-checks and builds the symbol table as it goes,
 so when we parse a line ``how to \emph{words}''
-we can know which of the words identify types and which are unbound words naming the subroutine.
+we already know which of the words identify types and which are unbound words naming the subroutine.
 Similarly, we know from context that ``the plant'' is a value
-and thus that we are calling a method named ``add years to'' with two parameters
-and not ``add years to the plant'' with only one.
+and thus that we are calling a method named ``add \_\_\_ years to \_\_\_'' and not ``add \_\_\_ years to the plant''.
 
 \subsubsection{Handlers}
 The last element of the language we want to identify
@@ -490,7 +494,7 @@ with the runtime selecting between them at random.
 \section{Course Overview and Lesson Plans}
 The pilot course we created was for fourth and fifth grade students in an enrichment program
 that is run through our university.  We designed the course and \emph{EcoSim} concurrently,
-and both were targeted for our audience of self-selected primary school students with no
+for an audience of self-selected primary school students with no
 prior formal programming experience.
 %\begin{enumerate}
 %\item Overview (ecosystem in parallel)
@@ -505,25 +509,26 @@ prior formal programming experience.
 \subsection{Ecosystem in Parallel}
 The original conception of the pilot course was, simply, 
 ``Let's teach fourth and fifth graders about parallel programming.''
-Since we knew we had a limited time, we wanted to picked a single theme for all of our programming examples.
+To streamline our lessons we decided to structure our examples around a single theme.
 The theme we selected was ``ecosystems'', a topic familiar to students at that level
-that is inherently parallel, and easy to visualize, 
-and allowing a range from very simple forests with stationary plants 
-up through complex combinations of different flora and fauna.
+and one that is inherently parallel, and easy to visualize, 
+and allows for a wide range of example applications.
 By the end of the course students had expanded the ecosystem 
-to include plants that only grew during the day and only seeded in their immediate neighborhood,
+from simple static plants
+to handle complex interactions between 
+plants that only grew during the day and only seeded in their immediate neighborhood,
 competing herbivores and hunters, carnivorous and poisonous plants,
-as well as more imaginative fantasy elements.
+and other more imaginative fantasy elements.
 
 Students quickly learned the importance of initial conditions and parameters, both from a 
 computational perspective and a scientific one.  For example, students found that starting 
 ten thousand herbivores in a field with only ten plants
-not only slows the computer to a crawl, but the herbivores quickly decimate the plant population
-and start to die from starvation.  We spent a number of classes discussing and
+both results in over-grazing and starvation and slows the computer to a crawl.  
+We spent a number of classes discussing and
 modeling the intriguing real-life case of a herd of reindeer who overpopulated the remote
-St.~Matthew Island in Alaska and subsequently died out~\cite{klein1968introduction,stMatthewIsland}, 
-and with the \emph{EcoSim} model the students could adjust the parameters to find an
-equilibrium that would have allowed the reindeer to survive.
+St.~Matthew Island in Alaska and subsequently died out~\cite{klein1968introduction,stMatthewIsland}.
+With the \emph{EcoSim} model the students were able to adjust the parameters 
+and look for an equilibrium that would have allowed the reindeer to survive.
 
 \subsection{Getting the students to ``think parallel''}
 We began each class period with a conversation and activity introducing a new parallel programming concept. 
@@ -552,7 +557,7 @@ This continues until one student has the total sum. & Reduction and Divide/Conqu
 
 Table \ref{tab:group-activities} shows the group activities we conducted and their associated
 parallel processing concept or concepts.  During and after each activity, we discussed the
-associated concept and in most cases we then wrote a simple program in \emph{EcoSim} that
+associated concept, and in most cases we then wrote a simple program in \emph{EcoSim} that
 demonstrated the idea.  Each student sat at a computer with \emph{EcoSim} loaded into their
 web browser, and they were able to type out the examples as we wrote them on the overhead 
 projector.
@@ -589,14 +594,14 @@ processors to complete the \texttt{color} statements in any order.
   \INDSTATE[2]{replace the moth's color with black}
 \end{algorithmic} 
 \caption{Example \emph{EcoSim} programs that demonstrate race conditions.  In the
-in order program, all moths end up black, while in the out of order program
+``in order'' program, all moths end up black, while in the ``out of order'' program
 the final color is dependent on a race condition.}
 \label{fig:race-conditions} 
 \end{figure}
 
 \emph{EcoSim} allows a programmer to set the number of processors that will be used to run the
 program. We used this to demonstrate a number of concepts to the students, including demonstrating
-parallel speed-up as well as race conditions.  For example, if \emph{EcoSim} is set to use a single
+parallel speed-up and race conditions.  For example, if \emph{EcoSim} is set to use a single
 processor, and the ``In order'' program from Figure~\ref{fig:race-conditions} is amended to remove
 line 8, the students can see the individual ``moths'' changing color one at a time.  If we change
 the simulator to run with two processors, the students can easily see that two moths change color
@@ -625,9 +630,9 @@ certain programs so they could see the steps used to create more robust programs
 
 \subsection{Student Assessment}
 Because this was an ungraded enrichment class, we did not perform formal assessments (e.g., tests
-or deadline-based homework); however, we reviewed the students' work regularly and gave feedback
+or deadline-based homework). However, we reviewed the students' work regularly and gave feedback
 often.  At the beginning of each hour of class, we asked whether anyone had something they wanted
-to show the class, and we displayed their work on the projector and let them describe and run the
+to show the class, allowing them to display their work on the projector and describe their
 programs.  This motivated the students to create interesting programs, and the students enjoyed
 showing off their work to the rest of the class.  Some students showed off work that they completed
 on their own at home during the week between classes, which we highly encouraged.
@@ -635,8 +640,8 @@ on their own at home during the week between classes, which we highly encouraged
 All student work is captured in a MySQL database that we were able to review regularly.  Each time
 a student clicks on the ``Setup Code" (which parses the code and reports errors), the current
 program is saved, and all versions are retained.  Therefore, we were able to look at a students 
-progress, including how many attempts they made at fixing syntax errors, and how they went about
-building their programs.  We used this analysis to determine where we needed to review; e.g.,
+progress, including how many attempts they made at fixing syntax errors and how they went about
+writing their programs.  We used this analysis to determine where we needed to review; e.g.,
 once we realized how much trouble the students had with understanding indentation and blocks, we
 modified our lesson plan to include a review and further examples.
 
@@ -648,10 +653,11 @@ students worked on and how long it took them to fix certain coding errors.  On a
 each student worked on twenty different programs, with some students working on as few as twelve or as many as thirty-two.  Students that worked on more programs tended to be the ones who picked up
 the material the fastest, and also worked on their own at home.  The students' programs ranged 
 from five-line examples to a 150-line program that 
-was the culmination of the St.~Matthew Island deer/plant ecosystem simulation, and some students
+was the culmination of the St.~Matthew Island deer/plant ecosystem simulation.
+In addition, some students
 created novel programs that demonstrated proficient understanding of the language.  
-Figure~\ref{fig:pacmanProgram} shows part of one student's ``Pacman'' program, demonstrating that
-he understands the parallel nature of the language and has applied it correctly.
+Figure~\ref{fig:pacmanProgram} shows part of one student's novel ``Pacman'' program, demonstrating 
+an understanding of the parallel nature of the language.
 
 \begin{figure}
 \begin{algorithmic}[1]
@@ -678,9 +684,11 @@ of the programming language and its parallel programming structure.}
 On the last day of class, the students had the opportunity to show off their work to their
 parents and siblings. Our instruction to them on the last day was to prepare a program that
 they either created on their own, or an example from class that they modified significantly.
-They enthusiastically demonstrated their programs, which ranged from modifications to the St.~Matthew 
-Island ecosystem that led to a deer equilibrium, to programs that had snow ``fall'' on
-the screen and accumulate at the bottom, to a simulation that included mice searching for cheese.
+They enthusiastically demonstrated their programs,
+including various modifications to the St.~Matthew Island ecosystem,
+programs that had snow ``fall'' on the screen and accumulate at the bottom,
+simulations that included mice searching for cheese,
+etc.
 
 \section{Conclusions}
 We have demonstrated that it is possible to teach elementary school students parallel programming,
@@ -690,9 +698,9 @@ atomicity, locks, and the speedups that can be obtained by using multiple proces
 Our experience was that none of the students had any difficulty with parallelism
 and most were able to explain core parallel concepts to their parents at the end of the course.
 
-To learning in our course, we
+To facilitate learning in our course, we
 \begin{itemize}\itemsep=0pt \topsep=0pt
-\item designed a unique, natural language-based parallel programming language and associated visual web interface;
+\item designed a unique, English-like parallel programming language and associated visual web interface;
 \item provided a curriculum that taught programming through a parallel lens; and
 \item utilized kinesthetic learning activities, think-pair-share discussions, and individual guided exploration to teach each concept.
 \end{itemize}
@@ -700,7 +708,6 @@ We found the students eagerly learned the language, with few conceptual difficul
 Parallel programming does not have to be difficult to teach or learn,
 and it is a skill that will become even more important as computers continue to become more
 parallel in the future.
-\newpage
 
 %ACKNOWLEDGMENTS are optional
 %\section{Acknowledgments}
@@ -715,6 +722,7 @@ parallel in the future.
 % The following two commands are all you need in the
 % initial runs of your .tex file to
 % produce the bibliography for the citations in your paper.
+%\newpage
 \small{
 \bibliographystyle{acm}
 \bibliography{ecosim}  % sigproc.bib is the name of the Bibliography in this case
