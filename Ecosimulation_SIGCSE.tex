@@ -492,7 +492,6 @@ and make event-oriented programming straightforward.
 Multiple \code{when bored} declarations were permitted,
 with the runtime selecting between them at random.
 
-
 \section{Course Overview and Lesson Plans}
 The pilot course we created was for fourth and fifth grade students in an enrichment program
 that is run through our university.  We designed the course and \emph{EcoSim} concurrently,
@@ -512,22 +511,24 @@ prior formal programming experience.
 The original conception of the pilot course was, simply, 
 ``Let's teach fourth and fifth graders about parallel programming.''
 To streamline our lessons we decided to structure our examples around a single theme.
-The theme we selected was ``ecosystems'', a topic familiar to students at that level
-and one that is inherently parallel, and easy to visualize, 
+The theme we selected was ``ecosystems'' because
+it is familiar to students at that level,
+inherently parallel, 
+easy to visualize, 
 and allows for a wide range of example applications.
-By the end of the course students had expanded the ecosystem 
-from simple static plants
-to handle complex interactions between 
-plants that only grew during the day and only seeded in their immediate neighborhood,
-competing herbivores and hunters, carnivorous and poisonous plants,
-and other more imaginative fantasy elements.
+By the end of the course students had simulated ecosystems
+ranging from simple static plants to complex interactions between 
+diurnal locally-seeding plants, competing herbivores and hunters, 
+carnivorous and poisonous plants, and other more imaginative fantasy elements.
 
 Students quickly learned the importance of initial conditions and parameters, both from a 
-computational perspective and a scientific one.  For example, students found that starting 
+computational perspective and a scientific one.  
+For example, students found that starting 
 ten thousand herbivores in a field with only ten plants
-both results in over-grazing and starvation and slows the computer to a crawl.  
+both results in over-grazing and starvation 
+and slows the computer to a crawl as it looks for each object's collisions.
 We spent a number of classes discussing and
-modeling the intriguing real-life case of a herd of reindeer who overpopulated the remote
+modeling the real-life case of a herd of reindeer who overpopulated the remote
 St.~Matthew Island in Alaska and subsequently died out~\cite{klein1968introduction,stMatthewIsland}.
 With the \emph{EcoSim} model the students were able to adjust the parameters 
 and look for an equilibrium that would have allowed the reindeer to survive.
@@ -563,9 +564,9 @@ associated concept, and in most cases we then wrote a simple program in \emph{Ec
 demonstrated the idea.  Each student sat at a computer with \emph{EcoSim} loaded into their
 web browser, and they were able to type out the examples as we wrote them on the overhead 
 projector.
-For example, after the race condition activity, we wrote the programs in 
-Figure~\ref{fig:race-conditions}, which demonstrate a race condition stemming from allowing multiple
-processors to complete the \texttt{color} statements in any order.
+For example, after the race condition activity, we wrote the programs in Figure~\ref{fig:race-conditions}. 
+These programs demonstrate a race condition stemming from allowing multiple
+processors to replace the moths' color in an arbitrary order.
 
      
 \begin{figure}
@@ -607,37 +608,32 @@ parallel speed-up and race conditions.  For example, if \emph{EcoSim} is set to 
 processor, and the ``In order'' program from Figure~\ref{fig:race-conditions} is amended to remove
 line 8, the students can see the individual ``moths'' changing color one at a time.  If we change
 the simulator to run with two processors, the students can easily see that two moths change color
-at a time, and with 16 processors they can see that all of the moths change all at once and the
+at a time.  With sixteen processors they can see that all of the moths change all at once and the
 program completes almost instantly.  With \emph{EcoSim}'s ability to step through a program, 
 individual processor activity can be made even more apparent.
 
 \subsection{The Use of Example Programs}
 As with any programming course, example programs played an important role in teaching our course.
-This was the first time most of the students had seen any programming language at all, and
-therefore we decided to provide a scaffolding in the form of example programs that they could
-look at and modify.  \emph{EcoSim} has a ``Load Example'' button that brings up a listing of
-example programs that the instructors can update at any time.  Many times during class we would
-have students pay attention to the projector as we typed in the code for a program, and then we
-would have them load the example instead of typing it out.  This saved time (not all pre-teens
-are fast typists), and it also allowed us to start the whole class at the same point in a program's
-development.  In some cases we gave them example programs that were missing a line or two and
-asked them to fill in the details themselves.  We encouraged the students to modify the programs
-as well, and students that completed assignments before others in the class were able to modify
-the example programs or load other programs they had been working on previously.
+Because this course was the first time most of the students had seen any programming language at all, we decided to provide a scaffolding in the form of example programs that they could look at and modify.  
+\emph{EcoSim} has a ``Load Example'' button that brings up a listing of programs written by the instructors.  
+Many times during class we would have students pay attention to the projector as we typed in the code for a program.
+Once they saw our initial work, we would have them load the example instead of typing it out.  
+This saved time (not all pre-teens are fast typists), and it also allowed us to start the whole class at the same point in a program's development.  
+In some cases we gave them example programs that were missing a line or two and asked them to fill in the details themselves.  
+We encouraged the students to modify the programs as well.
+Students that completed assignments before others in the class were able to modify the example programs, write their own programs, or return to programs they had been working on previously.
 
 Another reason we relied on example programs was to build a compendium of programs that the students
 could go back and look at if they did not remember the details of a particular topic.  Frequently,
-we would direct the students to previously covered examples, and we would also keep versions of 
-certain programs so they could see the steps used to create more robust programs.
+we would direct the students to previously covered examples.
+We also kept multiple versions of certain programs so they review the process used to build programs.
 
 \subsection{Student Assessment}
-Because this was an ungraded enrichment class, we did not perform formal assessments (e.g., tests
-or deadline-based homework). However, we reviewed the students' work regularly and gave feedback
-often.  At the beginning of each hour of class, we asked whether anyone had something they wanted
-to show the class, allowing them to display their work on the projector and describe their
-programs.  This motivated the students to create interesting programs, and the students enjoyed
-showing off their work to the rest of the class.  Some students showed off work that they completed
-on their own at home during the week between classes, which we highly encouraged.
+Because this course was an ungraded enrichment class, we did not perform formal assessments (e.g., tests or deadline-based homework). 
+However, we reviewed the students' work regularly and gave feedback often.  
+At the beginning of each hour of class, we asked whether anyone had something they wanted to show the class.  
+Many students enjoyed displaying their work on the projector and seemed motivated to create interesting programs they could share with the rest of the class.  
+Some students showed off work that they completed on their own at home during the week between classes, which we highly encouraged.
 
 All student work is captured in a MySQL database that we were able to review regularly.  Each time
 a student clicks on the ``Setup Code" (which parses the code and reports errors), the current
@@ -648,18 +644,17 @@ once we realized how much trouble the students had with understanding indentatio
 modified our lesson plan to include a review and further examples.
 
 \section{Student Work and Outcomes}
-During the course, the students had an opportunity to modify example programs, and they also were able to write their own applications.  
-Because we had access to all modifications of each student's code, we were able to perform some
-statistical analysis on their code, including determining how many different applications 
-students worked on and how long it took them to fix certain coding errors.  On average, 
-each student worked on twenty different programs, with some students working on as few as twelve or as many as thirty-two.  Students that worked on more programs tended to be the ones who picked up
-the material the fastest, and also worked on their own at home.  The students' programs ranged 
-from five-line examples to a 150-line program that 
-was the culmination of the St.~Matthew Island deer/plant ecosystem simulation.
-In addition, some students
-created novel programs that demonstrated proficient understanding of the language.  
-Figure~\ref{fig:pacmanProgram} shows part of one student's novel ``Pacman'' program, demonstrating 
-an understanding of the parallel nature of the language.
+During the course the students had an opportunity to modify example programs and write their own applications.  
+We analyzed the database of student programs to perform basic analysis of each student's programming process.
+Students worked on between twelve and thirty-two separate programs each, with a means of twenty programs per student.  
+We observed that the students who worked on more programs tended to be the ones who picked up
+the material the fastest in class, and were also more likely to work on programs at home.  
+The students' programs ranged from simple five-line examples to over 150-line simulations of complex ecosystems.
+In addition, some students created novel programs that demonstrated proficient understanding of the language.  
+Figure~\ref{fig:pacmanProgram} shows part of one student's novel ``Pacman'' program, 
+demonstrating that some students were able to use the programming elements discussed in class
+in a novel, parallel context.
+
 
 \begin{figure}
 \begin{algorithmic}[1]\sf
@@ -683,30 +678,34 @@ of the programming language and its parallel programming structure.}
 
 \FIXME{Add statistics on how many tries it took students to fix parse errors.}
 
-On the last day of class, the students had the opportunity to show off their work to their
-parents and siblings. Our instruction to them on the last day was to prepare a program that
-they either created on their own, or an example from class that they modified significantly.
+On the last day of class, the students demonstrated their work to their parents and siblings. 
+We had each student to prepare a program that showcased their own work---%
+either one they created on their own or an example from class that they modified significantly.
 They enthusiastically demonstrated their programs,
 including various modifications to the St.~Matthew Island ecosystem,
 programs that had snow ``fall'' on the screen and accumulate at the bottom,
-simulations that included mice searching for cheese,
+simulations of mice searching for cheese,
 etc.
 
 \section{Conclusions}
 We have demonstrated that it is possible to teach elementary school students parallel programming,
 even if they are completely novice programmers. 
 We were able to teach basic programming skills as well as concepts such as race conditions, 
-atomicity, locks, and the speedups that can be obtained by using multiple processors
-Our experience was that none of the students had any difficulty with parallelism
+atomicity, locks, and the speedups that can be obtained by using multiple processors.
+None of our students had any difficulty with parallelism, 
 and most were able to explain core parallel concepts to their parents at the end of the course.
 
 To facilitate learning in our course, we
 \begin{itemize}\itemsep=0pt \topsep=0pt
 \item designed a unique, English-like parallel programming language and associated visual web interface;
 \item provided a curriculum that taught programming through a parallel lens; and
-\item utilized kinesthetic learning activities, think-pair-share discussions, and individual guided exploration to teach each concept.
+\item utilized learning activities, think-pair-share discussions, and individual guided exploration to teach each concept.
 \end{itemize}
-We found the students eagerly learned the language, with few conceptual difficulties and demonstrable success.  
+We found the students eagerly learned the \EcoSim{} language.
+Despite some trouble with the notion of indented blocks,
+most students were able to successfully write significant programs without difficulty.  
+
+
 Parallel programming does not have to be difficult to teach or learn,
 and it is a skill that will become even more important as computers continue to become more
 parallel in the future.
