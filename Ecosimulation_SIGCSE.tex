@@ -60,6 +60,7 @@
 
 \newenvironment{snippet}{\begin{algorithmic}[1]\sf}{\end{algorithmic}}
 \newcommand{\code}[1]{``\textsf{#1}''}
+\linespread{0.99} % use to squeeze lines together, if necessary
 
 \begin{document}
 %
@@ -676,7 +677,14 @@ of the programming language and its parallel programming structure.}
 \label{fig:pacmanProgram} 
 \end{figure}
 
-\FIXME{Add statistics on how many tries it took students to fix parse errors.}
+%\FIXME{Add statistics on how many tries it took students to fix parse errors.}
+As with any introductory programming course, students can get frustrated with the debugging
+process.  When a student clicks on the "Setup Code" button in \emph{EcoSim}, the parser reports
+the first parse error (if one or more exist) and highlights the offending line number.  Over the
+duration of the course, it took the students an average of $4.2$ attempts to fix a program that
+had errors.  If a student gave up on a program with errors by starting or opening a different
+program, he or she attempted an average of $8.3$ times to fix the error before giving up.
+
 
 On the last day of class, the students demonstrated their work to their parents and siblings. 
 We had each student to prepare a program that showcased their own work---%
