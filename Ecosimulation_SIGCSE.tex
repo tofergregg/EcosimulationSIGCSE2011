@@ -58,7 +58,9 @@
 \newcommand{\EcoSim}{\emph{EcoSim}}
 \urldef\ecosimPath\path{http://ecosimulation.com}
 
-\newenvironment{snippet}{\begin{algorithmic}[1]\sf}{\end{algorithmic}}
+\newenvironment{snippet}{\begin{algorithmic}\sf}{\end{algorithmic}}
+%\newenvironment{snippet}{\begin{algorithmic}[1]\sf}{\end{algorithmic}}
+
 \newcommand{\code}[1]{``\textsf{#1}''}
 \linespread{0.99} % use to squeeze lines together, if necessary
 
@@ -285,8 +287,9 @@ than simply learning the sequential aspects of the language.
 There are also languages designed for parallel programming, but they tend have advanced
 syntax and be targeted towards
 students already proficient at programming in general (e.g., X10\cite{X10}, 
-NESL~\cite{nesl-impl-94}, Go~\cite{GoLanguage}, and ParaSail~\cite{ParaSail}).  It would be hard to suggest any of these
-languages to an absolute beginner programmer.
+NESL~\cite{nesl-impl-94}, Go~\cite{GoLanguage}, and ParaSail~\cite{ParaSail}).  
+Novice programmers would almost certainly find it difficult to learn one of these languages
+as an introduction to programming.
 
 % Pedagogy
 Several researchers have investigated teaching parallel programming concepts 
@@ -329,7 +332,7 @@ In hindsight, this may have been a bad choice.
 		We also wanted the idea of parallel processors executing the instructions
 		to be emphasized throughout the language and visible in the runtime environment.
 	\item[Self-Explanatory:]
-		We didn't want to have to translate what code meant.
+		We did not want to have to translate what code meant.
 		No rebinding ``='' to be assignment instead of equality,
 		no dependence on concepts past 4th-grade standards,
 		and preferably no new symbols or re-defined words at all.
@@ -346,7 +349,7 @@ Since we were aware of no language having all four desired characteristics,
 we created our own.
 We designed the syntax and semantics, 
 wrote a type-checking parser, interpreter, and runtime environment in Javascript.
-We also created an interaction environment using HTML and CSS, with the HTML5 Canvas element providing graphical output.
+We also created an interactive environment using HTML and CSS, with the HTML5 Canvas element providing graphical output.
 
 \subsection{The EcoSim Runtime}\label{sec:runtime}
 The \EcoSim{} environment has three basic interfaces:
@@ -379,7 +382,7 @@ In addition to the user interface, the \EcoSim{} runtime provides the following:
 \end{description}
 
 The runtime is aware of four types:
-number (IEEE floating points), color (HTML-compliant color names), 
+number (IEEE floating point), color (HTML-compliant color names), 
 comparison (boolean values; used only behind the scenes to type-check guard expressions),
 and position (a pair of numbers, $x$ and $y$).
 User-defined types are built out of these parts.
@@ -442,7 +445,7 @@ are describing ``what we mean by $X$'' rather than ``you should do $X$''.
 We thus decided that, per the ``audience: processor'' principle, 
 we should word these to inform, not direct, the processor.
 
-For example, to introduces a structure type named ``plant''
+For example, to introduce a structure type named ``plant''
 with a named field ``size'', an anonymous position field, and two anonymous colors,
 we write
 \begin{snippet}
