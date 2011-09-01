@@ -51,7 +51,7 @@
 \usepackage{url}
 \usepackage{algorithm}
 \usepackage{algorithmic}
-\algsetup{linenosize=\rm}
+\algsetup{linenosize=\it\small}
 \usepackage{multirow}
 \usepackage{booktabs}
 \newcommand{\FIXME}[1]{{\color{red}\{FIXME #1\}}}
@@ -286,10 +286,10 @@ While this does not necessarily hinder a student's overall programming ability,
 parallel programming tends to receive less importance 
 than simply learning the sequential aspects of the language.  
 
-There are also languages designed for parallel programming, but they tend have advanced
-syntax and be targeted towards
-students already proficient at programming in general (e.g., X10\cite{X10}, 
-NESL~\cite{nesl-impl-94}, Go~\cite{GoLanguage}, and ParaSail~\cite{ParaSail}).  
+There are languages designed specifically for parallel programming, 
+but they tend have advanced syntax 
+and be targeted towards students already proficient at programming in general 
+(e.g., X10~\cite{X10}, NESL~\cite{nesl-impl-94}, Go~\cite{GoLanguage}, and ParaSail~\cite{ParaSail}).  
 Novice programmers would almost certainly find it difficult to learn one of these languages
 as an introduction to programming.
 
@@ -302,7 +302,7 @@ using openly available parallel programming languages (e.g., OpenMP, MPI, and CU
 A common result was that students were motivated more by 
 concrete examples of parallel code and significant classroom programming time 
 rather than by abstract concepts delivered in a lecture.
-We likewise utilized concrete examples and lost of in-class programming time.
+We likewise utilized concrete examples and in-class programming time.
 
 
 % Readability
@@ -326,7 +326,7 @@ and were suitable for teaching core parallel programming concepts.
 We looked for four characteristics in the language we used in our course\footnote{
 We considered, but rejected, a fifth characteristic: a ``complete'' language.
 As an enrichment course, we did not anticipate being a gateway into serious software development.
-In hindsight, this may have been a bad choice.
+In hindsight, this may have been a poor choice.
 }:
 \begin{description}
 	\item[Visibly Parallel:]
@@ -335,9 +335,8 @@ In hindsight, this may have been a bad choice.
 		to be emphasized throughout the language and visible in the runtime environment.
 	\item[Self-Explanatory:]
 		We did not want to have to translate what code meant.
-		No rebinding ``='' to be assignment instead of equality,
-		no dependence on concepts past 4th-grade standards,
-		and preferably no new symbols or re-defined words at all.
+		We didn't want to re-define symbols like ``='' or to introduce new symbols or words.
+		We also wanted all elements of the language to be accessible at the 4th-grade level.
 	\item[Web-Based:]
 		We wanted the students to be able to work at home without installation.
 		This meant building on top of either Javascript or Flash, 
@@ -366,19 +365,19 @@ rather than teaching about a graphics API.
 
 In addition to the user interface, the \EcoSim{} runtime provides the following:
 \begin{description}
-	\item[A fixed number of virtual processors.]
+	\item[A fixed number of virtual processors.]~\\
 		At each processing step the interpreter assigns to each processor a task;
 		this task is displayed both in the code pane and in the status window.
-	\item[A shared work queue for ongoing tasks.]
+	\item[A shared work queue for ongoing tasks.]~\\
 		Processors pull jobs off this queue in a random order
 		and insert any unfinished work back on the queue at the end of each step.
-	\item[A global list of objects of each type.]
-		Every object that is instantiated is placed on a global list of objects of that type.
-		These lists are used to handle ``for each'' and ``for some'' constructs.
-	\item[A collision tracker and set of collision handlers.]
+	\item[A global list of objects of each type.]~\\
+		Each object is placed on a global list of objects of its type when it is instantiated.
+		These lists are used to handle \code{for each} and \code{for some} constructs.
+	\item[A collision tracker and set of collision handlers.]~\\
 		The code may provide handlers for collisions of objects with position and size.
 		These are given to the processors if the work queue is empty.
-	\item[A set of idle tasks.]
+	\item[A set of idle tasks.]~\\
 		If the work queue is empty and there are no collisions to handle,
 		the remaining processors are given jobs from a set of low-priority tasks.
 \end{description}
@@ -397,14 +396,14 @@ The first two are directly parallel our first two objectives:
 we wanted the processors to be visible throughout the language
 and the language to be self-explanatory.
 We added the third principal, defaulting to anonymity,
-reduced the need to come up with names for variables,
+to reduce students' need to come up with names for variables,
 simplifying the programming process.
 We hoped it would also reduce the likelihood of conflict over limited, named computing resources,
 but this kind of conflict did not arise in any class example.
 
 Rather than provide a full description of the language that grew out of these principles,
-we provide here a few elements that typify language design
-and rely on the language's self-describing character 
+we provide here a few elements that typify our design choices
+and rely on {\EcoSim}'s self-describing character 
 to render later code examples understandable.
 
 \subsubsection{Statements}
@@ -429,7 +428,7 @@ We also implemented type inference to create a statically-typed language
 without needing to declare variable types.
 
 The runtime keeps a list of objects of each type (see \S\ref{sec:runtime});
-we add to these lists by writing \code{create 3 number} and and remove with a \code{destroy} command.
+we add to these lists by writing \code{create {\it number} {\it type}} and remove with a \code{destroy} command.
 We can access objects either by grabbing one randomly selected object:
 \begin{snippet}
 \STATE for some number
@@ -493,7 +492,7 @@ is collision handlers and idle operations.
 \INDSTATE create a plant
 \end{snippet}
 Again, these are worded to address the processor in a self-explaining way.
-They prevent the need for a \texttt{main} method, since \code{when bored} will suffice,
+They prevent the need for an explicit simulation loop
 and make event-oriented programming straightforward.
 Multiple \code{when bored} declarations were permitted,
 with the runtime selecting between them at random.
@@ -523,7 +522,7 @@ inherently parallel,
 easy to visualize, 
 and allows for a wide range of example applications.
 By the end of the course students had simulated ecosystems
-ranging from simple static plants to complex interactions between 
+ranging from simple growing plants to complex interactions between 
 diurnal locally-seeding plants, competing herbivores and hunters, 
 carnivorous and poisonous plants, and other more imaginative fantasy elements.
 
@@ -533,21 +532,28 @@ For example, students found that starting
 ten thousand herbivores in a field with only ten plants
 both results in over-grazing and starvation 
 and slows the computer to a crawl as it looks for each object's collisions.
-We spent a number of classes discussing and
-modeling the real-life case of a herd of reindeer who overpopulated the remote
-St.~Matthew Island in Alaska and subsequently died out~\cite{klein1968introduction,stMatthewIsland}.
+We spent a number of classes discussing the remote St.~Matthew Island in Alaska,
+where a herd of reindeer overpopulated and subsequently died out~\cite{klein1968introduction,stMatthewIsland}.
 With the \emph{EcoSim} model the students were able to adjust the parameters 
 and look for an equilibrium that would have allowed the reindeer to survive.
 
 \subsection{Getting the students to ``think parallel''}
-We began each class period with a conversation and activity introducing a new parallel programming concept. 
+We began each class period with a conversation and activity introducing a new parallel programming concept.
+Table \ref{tab:group-activities} shows the group activities we conducted and their associated
+parallel processing concept or concepts.  
+During and after each activity, we discussed the associated concept, 
+and in most cases we then wrote a simple program in \emph{EcoSim} that demonstrated the idea.  
+ 
 For example, on the first day of class we introduced the students to the difference in
 computational time between parallel and sequential processes by having them sort themselves
 by height.  First, we allowed the students to line themselves up by height, all at once (the
 parallel method), and we timed this; it took roughly forty-five seconds for a class of eighteen.
 Next, we re-randomized the class and assigned one student to be the ``processor,'' in charge
-of sorting the students two at a time.  Unsurprisingly, this took roughly twice as long, 
+of sorting the students.  Unsurprisingly, this took roughly twice as long, 
 leading to a fruitful discussion on why parallel processing can be faster.
+We then showed the students that \emph{EcoSim} allows a programmer 
+to set the number of processors that will be used to run the program
+and had the students experiment with the impact of having multiple processors.
 
 \begin{table*}
 \centering \begin{tabular}{p{.7\linewidth} | p{.25\linewidth}} 
@@ -564,16 +570,14 @@ This continues until one student has the total sum. & Reduction and Divide/Conqu
 \label{tab:group-activities}
 \end{table*} 
 
-Table \ref{tab:group-activities} shows the group activities we conducted and their associated
-parallel processing concept or concepts.  During and after each activity, we discussed the
-associated concept, and in most cases we then wrote a simple program in \emph{EcoSim} that
-demonstrated the idea.  Each student sat at a computer with \emph{EcoSim} loaded into their
-web browser, and they were able to type out the examples as we wrote them on the overhead 
-projector.
+After the opening class discussion we would transition to programming exercises.
+Each student would sit at a computer with \emph{EcoSim} loaded into their
+web browser, and they were able to type out the examples as we wrote them on the overhead projector.
 For example, after the race condition activity, we wrote the programs in Figure~\ref{fig:race-conditions}. 
 These programs demonstrate a race condition stemming from allowing multiple
 processors to replace the moths' color in an arbitrary order.
-
+Many of the students would then experiment with the code, 
+trying out other conditions to explore the idea more fully.
      
 \begin{figure}
 \begin{algorithmic}[1]\sf
@@ -608,15 +612,11 @@ the final color is dependent on a race condition.}
 \label{fig:race-conditions} 
 \end{figure}
 
-\emph{EcoSim} allows a programmer to set the number of processors that will be used to run the
-program. We used this to demonstrate a number of concepts to the students, including demonstrating
-parallel speed-up and race conditions.  For example, if \emph{EcoSim} is set to use a single
-processor, and the ``In order'' program from Figure~\ref{fig:race-conditions} is amended to remove
-line 8, the students can see the individual ``moths'' changing color one at a time.  If we change
-the simulator to run with two processors, the students can easily see that two moths change color
-at a time.  With sixteen processors they can see that all of the moths change all at once and the
-program completes almost instantly.  With \emph{EcoSim}'s ability to step through a program, 
-individual processor activity can be made even more apparent.
+The ability to step through code in the {\EcoSim} environment allowed students to see how the computer followed their instructions.
+For example, if \emph{EcoSim} is set to use two processors for the ``In order'' program from Figure~\ref{fig:race-conditions}, 
+the students see that individual ``moths'' changing color two at a time.
+Often when students were surprised at some result of program behavior
+we would step though the code, discussing how each processor's actions resulted in what we saw in the simulation.
 
 \subsection{The Use of Example Programs}
 As with any programming course, example programs played an important role in teaching our course.
@@ -627,7 +627,7 @@ Once they saw our initial work, we would have them load the example instead of t
 This saved time (not all pre-teens are fast typists), and it also allowed us to start the whole class at the same point in a program's development.  
 In some cases we gave them example programs that were missing a line or two and asked them to fill in the details themselves.  
 We encouraged the students to modify the programs as well.
-Students that completed assignments before others in the class were able to modify the example programs, write their own programs, or return to programs they had been working on previously.
+Students that completed programming tasks before others in the class were able to modify the example programs, write their own programs, or return to programs they had been working on previously.
 
 Another reason we relied on example programs was to build a compendium of programs that the students
 could go back and look at if they did not remember the details of a particular topic.  Frequently,
@@ -642,7 +642,7 @@ Many students enjoyed displaying their work on the projector and seemed motivate
 Some students showed off work that they completed on their own at home during the week between classes, which we highly encouraged.
 
 All student work is captured in a MySQL database that we were able to review regularly.  Each time
-a student clicks on the ``Setup Code" (which parses the code and reports errors), the current
+a student clicks on the ``Setup Code'' (which parses the code and reports errors), the current
 program is saved, and all versions are retained.  Therefore, we were able to look at a students 
 progress, including how many attempts they made at fixing syntax errors and how they went about
 writing their programs.  We used this analysis to determine where we needed to review; e.g.,
@@ -684,7 +684,7 @@ of the programming language and its parallel programming structure.}
 
 %\FIXME{Add statistics on how many tries it took students to fix parse errors.}
 As with any introductory programming course, students can get frustrated with the debugging
-process.  When a student clicks on the "Setup Code" button in \emph{EcoSim}, the parser reports
+process.  When a student clicks on the ``Setup Code'' button in \emph{EcoSim}, the parser reports
 the first parse error (if one or more exist) and highlights the offending line number.  Over the
 duration of the course, it took the students an average of $4.2$ attempts to fix a program that
 had errors.  If a student gave up on a program with errors by starting or opening a different
