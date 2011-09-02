@@ -320,7 +320,7 @@ While an exhaustive survey of graphical programming languages was impractical,
 we were unaware of any that required no installation
 and were suitable for teaching core parallel programming concepts.
 
-
+~ %%%%%%%%%%% For orphan control; feel free to remove
 
 \section{EcoSim: An Introductory Parallel Programming Language}
 We looked for four characteristics in the language we used in our course\footnote{
@@ -477,6 +477,7 @@ Calling a subroutine is straightforward:
 Because this syntax for defining and calling subroutines
 is context sensitive, it is not easy to achieve using most parser techniques.
 Our parser type-checks and builds the symbol table as it goes,
+
 so when we parse a line \code{how to {\it words}}
 we already know which of the words identify types and which are unbound words naming the subroutine.
 Similarly, we know from context that \code{the plant} is a value
@@ -634,6 +635,9 @@ could go back and look at if they did not remember the details of a particular t
 we would direct the students to previously covered examples.
 We also kept multiple versions of certain programs so they review the process used to build programs.
 
+~ %%%%%%%%%%% For orphan control; feel free to remove
+
+
 \subsection{Student Assessment}
 Because this course was an ungraded enrichment class, we did not perform formal assessments (e.g., tests or deadline-based homework). 
 However, we reviewed the students' work regularly and gave feedback often.  
@@ -736,7 +740,7 @@ parallel in the future.
 % The following two commands are all you need in the
 % initial runs of your .tex file to
 % produce the bibliography for the citations in your paper.
-%\newpage
+\newpage %%%%%%%%%%% for final-column balancing; feel free to remove
 \small{
 \bibliographystyle{acm}
 \bibliography{ecosim}  % sigproc.bib is the name of the Bibliography in this case
