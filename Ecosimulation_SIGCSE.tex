@@ -46,6 +46,7 @@
 % For tracking purposes - this is V1.9 - April 2009
 
 \documentclass{sig-alternate}
+\usepackage{microtype}
 \usepackage{color}
 \usepackage{listings}
 \usepackage{url}
@@ -297,7 +298,7 @@ We likewise utilized concrete examples and in-class programming time.
 
 
 An alternate approach to teaching parallel concepts is to utilize robotic platforms,
-such as Mindstorms~\cite{Mindstorms}, Pico\-Crick\-et~\cite{Pico}, Finch~\cite{Finch}, Arduino~\cite{Arduino}, etc.
+such as Mindstorms~\cite{Mindstorms}, Pico\-Cricket~\cite{Pico}, Finch~\cite{Finch}, Arduino~\cite{Arduino}, etc.
 When using multiple robots (or robots with multiple processors) elements of parallelism are unavoidable and concrete.
 However, we are unaware of any effort to utilize these platforms for teaching parallel programming concepts.
 It is also not clear that the kinds of parallel challenges that are most apparent in robotics are directly transferable to other forms of parallel programming.
@@ -320,7 +321,7 @@ and were suitable for teaching core parallel programming concepts.
 
 ~ %%%%%%%%%%% For orphan control; feel free to remove
 
-\section{EcoSim: An Introductory Parallel Programming Language}
+\section{EcoSim}
 We looked for four characteristics in the language we used in our course\footnote{
 We considered, but rejected, a fifth characteristic: a ``complete'' language.
 As an enrichment course, we did not anticipate being a gateway into serious software development.
@@ -438,6 +439,31 @@ or by accessing all of them in parallel:
 \INDSTATE replace the number with the old number + 1
 \end{snippet}
 
+\subsubsection{Blocks}
+Blocks caused us some difficulty with out ``self-explanatory'' goal because they largely don't exist in spoken language.
+We decided to go with indentation as more readable than delimited blocks, but neither we nor our students were entirely happy with this choice.
+
+The basic notion behind a block is ``do each of these things once'', followed by a list of statements.
+We distinguished different kinds of blocks based on their sequentiality and atomicity.
+The least constrained is the \code{do in any order} block:
+\begin{snippet}
+\STATE for each position
+\INDSTATE do in any order
+\INDSTATE[2] replace the position's x with 5
+\INDSTATE[2] replace the position's y with 4
+\end{snippet}
+In an \code{any order} block each action happens once, but in any arbitrary order or even all at once by different processors.
+More structured is the \code{do in order} block:
+\begin{snippet}
+\STATE for each number
+\INDSTATE do in order
+\INDSTATE[2] replace the number with 3
+\INDSTATE[2] replace the number with the old number + 1
+\end{snippet}
+Ordered blocks require that the first statement be completed before beginning the second statement.
+However, preceding code does not necessarily result in all numbers being 4: another processor could change the values of the numbers between the two in-order statements.
+To prevent such interruption we added \code{do in order atomically} blocks that implicitly grab reader/writer locks on everything they touch.
+
 \subsubsection{Definitions}
 We observed that structures, properties, and subroutine definitions
 are describing ``what we mean by $X$'' rather than ``you should do $X$''.
@@ -495,6 +521,11 @@ They prevent the need for an explicit simulation loop
 and make event-oriented programming straightforward.
 Multiple \code{when bored} declarations were permitted,
 with the runtime selecting between them at random.
+
+The general structure of our collision handlers would have worked with arbitrary predicates, such as \code{when a plant's size > 7}.
+We chose not to expose this generality to the students 
+because they could easily write their own single-object predicates already
+and collisions covered all of the multi-object interactions we expected in an ecological simulation.
 
 \section{Course Overview and Lesson Plans}
 The pilot course we created was for fourth and fifth grade students in an enrichment program
@@ -739,7 +770,7 @@ parallel in the future.
 % The following two commands are all you need in the
 % initial runs of your .tex file to
 % produce the bibliography for the citations in your paper.
-\newpage %%%%%%%%%%% for final-column balancing; feel free to remove
+% \newpage %%%%%%%%%%% for final-column balancing; feel free to remove
 \small{
 \bibliographystyle{acm}
 \bibliography{ecosim}  % sigproc.bib is the name of the Bibliography in this case
