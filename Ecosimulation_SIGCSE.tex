@@ -115,30 +115,21 @@
 % e-mail address with \email.
 %
 % 1St. author
-\alignauthor
-Chris Gregg\\
-       \affaddr{Computer Science}\\
-       \affaddr{University of Virginia}\\
-       \affaddr{Charlottesville, VA}
-%       \\\email{chg5w@virginia.edu}\\
+Chris Gregg
 % 2nd. author
-\alignauthor
-Luther Tychonievich\\
-       \affaddr{Computer Science}\\
-       \affaddr{University of Virginia}\\
-       \affaddr{Charlottesville, VA}
-%       \\\email{lat7h@virginia.edu}\\
-\and  % use '\and' if you need 'another row' of author names
+\qquad
+Luther Tychonievich
 % 3rd. author
-\alignauthor Kim Hazelwood\\
-       \affaddr{Computer Science}\\
-       \affaddr{University of Virginia}\\
-       \affaddr{Charlottesville, VA}
+\qquad 
+Kim Hazelwood
 % 4th. author
-\alignauthor James Cohoon\\
-       \affaddr{Computer Science}\\
+\qquad 
+James Cohoon
+\and  % use '\and' if you need 'another row' of author names
+       \affaddr{Department of Computer Science}\\
        \affaddr{University of Virginia}\\
-       \affaddr{Charlottesville, VA}
+       \affaddr{PO Box 400740}\\
+       \affaddr{Charlottesville, VA 22904}
 }
 % There's nothing stopping you putting the seventh, eighth, etc.
 % author on the opening page (as the 'third row') but we ask,
@@ -305,6 +296,13 @@ rather than by abstract concepts delivered in a lecture.
 We likewise utilized concrete examples and in-class programming time.
 
 
+An alternate approach to teaching parallel concepts is to utilize robotic platforms,
+such as Mindstorms~\cite{Mindstorms}, Pico\-Crick\-et~\cite{Pico}, Finch~\cite{Finch}, Arduino~\cite{Arduino}, etc.
+When using multiple robots (or robots with multiple processors) elements of parallelism are unavoidable and concrete.
+However, we are unaware of any effort to utilize these platforms for teaching parallel programming concepts.
+It is also not clear that the kinds of parallel challenges that are most apparent in robotics are directly transferable to other forms of parallel programming.
+
+
 % Readability
 Several successful languages have been designed to have English-like syntax,
 including COBOL~\cite{COBOL59}, AppleScript~\cite{AppleScript}, and Wolfram Alpha~\cite{WolframAlpha}.
@@ -314,8 +312,8 @@ None are targeted toward teaching parallel programming concepts.
 
 An alternative to ``readable'' languages 
 is to use a graphical rather than textual representation of the program.
-Two recent examples of graphically-represented languages that are aimed at children 
-are Scratch~\cite{Scratch} and Kodu~\cite{Kodu}.
+Recent examples of graphically-represented languages that are aimed at children 
+include Alice~\cite{Alice}, Scratch~\cite{Scratch}, Greenfoot~\cite{Greenfoot}, and Kodu~\cite{Kodu}.
 While an exhaustive survey of graphical programming languages was impractical,
 we were unaware of any that required no installation
 and were suitable for teaching core parallel programming concepts.
