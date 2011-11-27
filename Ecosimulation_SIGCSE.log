@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2011.4.4)  2 SEP 2011 12:40
+=======
+This is pdfeTeX, Version 3.141592-1.30.4-2.2 (Web2C 7.5.5) (format=pdflatex 2006.11.9)  2 SEP 2011 14:01
+>>>>>>> don't need these changes
 entering extended mode
  %&-line parsing enabled.
 **Ecosimulation_SIGCSE.tex
@@ -285,10 +289,22 @@ LaTeX Font Info:    ... okay on input line 68.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 68.
 LaTeX Font Info:    ... okay on input line 68.
 
+<<<<<<< HEAD
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count127
 \scratchdimen=\dimen141
+=======
+(/usr/local/teTeX/share/texmf.local/tex/context/base/supp-pdf.tex
+(/usr/local/teTeX/share/texmf.local/tex/context/base/supp-mis.tex
+loading : Context Support Macros / Miscellaneous (2004.10.26)
+\protectiondepth=\count130
+\scratchcounter=\count131
+\scratchtoks=\toks40
+\scratchdimen=\dimen143
+\scratchskip=\skip51
+\scratchmuskip=\muskip12
+>>>>>>> don't need these changes
 \scratchbox=\box34
 \nofMPsegments=\count128
 \nofMParguments=\count129
@@ -298,10 +314,16 @@ LaTeX Font Info:    ... okay on input line 68.
 \MPnumerator=\count131
 \everyMPtoPDFconversion=\toks41
 )
+<<<<<<< HEAD
 \c@lstlisting=\count132
 LaTeX Font Info:    Try loading font information for U+msa on input line 154.
  (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+=======
+LaTeX Font Info:    Try loading font information for U+msa on input line 154.
+ (/usr/local/teTeX/share/texmf.tetex/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+>>>>>>> don't need these changes
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 154.
 
@@ -372,37 +394,61 @@ Overfull \hbox (1.269pt too wide) in paragraph at lines 325--325
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2 <./figures/EcosimScreencap2.png>]
+<<<<<<< HEAD
 Overfull \hbox (135.20486pt too wide) in paragraph at lines 430--433
+=======
+Overfull \hbox (66.97957pt too wide) in paragraph at lines 430--433
+>>>>>>> don't need these changes
 \T1/aer/m/n/9 ther by grab-bing one ran-domly se-lected ob-ject:               
                                        
  []
 
 
+<<<<<<< HEAD
 Overfull \hbox (96.98274pt too wide) in paragraph at lines 437--438
+=======
+Overfull \hbox (28.75745pt too wide) in paragraph at lines 437--438
+>>>>>>> don't need these changes
 \T1/aer/m/n/9 or by ac-cess-ing all of them in par-al-lel:                     
                                  
  []
 
 [3]
+<<<<<<< HEAD
 Overfull \hbox (106.82841pt too wide) in paragraph at lines 458--459
+=======
+Overfull \hbox (38.60312pt too wide) in paragraph at lines 458--459
+>>>>>>> don't need these changes
 \T1/aer/m/n/9 We can also de-fine prop-er-ties for plants:                     
                                  
  []
 
 
+<<<<<<< HEAD
 Overfull \hbox (117.02556pt too wide) in paragraph at lines 467--468
+=======
+Overfull \hbox (48.80026pt too wide) in paragraph at lines 467--468
+>>>>>>> don't need these changes
 []\T1/aer/m/n/9 Subroutines are de-fined with a ``how to'':                    
                                   
  []
 
 
+<<<<<<< HEAD
 Overfull \hbox (105.28958pt too wide) in paragraph at lines 472--473
+=======
+Overfull \hbox (37.06429pt too wide) in paragraph at lines 472--473
+>>>>>>> don't need these changes
 \T1/aer/m/n/9 Calling a sub-rou-tine is straight-for-ward:                     
                                  
  []
 
 
+<<<<<<< HEAD
 Overfull \hbox (96.32498pt too wide) in paragraph at lines 487--489
+=======
+Overfull \hbox (24.85088pt too wide) in paragraph at lines 487--489
+>>>>>>> don't need these changes
 \T1/aer/m/n/9 li-sion han-dlers and idle op-er-a-tions.                        
                               
  []
@@ -440,6 +486,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
  3972 strings out of 495061
  50011 string characters out of 1182622
  119870 words of memory out of 3000000
@@ -470,3 +517,35 @@ PDF statistics:
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
+=======
+ 4006 strings out of 94412
+ 51451 string characters out of 1172319
+ 2099479 words of memory out of 4551043
+ 7108 multiletter control sequences out of 10000+50000
+ 67581 words of font info for 98 fonts, out of 2000000 for 2000
+ 582 hyphenation exceptions out of 5000
+ 39i,11n,42p,479b,366s stack positions out of 5000i,500n,6000p,200000b,40000s
+PDF statistics:
+ 78 PDF objects out of 300000
+ 0 named destinations out of 131072
+ 6 words of extra memory for PDF output out of 10000
+</usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmsy8.pfb></usr/lo
+cal/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmcsc10.pfb></usr/local/teTe
+X/share/texmf.tetex/fonts/type1/bluesky/cm/cmtt8.pfb></usr/local/teTeX/share/te
+xmf.tetex/fonts/type1/bluesky/cm/cmr8.pfb></usr/local/teTeX/share/texmf.tetex/f
+onts/type1/bluesky/cm/cmmi9.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1
+/bluesky/cm/cmtt9.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/c
+m/cmr6.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmsy9.pfb
+></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmbxti10.pfb></usr/
+local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmss9.pfb></usr/local/teTe
+X/share/texmf.tetex/fonts/type1/bluesky/cm/cmti8.pfb>{/usr/local/teTeX/share/te
+xmf.tetex/fonts/enc/dvips/psnfss/8r.enc}</usr/local/teTeX/share/texmf.tetex/fon
+ts/type1/urw/times/utmri8a.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/
+urw/times/utmr8a.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm
+/cmti9.pfb></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmbx9.pfb
+></usr/local/teTeX/share/texmf.tetex/fonts/type1/bluesky/cm/cmr9.pfb></usr/loca
+l/teTeX/share/texmf.tetex/fonts/type1/urw/times/utmb8a.pfb></usr/local/teTeX/sh
+are/texmf.tetex/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/teTeX/share/tex
+mf.tetex/fonts/type1/urw/helvetic/uhvb8a.pfb>
+Output written on Ecosimulation_SIGCSE.pdf (6 pages, 231008 bytes).
+>>>>>>> don't need these changes
