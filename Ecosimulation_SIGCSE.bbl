@@ -1,5 +1,17 @@
 \begin{thebibliography}{10}
 
+\bibitem{Arduino}
+Arduino.
+\newblock Available: \url{http://arduino.cc}.
+
+\bibitem{Finch}
+The finch.
+\newblock Available: \url{http://www.finchrobot.com/}.
+
+\bibitem{Pico}
+Picocricket.
+\newblock Available: \url{http://picocricket.com}.
+
 \bibitem{COBOL59}
 {\em General Information Manual, {IBM} Commercial Translator}.
 \newblock IBM Corporation, New York, 1959.
@@ -54,6 +66,17 @@ tual/AppleScriptX/AppleScriptX.pdf}, accessed on August 9, 2011.
 \newblock In {\em Proceedings of the 1994 ACM/IEEE conference on
   Supercomputing\/} (1994), ACM, pp.~126--133.
 
+\bibitem{Alice}
+{\sc Cooper, S., Dann, W., and Pausch, R.}
+\newblock Alice: a 3-d tool for introductory programming concepts.
+\newblock {\em J. Comput. Small Coll. 15\/} (April 2000), 107--116.
+
+\bibitem{Greenfoot}
+{\sc Henrickson, P.}
+\newblock A direct interaction tool for object-oriented programming education.
+\newblock Master's thesis, University of Southen Denmark, Maersk Mc-Kinney
+  Moller Inst. for Production Technology, 2004.
+
 \bibitem{hockney1988parallel}
 {\sc Hockney, R., and Jesshope, C.}
 \newblock {\em Parallel computers 2: Architecture, programming, and
@@ -93,6 +116,11 @@ tual/AppleScriptX/AppleScriptX.pdf}, accessed on August 9, 2011.
 {\sc Nevison, C.}
 \newblock Parallel computing in the undergraduate curriculum.
 \newblock {\em Computer 28}, 12 (December 1995), 51--56.
+
+\bibitem{Mindstorms}
+{\sc Papert, S.}
+\newblock {\em Mindstorms: children, computers, and powerful ideas}.
+\newblock Basic Books, Inc., New York, NY, USA, 1980.
 
 \bibitem{Kodu}
 {\sc Steele, K.~T.}
