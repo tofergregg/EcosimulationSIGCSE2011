@@ -52,6 +52,7 @@
 \usepackage{url}
 \usepackage{algorithm}
 \usepackage{algorithmic}
+\usepackage{balance}
 \algsetup{linenosize=\it\small}
 \usepackage{multirow}
 \usepackage{booktabs}
@@ -203,7 +204,10 @@ to guide the development of algorithms and designs that can be executed efficien
 
 Rather than strive to correct existing sequential programming habits,
 we developed an introductory parallel programming course specifically targeting novice programmers.
-The class, titled ``Programming the Computers of the Future,'' was offered during a five-day weekend enrichment program to students from the 4th and 5th grade (9 and 10 years old).
+The class, titled ``Programming the Computers of the Future,'' was offered during a five-day weekend
+enrichment program to students from the 4th and 5th grade (9 and 10 years old).  The choice of 
+this age group was primarily based on the opportunity we had to teach novice programmers, but
+pedagogically the methodology we describe could be applied to any group of beginner programmers.
 Each class period was two hours long.
 A week elapsed between each class, during which the students
 could access the programming development environment online to continue learning independently,
@@ -605,8 +609,10 @@ Each student would sit at a computer with \emph{EcoSim} loaded into their
 web browser, and they were able to type out the examples as we wrote them on the overhead projector.
 For example, after the race condition activity, we wrote the programs in Figure~\ref{fig:race-conditions}. 
 These programs demonstrate a race condition stemming from allowing multiple
-processors to replace the moths' color in an arbitrary order.
-Many of the students would then experiment with the code, 
+processors to replace the moths' color in an arbitrary order.  When the ``In order'' program runs,
+all of the moths end up black at the end, but when the ``In any order'' program runs, an
+indeterminate number of moths end up black and the remainder are gray.
+This was unexpected for many of the students, and we allowed them to experiment with the code, 
 trying out other conditions to explore the idea more fully.
      
 \begin{figure}
@@ -757,21 +763,24 @@ Parallel programming does not have to be difficult to teach or learn,
 and it is a skill that will become even more important as computers continue to become more
 parallel in the future.
 
+
 %ACKNOWLEDGMENTS are optional
-%\section{Acknowledgments}
-%This section is optional; it is a location for you
-%to acknowledge grants, funding, editing assistance and
-%what have you.  In the present case, for example, the
-%authors would like to thank Gerald Murray of ACM for
-%his help in codifying this \textit{Author's Guide}
-%and the \textbf{.cls} and \textbf{.tex} files that it describes.
+\section*{Acknowledgments}
+This work was supported in part by NSF grants CNS-0747273, CSR-0916908, and CNS-0964627, SRC GRC
+task number 1790.001, and a grant from Microsoft. We would like to thank 
+the University of Virginia Saturday and Summer Enrichment Program for the opportunity to
+teach \emph{Programming the Computers of the Future} during the winter 2011 session, and we
+woudld like to thank the
+students in the class for their enthusiasm for the subject.  We would also like to thank 
+the anonymous reviewers for their helpful comments and suggestions.
 
 %
 % The following two commands are all you need in the
 % initial runs of your .tex file to
 % produce the bibliography for the citations in your paper.
 % \newpage %%%%%%%%%%% for final-column balancing; feel free to remove
-\small{
+\balance
+\footnotesize{
 \bibliographystyle{acm}
 \bibliography{ecosim}  % sigproc.bib is the name of the Bibliography in this case
 }

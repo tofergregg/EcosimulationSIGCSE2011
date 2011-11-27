@@ -1,0 +1,13 @@
+Comments for updating SIGCSE:
+
+1. Why 9/10 year olds? -- (Chris will address)
+
+2. General concepts in parallel computing is not the problem; the devil is in the details. (Section 4.2 -- put in something about race conditions; something that they experienced that was different than what they might have expected). Change "impact of having" to "speedups resulting from"  
+
+3. Race condition wasn't clear that we care about the outcome. (find example where it matters--wrong color) --> Black circles showed up when one processor created/colored/grew an object and a separate processor found an object and grew it.  This caused race conditions and caused us to add an "atomically" keyword while teaching the class. (Chris will address 2 and 3 together in section 4.2). 
+
+4. Alice, Mindstorm, Greenfoot, etc. (Luther will add)
+
+5. Scattergun.  Leaps around.
+
+6. Not much interaction except for collision.  -- could have added "when <predicate>" for any number of different behaviors. (Luther)
