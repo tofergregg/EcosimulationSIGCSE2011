@@ -65,7 +65,7 @@
 %\newenvironment{snippet}{\begin{algorithmic}[1]\sf}{\end{algorithmic}}
 
 \newcommand{\code}[1]{``\textsf{#1}''}
-\linespread{0.95} % use to squeeze lines together, if necessary
+\linespread{0.96} % use to squeeze lines together, if necessary
 
 \begin{document}
 %
@@ -182,31 +182,21 @@ geared towards teaching students how to ``think parallel.''
 introductory programming, pedagogy, education, readability, elementary school, K-12}
 
 \section{Introduction}
-Introductory programming classes are often taught 
-using languages designed primarily for single-threaded applications.  Multi-threaded or
-parallel programming concepts are considered advanced. It is rare that students learn about
-parallel programming before a second or third programming course.  
-Traditionally, many colleges and universities in the United States provided only a single parallel programming course, often as a senior-level undergraduate elective. 
-This means that programmers might not receive any traditional instruction in parallel programming.
-Additionally, when students do learn parallel programming, many have difficulties transitioning
-from a sequential-programming mentality to a parallel programming mentality.
-One manifestation of this difficulty is that parallel programming is considered ``hard'' 
-by many students and instructors alike.~\cite{parallelExpectations}
+Introductory programming classes are often taught using languages designed primarily for single-threaded applications.  
+Multi-threaded or parallel programming concepts are considered advanced. 
+It is rare that students learn about parallel programming before a second or third programming course.  
+Traditionally, many colleges and universities in the U.S.\ provided only a single parallel programming course, often as a senior-level undergraduate elective. 
+% Hence, programmers might not receive any traditional instruction in parallel programming. 
+When students do learn parallel programming, many have difficulties transitioning from a sequential-programming mentality to a parallel programming mentality.
+One manifestation of this difficulty is that parallel programming is considered ``hard'' by many students and instructors alike~\cite{parallelExpectations}.
 
-The increase in available parallelism is making parallel programming skills increasingly important.  
-Within the last five years, multicore computing has become the \emph{de facto} standard on
-desktops and laptops.
-General Purpose GPU (GPGPU) computing has matured such that multi-core 
-GPUs can be programmed with minimal extensions to traditional languages such as C++ and 
-Python~\cite{gpgpuLanguages}.  
+As parallel platforms become more common, parallel programming skills are becoming increasingly important.  
+Within the last five years, multicore computing has become the \emph{de facto} standard on desktops and laptops.
+General Purpose GPU (GPGPU) computing has matured such that multi-core GPUs can be programmed with minimal extensions to traditional languages such as C++ and Python~\cite{gpgpuLanguages}.  
 These trends are expected to continue in coming years~\cite{multicoreTrends}.
-To take full advantage of this increasing parallelism,
-programmers must not only thoroughly understand parallel programming concepts 
-such as race conditions, atomicity, synchronization, and deadlock;
-they must also be able to look at computing problems and devise solutions that utilize parallel processes.
-This requires a change in mindset as well as practice,
-adopting new models of what activities are ``easy'' and ``hard''
-to guide the development of algorithms and designs that can be executed efficiently by highly-parallel hardware.
+To take full advantage of this increasing parallelism, programmers must understand traditional parallel concepts such as race conditions, atomicity, synchronization, and deadlock.
+Beyond those skills, they must also be able to look at computing problems and devise solutions that utilize parallel processes.
+This requires a change in mindset as well as practice, adopting new models of what activities are ``easy'' and ``hard'' to guide the development of algorithms and designs that can be executed efficiently by highly-parallel hardware.
 
 Rather than strive to correct existing sequential programming habits,
 we developed an introductory parallel programming course specifically targeting novice programmers.
@@ -271,7 +261,7 @@ main window shows the graphical output of the program.}
 % Parallelism
 Parallel computing is not new, dating back to 1955 and the IBM 704~\cite{hockney1988parallel}.
 However, until recently advances in individual processor speed meant single-processor machines
-were sufficient for most tasks~\cite{amdahl1967validity}, 
+were sufficient for most tasks,
 and the bulk of programming practices and pedagogy were developed for a single-processor programming model.
 Today, multicore desktop and laptop computers are ubiquitous---%
 when novice programmers write their first code today, it is often running on a parallel computer.
@@ -291,7 +281,9 @@ than simply learning the sequential aspects of the language.
 There are languages designed specifically for parallel programming, 
 but they tend have advanced syntax 
 and be targeted towards students already proficient at programming in general 
-(e.g., X10~\cite{X10}, NESL~\cite{nesl-impl-94}, Go~\cite{GoLanguage}, and ParaSail~\cite{ParaSail}).  
+(e.g., X10~\cite{X10}, 
+%NESL~\cite{nesl-impl-94}, 
+Go~\cite{GoLanguage}, and ParaSail~\cite{ParaSail}).  
 Novice programmers would almost certainly find it difficult to learn one of these languages
 as an introduction to programming.
 
@@ -309,7 +301,7 @@ We likewise utilized concrete examples and in-class programming time.
 
 Parallel concepts could be taught using groups of robots.
 However, robotics packages aimed at younger students
-such as Mindstorms~\cite{Mindstorms}, Pico\-Cricket~\cite{Pico}, Finch~\cite{Finch}, and Arduino~\cite{Arduino}
+such as Mindstorms~\cite{Mindstorms}, Pico\-Cricket~\cite{Pico}, and Arduino~\cite{Arduino}
 are focussed on single-processor single-robot programming tasks.
 
 
@@ -327,8 +319,6 @@ include Alice~\cite{Alice}, Scratch~\cite{Scratch}, Greenfoot~\cite{Greenfoot}, 
 While an exhaustive survey of graphical programming languages was impractical,
 we were unaware of any that required no installation
 and were suitable for teaching core parallel programming concepts.
-
-~ %%%%%%%%%%% For orphan control; feel free to remove
 
 \section{EcoSim}
 We looked for four characteristics in the language we used in our course\footnote{
@@ -410,7 +400,7 @@ We hoped it would also reduce the likelihood of conflict over limited, named com
 but this kind of conflict did not arise in any class example.
 
 Rather than provide a full description of the language that grew out of these principles,
-we provide here a few elements that typify our design choices
+we provide a few elements that typify our design choices
 and rely on {\EcoSim}'s self-describing character 
 to render later code examples understandable.
 
@@ -454,24 +444,13 @@ We decided to go with indentation as more readable than delimited blocks, but ne
 
 The basic notion behind a block is ``do each of these things once'', followed by a list of statements.
 We distinguished different kinds of blocks based on their sequentiality and atomicity.
-The least constrained is the \code{do in any order} block:
-\begin{snippet}
-\STATE for each position
-\INDSTATE do in any order
-\INDSTATE[2] replace the position's x with 5
-\INDSTATE[2] replace the position's y with 4
-\end{snippet}
-In an \code{any order} block each action happens once, but in any arbitrary order or even all at once by different processors.
-More structured is the \code{do in order} block:
-\begin{snippet}
-\STATE for each number
-\INDSTATE do in order
-\INDSTATE[2] replace the number with 3
-\INDSTATE[2] replace the number with the old number + 1
-\end{snippet}
-Ordered blocks require that the first statement be completed before beginning the second statement.
-However, preceding code does not necessarily result in all numbers being 4: another processor could change the values of the numbers between the two in-order statements.
-To prevent such interruption we added \code{do in order atomically} blocks that implicitly grab reader/writer locks on everything they touch.
+This gives the four blocks types \code{do in order}, \code{do in any order}, \code{do atomically in order}, and \code{do atomically in any order}.
+Atomic blocks implicitly lock all of the variables they accesses.
+``In order'' blocks can handle only a single processor, while multiple processors can execute the statements of an ``in any order'' block simultaneously.
+
+Examples of blocks are provided in Figures~\ref{fig:exampleProgram}, \ref{fig:race-conditions}, and~\ref{fig:pacmanProgram}.
+
+
 
 \subsubsection{Definitions}
 We observed that structures, properties, and subroutine definitions
@@ -606,6 +585,7 @@ This continues until one student has the total sum. & Reduction and Divide/Conqu
 \bottomrule 
 \end{tabular}
 \caption{Group activities.}
+\vspace{-1em}
 \label{tab:group-activities}
 \end{table*} 
 
@@ -657,7 +637,7 @@ The ability to step through code in the {\EcoSim} environment allowed students t
 For example, if \emph{EcoSim} is set to use two processors for the ``In order'' program from Figure~\ref{fig:race-conditions}, 
 the students see that individual ``moths'' changing color two at a time.
 Often when students were surprised at some result of program behavior
-we would step though the code, discussing how each processor's actions resulted in what we saw in the simulation.
+we would step though the code, discussing how each processor's actions effected the simulation.
 
 %\vspace{0.7in}
 \subsection{The Use of Example Programs}
@@ -674,10 +654,9 @@ Students that completed programming tasks before others in the class were able t
 Another reason we relied on example programs was to build a compendium of programs that the students
 could go back and look at if they did not remember the details of a particular topic.  Frequently,
 we would direct the students to previously covered examples.
-We also kept multiple versions of certain programs so they review the process used to build programs.
+%We also kept multiple versions of certain programs so they review the process used to build programs.
 
-~ %%%%%%%%%%% For orphan control; feel free to remove
-
+~
 
 \subsection{Student Assessment}
 Because this course was an ungraded enrichment class, we did not perform formal assessments (e.g., tests or deadline-based homework). 
@@ -784,9 +763,9 @@ the anonymous reviewers for their helpful comments and suggestions.
 % initial runs of your .tex file to
 % produce the bibliography for the citations in your paper.
 % \newpage %%%%%%%%%%% for final-column balancing; feel free to remove
-\balance
-\footnotesize{
-\bibliographystyle{acm}
+%\balance
+{\small
+\bibliographystyle{abbrv}
 \bibliography{ecosim}  % sigproc.bib is the name of the Bibliography in this case
 }
 % You must have a proper ".bib" file
