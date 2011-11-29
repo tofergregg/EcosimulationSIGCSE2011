@@ -65,7 +65,7 @@
 %\newenvironment{snippet}{\begin{algorithmic}[1]\sf}{\end{algorithmic}}
 
 \newcommand{\code}[1]{``\textsf{#1}''}
-\linespread{0.98} % use to squeeze lines together, if necessary
+\linespread{0.95} % use to squeeze lines together, if necessary
 
 \begin{document}
 %
@@ -147,7 +147,8 @@ James Cohoon
 
 %\additionalauthors{Additional authors: Kim Hazelwood (University of Virginia Computer Science, email: {\url{hazelwood@virginia.edu}}) and James P.\ Cohoon (University of Virginia Computer Science, email: {\url{cohoon@virginia.edu}}).}
 
-\abovecaptionskip=-10em
+\textfloatsep=0.5em
+\abovecaptionskip=10em
 
 \maketitle
 \begin{abstract}
@@ -171,7 +172,7 @@ parallel programming concepts, and we describe the overall course goal and speci
 geared towards teaching students how to ``think parallel.''
 \end{abstract}
 
-\category{D.3.2}{Concurrent Programming}{Language Classiciations}[concurrent, distributed, and parallel languages]
+\category{D.3.2}{Concurrent Programming}{Language Classifications}[concurrent, distributed, and parallel languages]
 \category{K.3.2}{Computers and Education}{Computer and Information Science Education}[computer science education, curriculum]
 
 \terms{Languages, Design, Human Factors}
@@ -306,11 +307,10 @@ rather than by abstract concepts delivered in a lecture.
 We likewise utilized concrete examples and in-class programming time.
 
 
-An alternate approach to teaching parallel concepts is to utilize robotic platforms,
-such as Mindstorms~\cite{Mindstorms}, Pico\-Cricket~\cite{Pico}, Finch~\cite{Finch}, Arduino~\cite{Arduino}, etc.
-When using multiple robots (or robots with multiple processors) elements of parallelism are unavoidable and concrete.
-However, we are unaware of any effort to utilize these platforms for teaching parallel programming concepts.
-It is also not clear that the kinds of parallel challenges that are most apparent in robotics are directly transferable to other forms of parallel programming.
+Parallel concepts could be taught using groups of robots.
+However, robotics packages aimed at younger students
+such as Mindstorms~\cite{Mindstorms}, Pico\-Cricket~\cite{Pico}, Finch~\cite{Finch}, and Arduino~\cite{Arduino}
+are focussed on single-processor single-robot programming tasks.
 
 
 % Readability
@@ -536,7 +536,7 @@ We chose not to expose this generality to the students
 because they could easily write their own single-object predicates already
 and collisions covered all of the multi-object interactions we expected in an ecological simulation.
 
-\section{Course Overview and Lesson Plans}
+\section{Course Overview}
 The pilot course we created was for fourth and fifth grade students in an enrichment program
 that is run through our university.  We designed the course and \emph{EcoSim} concurrently,
 for an audience of self-selected primary school students with no
@@ -576,7 +576,7 @@ where a herd of reindeer overpopulated and subsequently died out~\cite{klein1968
 With the \emph{EcoSim} model the students were able to adjust the parameters 
 and look for an equilibrium that would have allowed the reindeer to survive.
 
-\subsection{Getting the students to ``think parallel''}
+\subsection{Getting the Students to ``Think Parallel''}
 We began each class period with a conversation and activity introducing a new parallel programming concept.
 Table \ref{tab:group-activities} shows the group activities we conducted and their associated
 parallel processing concept or concepts.  
