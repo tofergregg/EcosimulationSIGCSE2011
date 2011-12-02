@@ -48,24 +48,27 @@
 \documentclass{sig-alternate}
 \usepackage{microtype}
 \usepackage{color}
-\usepackage{listings}
+%\usepackage{listings}
 \usepackage{url}
 \usepackage{algorithm}
 \usepackage{algorithmic}
-\usepackage{balance}
+%\usepackage{balance}
 \algsetup{linenosize=\it\small}
-\usepackage{multirow}
+%\usepackage{multirow}
 \usepackage{booktabs}
 \newcommand{\FIXME}[1]{{\color{red}\{FIXME #1\}}}
 \newcommand{\INDSTATE}[1][1]{\STATE\hspace{#1\algorithmicindent}}
 \newcommand{\EcoSim}{\emph{EcoSim}}
 \urldef\ecosimPath\path{http://ecosimulation.com}
 
-\newenvironment{snippet}{\begin{algorithmic}\sf}{\end{algorithmic}}
+\SetTracking{ encoding = *, shape = * }{ -25 }
+\newenvironment{snippet}{\begin{algorithmic}\ttfamily\lsstyle}{\end{algorithmic}}
 %\newenvironment{snippet}{\begin{algorithmic}[1]\sf}{\end{algorithmic}}
 
-\newcommand{\code}[1]{``\textsf{#1}''}
-\linespread{0.96} % use to squeeze lines together, if necessary
+\newcommand{\code}[1]{``\texttt{\lsstyle#1}''}
+\newcommand{\clike}[1]{``\texttt{\lsstyle#1}''}
+\linespread{0.965} % use to squeeze lines together, if necessary
+
 
 \begin{document}
 %
@@ -125,16 +128,16 @@ Chris Gregg
 Luther Tychonievich
 % 3rd. author
 \qquad 
-Kim Hazelwood
+James Cohoon
 % 4th. author
 \qquad 
-James Cohoon
+Kim Hazelwood
 \and  % use '\and' if you need 'another row' of author names
        \affaddr{Department of Computer Science}\\
        \affaddr{University of Virginia}\\
        \affaddr{PO Box 400740}\\
        \affaddr{Charlottesville, VA 22904}\\
-       \affaddr{<chg5w,lat7h,hazelwood,cohoon>@virginia.edu}
+       \affaddr{<chg5w,lat7h,cohoon,hazelwood>@virginia.edu}
 }
 % There's nothing stopping you putting the seventh, eighth, etc.
 % author on the opening page (as the 'third row') but we ask,
@@ -147,8 +150,7 @@ James Cohoon
 
 %\additionalauthors{Additional authors: Kim Hazelwood (University of Virginia Computer Science, email: {\url{hazelwood@virginia.edu}}) and James P.\ Cohoon (University of Virginia Computer Science, email: {\url{cohoon@virginia.edu}}).}
 
-\textfloatsep=0.5em
-\abovecaptionskip=10em
+\textfloatsep=1em
 
 \maketitle
 \begin{abstract}
@@ -167,7 +169,7 @@ one with a near-natural language syntax that exposed the parallel processors thr
 This language, coupled with an interactive online programming environment, allowed us
 to teach a wide range of parallel programming concepts in a very limited timeframe.
 
-We provide examples of student-written code that demonstrates their understanding of some basic
+We also present examples of student-written code that demonstrates their understanding of some basic
 parallel programming concepts, and we describe the overall course goal and specific lesson plans
 geared towards teaching students how to ``think parallel.''
 \end{abstract}
@@ -196,7 +198,7 @@ General Purpose GPU (GPGPU) computing has matured such that multi-core GPUs can 
 These trends are expected to continue in coming years~\cite{multicoreTrends}.
 To take full advantage of this increasing parallelism, programmers must understand traditional parallel concepts such as race conditions, atomicity, synchronization, and deadlock.
 Beyond those skills, they must also be able to look at computing problems and devise solutions that utilize parallel processes.
-This requires a change in mindset as well as practice, adopting new models of what activities are ``easy'' and ``hard'' to guide the development of algorithms and designs that can be executed efficiently by highly-parallel hardware.
+Parallel programming requires a change in mindset as well as practice, adopting new models of what activities are ``easy'' and ``hard'' to guide the development of algorithms that can be executed efficiently by highly-parallel hardware.
 
 Rather than strive to correct existing sequential programming habits,
 we developed an introductory parallel programming course specifically targeting novice programmers.
@@ -231,7 +233,8 @@ draws ten green ``plants'' on the screen, where the plants are represented by ci
 Figure \ref{fig:ecosimScreencap} shows the \emph{EcoSim} development environment, which includes
 a code window, settings, a console window with output messages, and a window for graphical objects.
 \begin{figure}
-\begin{algorithmic}[1]\sf
+\hrule\hrule\vspace{0.2em}
+\begin{algorithmic}[1]\ttfamily\lsstyle
 %\INDSTATE[x]{code} indents x number of tabs, \INDSTATE{code} indents a single tab
 \STATE{a plant has}
   \INDSTATE{a position}
@@ -243,29 +246,32 @@ a code window, settings, a console window with output messages, and a window for
   \INDSTATE[2]{replace the plant's color with green}
   \INDSTATE[2]{replace the plant's size with 10}
 \end{algorithmic} 
+\hrule\vspace{-0.8em}
 \caption{A simple \emph{EcoSim} program to define and create ten green ``plants'' on the screen.}
+\vspace*{0.2em}\hrule\hrule
 \label{fig:exampleProgram} 
-\end{figure}
-
-\begin{figure}
-\centerline{\includegraphics[width=.49\textwidth]{figures/EcosimScreencap2}}
-\caption{The \emph{EcoSim} web-based integrated development environment hosted at
-\ecosimPath{}.  Code is written and debugged in the top left window, settings are on
-the top right, a console with runtime and debug information is below the settings, and the
-main window shows the graphical output of the program.}
-\label{fig:ecosimScreencap}
 \end{figure}
 
 
 \section{Background and Related Work}
 % Parallelism
 Parallel computing is not new, dating back to 1955 and the IBM 704~\cite{hockney1988parallel}.
-However, until recently advances in individual processor speed meant single-processor machines
-were sufficient for most tasks,
-and the bulk of programming practices and pedagogy were developed for a single-processor programming model.
+% However, until recently advances in individual processor speed meant single-processor machines were sufficient for most tasks, and the bulk of programming practices and pedagogy were developed for a single-processor programming model.
 Today, multicore desktop and laptop computers are ubiquitous---%
 when novice programmers write their first code today, it is often running on a parallel computer.
 In order to make the most efficient use of these computers, parallel programming is necessary.  
+
+\begin{figure}
+\centerline{\includegraphics[width=.49\textwidth]{figures/EcosimScreencap2}}
+\hrule\vspace{-0.8em}
+\caption{The \emph{EcoSim} web-based integrated development environment hosted at
+\ecosimPath{}.  Code is written and debugged in the top left window, settings are on
+the top right, a console with runtime and debug information is below the settings, and the
+main window shows the graphical output of the program.}
+\vspace*{0.2em}\hrule\hrule
+\label{fig:ecosimScreencap}
+\end{figure}
+
 
 
 There are numerous programming languages available for desktop parallel programming.  Many of
@@ -407,7 +413,7 @@ to render later code examples understandable.
 \subsubsection{Statements}
 The first operator we considered was the assignment operator.
 We had discovered in previous interactions with CS1 students
-that the syntax used in \texttt{x = x + 1} was often confusing.
+that the syntax used in \clike{x = x + 1} was often confusing.
 We brainstormed ways we might explain that operation,
 things like ``$x$ is redefined; it's new value is 1 + the old value of $x$,''
 but most were too verbose or failed the ``audience: processor'' principle.
@@ -418,9 +424,9 @@ and a requirement that the word \code{old} precede rvalue variables that also ap
 
 Similar processes resulted in 
 \code{while(1 $<$ 2)} becoming \code{as long as 1 $<$ 2},
-\texttt{else} being replaced with \code{otherwise}, 
-and \texttt{double x = 3} becoming \code{start x as 3}.
-We replaced the membership operator (commonly \texttt{.} or \mbox{\texttt{->}})
+\clike{else} being replaced with \code{otherwise}, 
+and \clike{double x = 3} becoming \code{start x as 3}.
+We replaced the membership operator (commonly \clike{.} or \mbox{\clike{->}})
 with the more English-like \code{'s} (as in \code{baz's position's x}).
 We also implemented type inference to create a statically-typed language 
 without needing to declare variable types.
@@ -479,7 +485,7 @@ you cannot write \code{the plant's $n$th color} for variable $n$.
 Subroutines are defined with a ``how to'':
 \begin{snippet}
 \STATE how to add a number years to a plant
-\INDSTATE replace the plant's size with the plant's old size + the number
+\INDSTATE replace the plant's size with the plant's old size\\\hspace*{3\algorithmicindent} + the number
 \end{snippet}
 Calling a subroutine is straightforward:
 \begin{snippet}
@@ -489,7 +495,6 @@ Calling a subroutine is straightforward:
 Because this syntax for defining and calling subroutines
 is context sensitive, it is not easy to achieve using most parser techniques.
 Our parser type-checks and builds the symbol table as it goes,
-
 so when we parse a line \code{how to {\it words}}
 we already know which of the words identify types and which are unbound words naming the subroutine.
 Similarly, we know from context that \code{the plant} is a value
@@ -574,16 +579,16 @@ to set the number of processors that will be used to run the program
 and had the students experiment with the speedups resulting from multiple processors.
 
 \begin{table*}
-\centering \begin{tabular}{p{.7\linewidth} | p{.25\linewidth}} 
+\centering \begin{tabular}{p{.25\linewidth}p{.7\linewidth}} 
 \toprule
-Group Activity               &  Parallel Programming Concept \\ \midrule
-Students sort themselves, and then one student sorts everyone.     & Parallel speedup \\ \hline
-Everyone shares a pen to write on the whiteboard to increment a number. & Locks / Atomicity  \\ \hline
-Students roll dice until they get a six, read a number off the board, increment it, roll more dice, and call out the new number, which is written on the board.   & Race Conditions \\ \hline
-All students start with a number, and half hand to their neighbor to add together.
-This continues until one student has the total sum. & Reduction and Divide/Conquer  \\
+Concept & Group Activity \\ \midrule
+Parallel speedup & Students sort themselves, and then one student sorts everyone.\\ \hline
+Locks / Atomicity & Everyone shares a pen to write on the whiteboard to increment a number.  \\ \hline
+Race Conditions & Students roll dice until they get a six, read a number off the board, increment it, roll more dice, and call out the new number, which is written on the board. \\ \hline
+Divide and Conquer & All students start with a number, and half hand to their neighbor to add together. This continues until one student has the total sum. \\
 \bottomrule 
 \end{tabular}
+\vspace{-0.8em}
 \caption{Group activities.}
 \vspace{-1em}
 \label{tab:group-activities}
@@ -597,11 +602,12 @@ These programs demonstrate a race condition stemming from allowing multiple
 processors to replace the moths' color in an arbitrary order.  When the ``In order'' program runs,
 all of the moths end up black at the end, but when the ``In any order'' program runs, an
 indeterminate number of moths end up black and the remainder are gray.
-This was unexpected for many of the students, and we allowed them to experiment with the code, 
+This outcome was unexpected for many of the students, and we allowed them to experiment with the code, 
 trying out other conditions to explore the idea more fully.
      
 \begin{figure}
-\begin{algorithmic}[1]\sf
+\hrule\hrule\vspace*{0.2em}
+\begin{algorithmic}[1]\ttfamily\lsstyle
 %\INDSTATE[x]{code} indents x number of tabs, \INDSTATE{code} indents a single tab
 \item[{\bf In order:}]
 \STATE{a moth has}
@@ -615,7 +621,7 @@ trying out other conditions to explore the idea more fully.
   \INDSTATE[2]{replace the moth's color with black}
 \end{algorithmic}
 
-\begin{algorithmic}[1]\sf
+\begin{algorithmic}[1]\ttfamily\lsstyle
 \item[{\bf In any order:}]
 \STATE{a moth has}
   \INDSTATE{a position}
@@ -627,9 +633,11 @@ trying out other conditions to explore the idea more fully.
   \INDSTATE[2]{replace the moth's color with gray}
   \INDSTATE[2]{replace the moth's color with black}
 \end{algorithmic} 
+\hrule\vspace{-0.8em}
 \caption{Example \emph{EcoSim} programs that demonstrate race conditions.  In the
 ``in order'' program, all moths end up black, while in the ``out of order'' program
 the final color is dependent on a race condition.}
+\vspace*{0.2em}\hrule\hrule
 \label{fig:race-conditions} 
 \end{figure}
 
@@ -645,7 +653,7 @@ Because this course was the first time most of the students had seen any program
 \emph{EcoSim} has a ``Load Example'' button that brings up a listing of programs written by the instructors.  
 Many times during class we would have students pay attention to the projector as we typed in the code for a program.
 Once they saw our initial work, we would have them load the example instead of typing it out.  
-This saved time (not all pre-teens are fast typists), and it also allowed us to start the whole class at the same point in a program's development.  
+This provision saved time (not all pre-teens are fast typists), and it also allowed us to start the whole class at the same point in a program's development.  
 In some cases we gave them example programs that were missing a line or two and asked them to fill in the details themselves.  
 We encouraged the students to modify the programs as well.
 Students that completed programming tasks before others in the class were able to modify the example programs, write their own programs, or return to programs they had been working on previously.
@@ -655,7 +663,6 @@ could go back and look at if they did not remember the details of a particular t
 we would direct the students to previously covered examples.
 %We also kept multiple versions of certain programs so they review the process used to build programs.
 
-~
 
 \subsection{Student Assessment}\nobreak
 Because this course was an ungraded enrichment class, we did not perform formal assessments (e.g., tests or deadline-based homework). 
@@ -673,6 +680,29 @@ once we realized how much trouble the students had with understanding indentatio
 modified our lesson plan to include a review and further examples.
 
 \section{Student Work and Outcomes}
+\begin{figure}
+\hrule\hrule\vspace*{0.2em}
+\begin{algorithmic}[1]\ttfamily\lsstyle
+\setcounter{ALC@line}{22}
+%\INDSTATE[x]{code} indents x number of tabs, \INDSTATE{code} indents a single tab
+\STATE{when bored}
+  \INDSTATE{for each pacman}
+    \INDSTATE[2]{do in any order}
+      \INDSTATE[3]{move the pacman's position a random number\\\hspace*{5\algorithmicindent} between 10 and 50 right}
+      \INDSTATE[3]{move the pacman's position a random number\\\hspace*{5\algorithmicindent} between 10 and 50 left}
+      \INDSTATE[3]{move the pacman's position a random number\\\hspace*{5\algorithmicindent} between 10 and 50 up}
+      \INDSTATE[3]{move the pacman's position a random number\\\hspace*{5\algorithmicindent} between 10 and 50 down}
+\STATE
+\STATE{when a pacman hits a ghost}
+  \INDSTATE{destroy the pacman}
+\end{algorithmic} 
+\hrule\vspace{-0.8em}
+\caption{Part of one student's ``Pacman'' program, that demonstrates a competent understanding
+of the programming language and its parallel programming structure.}
+\vspace{0.2em}\hrule\hrule
+\label{fig:pacmanProgram} 
+\end{figure}
+
 During the course the students had an opportunity to modify example programs and write their own applications.  
 We analyzed the database of student programs to perform basic analysis of each student's programming process.
 Students worked on between twelve and thirty-two separate programs each, with a mean of twenty programs per student.  
@@ -683,27 +713,6 @@ In addition, some students created novel programs that demonstrated proficient u
 Figure~\ref{fig:pacmanProgram} shows part of one student's novel ``Pacman'' program, 
 demonstrating that some students were able to use the programming elements discussed in class
 in a novel, parallel context.
-
-
-\begin{figure}
-\begin{algorithmic}[1]\sf
-\setcounter{ALC@line}{22}
-%\INDSTATE[x]{code} indents x number of tabs, \INDSTATE{code} indents a single tab
-\STATE{when bored}
-  \INDSTATE{for each pacman}
-    \INDSTATE[2]{do in any order}
-      \INDSTATE[3]{move the pacman's position a random number between 10 and 50 right}
-      \INDSTATE[3]{move the pacman's position a random number between 10 and 50 left}
-      \INDSTATE[3]{move the pacman's position a random number between 10 and 50 up}
-      \INDSTATE[3]{move the pacman's position a random number between 10 and 50 down}
-\STATE
-\STATE{when a pacman hits a ghost}
-  \INDSTATE{destroy the pacman}
-\end{algorithmic} 
-\caption{Part of one student's ``Pacman'' program, that demonstrates a competent understanding
-of the programming language and its parallel programming structure.}
-\label{fig:pacmanProgram} 
-\end{figure}
 
 %\FIXME{Add statistics on how many tries it took students to fix parse errors.}
 As with any introductory programming course, students can get frustrated with the debugging
@@ -749,13 +758,12 @@ parallel in the future.
 
 %ACKNOWLEDGMENTS are optional
 \section*{Acknowledgments}
-This work was supported in part by NSF grants CNS-0747273, CSR-0916908, and CNS-0964627, SRC GRC
-task number 1790.001, and a grant from Microsoft. We would like to thank 
+This work was supported in part by NSF grants BPC-0739259, BPC-104282, CNS-0747273, CSR-0916908, and CNS-0964627; SRC GRC
+task number 1790.001; and a grant from Microsoft. We would like to thank 
 the University of Virginia Saturday and Summer Enrichment Program for the opportunity to
-teach \emph{Programming the Computers of the Future} during the winter 2011 session, and we
-woudld like to thank the
-students in the class for their enthusiasm for the subject.  We would also like to thank 
-the anonymous reviewers for their helpful comments and suggestions.
+teach \emph{Programming the Computers of the Future} during the winter 2011 session.
+We are grateful to the students in the class for their enthusiasm for the subject.  
+We would also like to thank the anonymous reviewers for their helpful comments and suggestions.
 
 %
 % The following two commands are all you need in the
