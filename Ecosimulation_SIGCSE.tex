@@ -80,7 +80,7 @@
 \widowpenalty = 10000
 % --- End of Author Metadata ---
 
-\title{Parallel Programming in Elementary School}
+\title{EcoSim: A Language and Experience Teaching\\ Parallel Programming in Elementary School}
 %
 % You need the command \numberofauthors to handle the 'placement
 % and alignment' of the authors beneath the title.
@@ -252,79 +252,6 @@ a code window, settings, a console window with output messages, and a window for
 \label{fig:exampleProgram} 
 \end{figure}
 
-
-\section{Background and Related Work}
-% Parallelism
-Parallel computing is not new, dating back to 1955 and the IBM 704~\cite{hockney1988parallel}.
-% However, until recently advances in individual processor speed meant single-processor machines were sufficient for most tasks, and the bulk of programming practices and pedagogy were developed for a single-processor programming model.
-Today, multicore desktop and laptop computers are ubiquitous---%
-when novice programmers write their first code today, it is often running on a parallel computer.
-In order to make the most efficient use of these computers, parallel programming is necessary.  
-
-\begin{figure}
-\centerline{\includegraphics[width=.49\textwidth]{figures/EcosimScreencap2}}
-\hrule\vspace{-0.8em}
-\caption{The \emph{EcoSim} web-based integrated development environment hosted at
-\ecosimPath{}.  Code is written and debugged in the top left window, settings are on
-the top right, a console with runtime and debug information is below the settings, and the
-main window shows the graphical output of the program.}
-\vspace*{0.2em}\hrule\hrule
-\label{fig:ecosimScreencap}
-\end{figure}
-
-
-
-There are numerous programming languages available for desktop parallel programming.  Many of
-these languages are extensions, libraries, or APIs built on top of sequential languages such 
-as C or Fortran 
-(e.g., OpenMP, CUDA, OpenCL, Intel Thread Building Blocks, pthreads, Cilk, Co-array Fortran, and Unified Parallel C),
-requiring a novice programmer to first become proficient in a sequential language 
-before tackling the parallel programming concepts.  
-While this does not necessarily hinder a student's overall programming ability, 
-parallel programming tends to receive less importance 
-than simply learning the sequential aspects of the language.  
-
-There are languages designed specifically for parallel programming, 
-but they tend have advanced syntax 
-and be targeted towards students already proficient at programming in general 
-(e.g., X10~\cite{X10}, 
-%NESL~\cite{nesl-impl-94}, 
-Go~\cite{GoLanguage}, and ParaSail~\cite{ParaSail}).  
-Novice programmers would almost certainly find it difficult to learn one of these languages
-as an introduction to programming.
-
-% Pedagogy
-Several researchers have investigated teaching parallel programming concepts 
-at the undergraduate level~\cite{freshmanParallel,undergraduateParallel,gridPortal} 
-and at least one at the secondary school level~\cite{highSchoolParallel}.
-These studies targeted both first and second year students
-using openly available parallel programming languages (e.g., OpenMP, MPI, and CUDA).
-A common result was that students were motivated more by 
-concrete examples of parallel code and significant classroom programming time 
-rather than by abstract concepts delivered in a lecture.
-We likewise utilized concrete examples and in-class programming time.
-
-
-Parallel concepts could be taught using groups of robots.
-However, robotics packages aimed at younger students
-such as Mindstorms~\cite{Mindstorms}, Pico\-Cricket~\cite{Pico}, and Arduino~\cite{Arduino}
-are focussed on single-processor single-robot programming tasks.
-
-
-% Readability
-Several successful languages have been designed to have English-like syntax,
-including COBOL~\cite{COBOL59}, AppleScript~\cite{AppleScript}, and Wolfram Alpha~\cite{WolframAlpha}.
-Like \EcoSim{}, each was designed to accessible to non-programmers
-and each targets a relatively narrow set of possible use cases.
-None are targeted toward teaching parallel programming concepts.
-
-An alternative to ``readable'' languages 
-is to use a graphical rather than textual representation of the program.
-Recent examples of graphically-represented languages that are aimed at children 
-include Alice~\cite{Alice}, Scratch~\cite{Scratch}, Greenfoot~\cite{Greenfoot}, and Kodu~\cite{Kodu}.
-While an exhaustive survey of graphical programming languages was impractical,
-we were unaware of any that required no installation
-and were suitable for teaching core parallel programming concepts.
 
 \section{EcoSim}
 We looked for four characteristics in the language we used in our course\footnote{
@@ -732,6 +659,81 @@ programs that had snow ``fall'' on the screen and accumulate at the bottom,
 simulations of mice searching for cheese,
 etc.
 
+\section{Related Work}
+% Parallelism
+Parallel computing is not new, dating back to 1955 and the IBM 704~\cite{hockney1988parallel}.
+% However, until recently advances in individual processor speed meant single-processor machines were sufficient for most tasks, and the bulk of programming practices and pedagogy were developed for a single-processor programming model.
+Today, multicore desktop and laptop computers are ubiquitous---%
+when novice programmers write their first code today, it is often running on a parallel computer.
+In order to make the most efficient use of these computers, parallel programming is necessary.  
+
+\begin{figure}
+\centerline{\includegraphics[width=.49\textwidth]{figures/EcosimScreencap2}}
+\hrule\vspace{-0.8em}
+\caption{The \emph{EcoSim} web-based integrated development environment hosted at
+\ecosimPath{}.  Code is written and debugged in the top left window, settings are on
+the top right, a console with runtime and debug information is below the settings, and the
+main window shows the graphical output of the program.}
+\vspace*{0.2em}\hrule\hrule
+\label{fig:ecosimScreencap}
+\end{figure}
+
+
+
+There are numerous programming languages available for desktop parallel programming.  Many of
+these languages are extensions, libraries, or APIs built on top of sequential languages such 
+as C or Fortran 
+(e.g., OpenMP, CUDA, OpenCL, Intel Thread Building Blocks, pthreads, Cilk, Co-array Fortran, and Unified Parallel C),
+requiring a novice programmer to first become proficient in a sequential language 
+before tackling the parallel programming concepts.  
+While this does not necessarily hinder a student's overall programming ability, 
+parallel programming tends to receive less importance 
+than simply learning the sequential aspects of the language.  
+
+There are languages designed specifically for parallel programming, 
+but they tend have advanced syntax 
+and be targeted towards students already proficient at programming in general 
+(e.g., X10~\cite{X10}, 
+%NESL~\cite{nesl-impl-94}, 
+Go~\cite{GoLanguage}, and ParaSail~\cite{ParaSail}).  
+Novice programmers would almost certainly find it difficult to learn one of these languages
+as an introduction to programming.
+
+% Pedagogy
+Several researchers have investigated teaching parallel programming concepts 
+at the undergraduate level~\cite{freshmanParallel,undergraduateParallel,gridPortal} 
+and at least one at the secondary school level~\cite{highSchoolParallel}.
+These studies targeted both first and second year students
+using openly available parallel programming languages (e.g., OpenMP, MPI, and CUDA).
+A common result was that students were motivated more by 
+concrete examples of parallel code and significant classroom programming time 
+rather than by abstract concepts delivered in a lecture.
+We likewise utilized concrete examples and in-class programming time.
+
+
+Parallel concepts could be taught using groups of robots.
+However, robotics packages aimed at younger students
+such as Mindstorms~\cite{Mindstorms}, Pico\-Cricket~\cite{Pico}, and Arduino~\cite{Arduino}
+are focussed on single-processor single-robot programming tasks.
+
+
+% Readability
+Several successful languages have been designed to have English-like syntax,
+including COBOL~\cite{COBOL59}, AppleScript~\cite{AppleScript}, and Wolfram Alpha~\cite{WolframAlpha}.
+Like \EcoSim{}, each was designed to accessible to non-programmers
+and each targets a relatively narrow set of possible use cases.
+None are targeted toward teaching parallel programming concepts.
+
+An alternative to ``readable'' languages 
+is to use a graphical rather than textual representation of the program.
+Recent examples of graphically-represented languages that are aimed at children 
+include Alice~\cite{Alice}, Scratch~\cite{Scratch}, Greenfoot~\cite{Greenfoot}, and Kodu~\cite{Kodu}.
+While an exhaustive survey of graphical programming languages was impractical,
+we were unaware of any that required no installation
+and were suitable for teaching core parallel programming concepts.
+
+
+
 \section{Conclusions}
 We have demonstrated that it is possible to teach elementary school students parallel programming,
 even if they are completely novice programmers. 
@@ -758,8 +760,7 @@ parallel in the future.
 
 %ACKNOWLEDGMENTS are optional
 \section*{Acknowledgments}
-This work was supported in part by NSF grants BPC-0739259, BPC-104282, CNS-0747273, CSR-0916908, and CNS-0964627; SRC GRC
-task number 1790.001; and a grant from Microsoft. We would like to thank 
+This work was supported in part by NSF grants BPC-0739259, BPC-104282, CNS-0747273, CSR-0916908, and CNS-0964627; and a grant from Microsoft. We would like to thank 
 the University of Virginia Saturday and Summer Enrichment Program for the opportunity to
 teach \emph{Programming the Computers of the Future} during the winter 2011 session.
 We are grateful to the students in the class for their enthusiasm for the subject.  
